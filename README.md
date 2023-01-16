@@ -41,3 +41,39 @@ In the above example, there is a variable named addNew, and it is declared outsi
 </details>
 
 ---
+
+### 2. Javascript is Synchronous or Asynchronous
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+  - Javascript is the synchronous single-threaded language but with the help of event-loop and promises, JavaScript is used to do asynchronous programming.
+  - The most common triggers for asynchronous Javascript operations are:
+      1. Event Loop
+      2. Callback
+      3. Promises
+      4. Async/Await
+  
+  https://www.freecodecamp.org/news/synchronous-vs-asynchronous-in-javascript/
+  https://betterprogramming.pub/is-javascript-synchronous-or-asynchronous-what-the-hell-is-a-promise-7aa9dd8f3bfb
+  
+  
+ </p>
+</details>
+
+---
+
+### 3. Javascript Event Loop
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+  - 
+  
+  
+ </p>
+</details>
+
+---
