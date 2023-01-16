@@ -74,6 +74,29 @@ In the above example, there is a variable named addNew, and it is declared outsi
   
   ![JavaScript Visualizer 9000](https://github.com/piyalidas10/Javascript-Interview-Questions-Mylists/blob/main/images/jsv9000.gif)
   
+  ```
+  function three() {
+  console.log("three");
+
+  setTimeout(function () {
+    console.log("last");
+  }, 1000);
+}
+
+function two() {
+  console.log("two");
+  three();
+}
+
+function one() {
+  console.log("one");
+  two();
+}
+
+one();
+```
+  ![JavaScript Visualizer 9000](https://github.com/piyalidas10/Javascript-Interview-Questions-Mylists/blob/main/images/event_loop_1.gif)
+  
   JavaScript is single-threaded: only one task can run at a time. Usually that’s no big deal, but now imagine you’re running a task which takes 30 seconds.. Ya.. During that task we’re waiting for 30 seconds before anything else can happen (JavaScript runs on the browser’s main thread by default, so the entire UI is stuck) 😬 It’s 2019, no one wants a slow, unresponsive website.
 
 Luckily, the browser gives us some features that the JavaScript engine itself doesn’t provide: a Web API. This includes the DOM API, setTimeout, HTTP requests, and so on. This can help us create some async, non-blocking behavior.
