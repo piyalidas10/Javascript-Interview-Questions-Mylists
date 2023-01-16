@@ -76,24 +76,29 @@ Luckily, the browser gives us some features that the JavaScript engine itself do
 
 
 When we invoke a function, it gets added to something called the call stack. The call stack is part of the JS engine, this isn’t browser specific. It’s a stack, meaning that it’s first in, last out (think of a pile of pancakes). When a function returns a value, it gets popped off the stack.
+  
 ![popped off the stack](https://github.com/piyalidas10/Javascript-Interview-Questions-Mylists/blob/main/images/call_stack.gif)
 
 
 The respond function returns a setTimeout function. The setTimeout is provided to us by the Web API: it lets us delay tasks without blocking the main thread. The callback function that we passed to the setTimeout function, the arrow function () => { return 'Hey' } gets added to the Web API. In the meantime, the setTimeout function and the respond function get popped off the stack, they both returned their values!
+
 ![setTimeout](https://github.com/piyalidas10/Javascript-Interview-Questions-Mylists/blob/main/images/setTimeout.gif)
 
 
 In the Web API, a timer runs for as long as the second argument we passed to it, 1000ms. The callback doesn’t immediately get added to the call stack, instead it’s passed to something called the queue.
+
 ![callback_queue](https://github.com/piyalidas10/Javascript-Interview-Questions-Mylists/blob/main/images/callback_queue.gif)
 
 
 This can be a confusing part: it doesn't mean that the callback function gets added to the callstack(thus returns a value) after 1000ms! It simply gets added to the queue after 1000ms. But it’s a queue, the function has got to wait for its turn!
 
-Now this is the part we’ve all been waiting for… Time for the event loop to do its only task: connecting the queue with the call stack! If the call stack is empty, so if all previously invoked functions have returned their values and have been popped off the stack, the first item in the queue gets added to the call stack. In this case, no other functions were invoked, meaning that the call stack was empty by the time the callback function was the first item in the queue.
+Now this is the part we’ve all been waiting for… Time for the event loop to do its only task: connecting the queue with the call stack! If the call stack is empty, so if all previously invoked functions have returned their values and have been popped off the stack, the first item in the queue gets added to the call stack. In this case, no other functions were invoked, meaning that the call stack was empty by the time the callback function was the first item in the queue
+
 ![event_loop](https://github.com/piyalidas10/Javascript-Interview-Questions-Mylists/blob/main/images/event_loop.gif)
 
 
 The callback is added to the call stack, gets invoked, and returns a value, and gets popped off the stack.
+
 ![callstack_executed](https://github.com/piyalidas10/Javascript-Interview-Questions-Mylists/blob/main/images/callstack_executed.gif)
 
 
@@ -110,6 +115,7 @@ baz();
 ```
 
 Got it? Let's quickly take a look at what's happening when we're running this code in a browser:
+
 ![output](https://github.com/Javascript-Interview-Questions-Mylists/blob/main/images/output.gif)
 
 - 1. We invoke bar. bar returns a setTimeout function.
