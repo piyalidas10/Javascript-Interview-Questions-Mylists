@@ -15,7 +15,7 @@ Javascript Interview Questions
 - Pure functions cannot execute AJAX calls or standard DOM manipulation.
 - Impure functions aren’t inherently wrong. They merely can cause some confusion in more extensive systems in the form of spaghetti code.
 
-Pure Functions
+`Pure Functions`
 To get a better understanding, let’s consider the following example.
 ```
 function add(a,b) { 
@@ -25,7 +25,7 @@ console.log(add(4,5))
 ```
 This example contains a simple add() function, which gives 9 as the output. It is a very predictable output, and it does not depend on any external code. This makes the add() function a pure function.
 
-Impure Functions
+`Impure Functions`
 For example, consider the following code snippet:
 ```
 var addNew = 0;
