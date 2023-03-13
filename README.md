@@ -247,7 +247,12 @@ The rest parameter syntax allows a function to accept an indefinite number of ar
 - 2. Target phase – the event reached the target element.
 - 3. Bubbling phase – the event bubbles up from the element.
   
-Event capturing means propagation of event is done from ancestor elements to child element in the DOM while event bubbling means propagation is done from child element to ancestor elements in the DOM. 
+Event capturing means propagation of event is done from ancestor elements to child element in the DOM while event bubbling means propagation is done from child element to ancestor elements in the DOM. <br>
+  
+  ![bubbling-and-capturing](https://github.com/piyalidas10/Javascript-Interview-Questions-Mylists/blob/main/images/LsIr2.png)
+  <br>
+DOM Events describes 3 phases of event propagation: Capturing phase – the event goes down to the element. Target phase – the event reached the target element. Bubbling phase – the event bubbles up from the element.
+  
 Both can be prevented by using the stopPropagation() method.
 
 </p>
