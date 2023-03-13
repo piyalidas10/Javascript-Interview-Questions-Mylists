@@ -192,3 +192,45 @@ console.log(arr); ---------- (3) [4, 3, 9]
 </details>
 
 ---
+
+### 3. Spread vs Rest
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+
+The spread operator helps us expand an iterable such as an array where multiple arguments are needed, it also helps to expand the object expressions.
+    var array1 = [10, 20, 30, 40, 50];
+    var array2 = [60, 70, 80, 90, 100];
+    var array3 = [...array1, ...array2];
+    console.log(array3);       [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+  
+    const obj = {
+        firstname: "Divit",
+        lastname: "Patidar",
+    };
+    const obj2 = { ...obj };
+    console.log(obj2);
+    {
+        firstname: "Divit",
+        lastname: "Patidar"
+    }
+  
+The rest parameter syntax allows a function to accept an indefinite number of arguments as an array.
+  
+  ```
+  function myBio(firstName, lastName, ...otherInfo) {
+    return otherInfo;
+  }
+
+  console.log(
+    myBio('Oluwatobi', 'Sofela', 'CodeSweetly', 'Web Developer', 'Male')
+  );
+  ["CodeSweetly", "Web Developer", "Male"]
+  ```
+
+</p>
+</details>
+
+---
