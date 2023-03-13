@@ -242,6 +242,11 @@ The rest parameter syntax allows a function to accept an indefinite number of ar
   
 #### 
   ![bubbling-and-capturing](https://javascript.info/article/bubbling-and-capturing/eventflow.svg)
+  <br>
+- 1. Capturing phase – the event goes down to the element.
+- 2. Target phase – the event reached the target element.
+- 3. Bubbling phase – the event bubbles up from the element.
+  
 Event capturing means propagation of event is done from ancestor elements to child element in the DOM while event bubbling means propagation is done from child element to ancestor elements in the DOM. 
 Both can be prevented by using the stopPropagation() method.
 
