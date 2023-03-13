@@ -156,3 +156,39 @@ Got it? Let's quickly take a look at what's happening when we're running this co
 </details>
 
 ---
+
+### 3. Slice vs Splice
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+
+- 1. Slice is used to get a new array from the original array whereas the splice is used to add/remove items in the original array. The changes are not reflected in the original array in the case of slice and in the splice, the changes are reflected in the original array.
+```
+--------- Slice-----------
+let arr = [4, 3, 5, 9];
+let res = arr.slice(0, 2);
+console.log(res); --------- (2) [4, 3]
+
+-----------Splice----------
+let arr = [4, 3, 5, 9];
+arr.splice(0, 2);
+console.log(arr); --------- (2) [5, 9]
+```
+- 2. The splice() method is used to add or remove elements of an existing array 
+```
+--------- Add element-----------
+let arr = [4, 3, 5, 9];
+arr.splice(2, 0, 10);
+console.log(arr); ---------- (5) [4, 3, 10, 5, 9]
+
+--------- Remove element-----------
+let arr = [4, 3, 5, 9];
+arr.splice(2, 1);
+console.log(arr); ---------- (3) [4, 3, 9]
+```
+</p>
+</details>
+
+---
