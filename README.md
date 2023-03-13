@@ -157,7 +157,7 @@ Got it? Let's quickly take a look at what's happening when we're running this co
 
 ---
 
-### 3. Slice vs Splice
+### 4. Slice vs Splice
 
 <details><summary><b>Answer</b></summary>
 <p>
@@ -193,7 +193,7 @@ console.log(arr); ---------- (3) [4, 3, 9]
 
 ---
 
-### 3. Spread vs Rest
+### 5. Spread vs Rest
 
 <details><summary><b>Answer</b></summary>
 <p>
@@ -229,6 +229,35 @@ The rest parameter syntax allows a function to accept an indefinite number of ar
   );
   ["CodeSweetly", "Web Developer", "Male"]
   ```
+
+</p>
+</details>
+
+---
+
+### 5. Event Propagation ( Event Bubbling and capturing )
+
+<details><summary><b>Answer</b></summary>
+<p>
+https://javascript.info/article/bubbling-and-capturing/eventflow.svg
+#### 
+Event capturing means propagation of event is done from ancestor elements to child element in the DOM while event bubbling means propagation is done from child element to ancestor elements in the DOM. 
+Both can be prevented by using the stopPropagation() method.
+
+</p>
+</details>
+
+---
+
+
+### 6. Event Listener 
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+An event listener is basically a function that waits for an event to occur. 
+
 
 </p>
 </details>
