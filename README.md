@@ -502,3 +502,65 @@ Now, coming back to the previous question of how to use async calls within JS. W
 
 ---
 
+### 16. How can i make array immutable in javascript
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+In JavaScript, things that are immutable don’t change in value when you use them, and things that are mutable do.
+Object. freeze() to arrays to make them immutable. 
+
+```
+For example, lets create a variable, age1, and assign its value to another variable, age2. If we update age2, the original variable, age1, is unaffected.
+// Create a variable
+let age1 = 42;
+// Assign it to a new variable
+let age2 = age1;
+// Update the new variable
+age2 = 84;
+// logs 42
+console.log(age1);
+```
+
+You can create an immutable copy of an array using Array.slice() with no arguments, or with the Array.from() method. It’s considered a best practice to do so before manipulating an array.
+```
+// Create an immutable copy
+let evenMoreSandwiches = Array.from(sandwiches);
+// Add a few sandwiches
+sandwiches.push('italian', 'blt');
+// logs ["turkey", "ham", "pb&j", "italian", "blt"]
+console.log(sandwiches);
+// logs ["turkey", "ham", "pb&j"]
+console.log(evenMoreSandwiches);
+```
+You can use the spread operator to create immutable copies of arrays and objects instead of use Array.from().
+</p>
+</details>
+
+---
+
+### 17. How can i make object immutable in javascript
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+You can create an immutable copy of an object using Object.assign(). Pass in an empty object ({}) as the first argument and the object you want to copy as the second.
+
+It’s considered a best practice to do so before manipulating an object.
+```
+// Create an immutable copy
+let evenMoreLunch = Object.assign({}, lunch);
+// Add a snack
+lunch.snack = 'cookies';
+// Logs {sandwich: 'turkey', drink: soda, snack: 'cookies'}
+console.log(lunch);
+// Logs {sandwich: 'turkey', drink: soda}
+console.log(evenMoreLunch);
+```
+You can use the spread operator to create immutable copies of arrays and objects instead of use Object.assign().
+</p>
+</details>
+---
+
