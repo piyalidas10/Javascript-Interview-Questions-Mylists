@@ -261,16 +261,213 @@ Both can be prevented by using the stopPropagation() method.
 ---
 
 
-### 6. Event Listener 
+### 6. Top 10 Features of ES6 
 
 <details><summary><b>Answer</b></summary>
 <p>
 
 #### 
-An event listener is basically a function that waits for an event to occur. 
+
+https://www.boardinfinity.com/blog/top-10-features-of-es6/
+<br>
+
+- 1. let and const Keywords
+- 2. Arrow Functions
+- 3. Multi-line Strings
+- 4. Default Parameters
+- 5. Template Literals
+- 6. Destructuring Assignment
+- 7. Enhanced Object Literals
+- 8. Promises
+- 9. Classes
+- 10. Modules
 
 
 </p>
 </details>
 
 ---
+
+### 7. What is Recursion?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Recursion is a technique for iterating over an operation by having a function call itself repeatedly until it arrives at a result.
+```
+function factorial(num) { 
+   if(num <= 0) { 
+      return 1; 
+   } else { 
+      return (num * factorial(num-1)  ) 
+   } 
+} 
+console.log(factorial(6)) 
+```
+
+</p>
+</details>
+
+---
+
+### 8. What is Temporal Dead Zone?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Temporal Dead Zone is the period of time during which the let and const declarations cannot be accessed.
+Temporal Dead Zone starts when the code execution enters the block which contains the let or const declaration and continues until the declaration has executed.
+Variables declared using let and the constants declared using const are hoisted but are in a TDZ. 
+
+```
+console.log(a);
+var a = 10;
+It will print ----------- undefined
+
+console.log(a);
+let a = 10;
+It will print ----------- VM228:1 Uncaught ReferenceError: a is not defined
+```
+
+</p>
+</details>
+
+---
+
+### 9. map() vs forEach()
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+The map() method is used to transform the elements of an array, whereas the forEach() method is used to loop through the elements of an array. The map() method can be used with other array methods, such as the filter() method, whereas the forEach() method cannot be used with other array methods.
+
+</p>
+</details>
+
+---
+
+### 10. What is prototype in javascript
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Prototypes are the mechanism by which JavaScript objects inherit features from one another. The prototype is an object that is associated with every functions and objects by default in JavaScript. 
+When a programmer needs to add new properties like variables and methods at a later point of time, and these properties need sharing across all the instances, then the prototype will be very handy.
+
+</p>
+</details>
+
+---
+
+### 11. When to use Prototype in JavaScript?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+As we all know, Javascript is a dynamic language where we can add new variables and methods to the object at any point in time, as shown below.
+```
+function Employee() {
+    this.name = 'Arun';
+    this.role = 'QA';
+}
+
+var empObj1 = new Employee();
+empObj1.salary = 30000;
+console.log(empObj1.salary); // 15
+
+var empObj2 = new Employee();
+console.log(empObj2.salary); // undefined
+```
+As we see in the above example, the salary variable adds to the empObj1. But when we try to access the salary variable using the empObj2 object, it doesn't have the salary variable because the salary variable is defined only in the empObj1 object.
+
+Now comes the question, Can there be a way that the new variable can be added to the function itself so as it is accessible to all the objects created using the function?
+
+The answer to this question is the use of a prototype. A prototype is an invisible inbuilt object which exists with all the functions by default. The variables and methods available in the prototype object can be accessible, modifiable, and even can create new variables and functions.
+
+</p>
+</details>
+
+---
+
+### 12. prototype inheritance in javascript
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Prototype inheritance in javascript is the linking of prototypes of a parent object to a child object to share and utilize the properties of a parent class using a child class.
+The syntax used for prototype inheritance has the __proto__ property which is used to access the prototype of the child. The syntax to perform a prototype inheritance is as follows :
+
+child.__proto__ = parent;
+
+```
+let company = {
+  name: "A",
+  pay: function () {
+    console.log("Paying");
+  },
+}; //company object
+let worker = {
+  id: 1,
+  work: function () {
+    console.log("Working");
+  },
+}; //worker object
+worker.__proto__ = company; //worker object inherits company object
+console.log(worker);
+worker.pay(); // calling method from company object using worker object.
+```
+
+</p>
+</details>
+
+---
+
+### 13. Remove duplicate values from Array
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+```
+arr = [1, 2,3,4,5,6,2,3,4];
+let arr1 = [...new Set(arr)];  ///////  [1, 2, 3, 4, 5, 6]
+```
+
+</p>
+</details>
+
+---
+
+### 14. Removing duplicate objects (based on multiple keys) from array
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+```
+const listOfTags = [
+    {id: 1, label: "Hello", color: "red", sorting: 0},
+    {id: 2, label: "World", color: "green", sorting: 1},
+    {id: 3, label: "Hello", color: "blue", sorting: 4},
+    {id: 4, label: "Sunshine", color: "yellow", sorting: 5},
+    {id: 5, label: "Hello", color: "red", sorting: 6},
+]
+
+const unique = [];
+
+listOfTags.map(x => unique.filter(a => a.label == x.label && a.color == x.color).length > 0 ? null : unique.push(x));
+
+console.log(unique);
+```
+
+</p>
+</details>
+
+---
+
