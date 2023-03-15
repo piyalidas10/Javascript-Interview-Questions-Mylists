@@ -562,5 +562,93 @@ console.log(evenMoreLunch);
 You can use the spread operator to create immutable copies of arrays and objects instead of use Object.assign().
 </p>
 </details>
+
+---
+
+### 18. How can reduce Memory Leaks in Javascript ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+most of the memory leaks can be traced back to not removing all references to objects that you don't need anymore. This can happen when you forget to remove intervals or timers, or you make excessive use of global variables.
+Storing data in global variables is probably the most common type of memory leak. In the browser, for instance, if you use var instead of const or let—or leave out the keyword altogether—the engine will attach the variable to the window object.
+The same will happen to functions that are defined with the function keyword.
+```
+user = getUser();
+var secondUser = getUser();
+function getUser() {
+  return 'user';
+}
+```
+All three variables, user, secondUser, and getUser, will be attached to the window object.
+This only applies to variables and functions that are defined in the global scope. If you want to learn more about this, check out this article explaining the JavaScript scope.
+Avoid this by running your code in strict mode.
+Apart from adding variables accidentally to the root, there are many cases in which you might do this on purpose.
+You can certainly make use of global variables, but make sure you free space up once you don't need the data anymore.
+To release memory, assign the global variable to null.
+```
+window.users = null;
+```
+So something to keep in mind is that memory is limited. When it comes to a call stack and memory Heap, those are two places is where javascript runs and stores memory. So we have to be careful not to have memory leaks or stack overflow if we are to have efficient code.
+
+On the frontend, you can profile the memory usage in the Chrome DevTools under the Memory tab.
+
+</p>
+</details>
+
+---
+### 19. Why JavaScript is single threaded?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+JavaScript can do one single thing at a time because it has only one call stack.
+The call stack is a mechanism that helps the JavaScript interpreter to keep track of the functions that a script calls.
+Every time a script or function calls a function, it's added to the top of the call stack. Every time the function exits, the interpreter removes it from the call stack.
+A function either exits through a return statement or by reaching the end of the scope.
+
+Every time a function calls another function, it's added to the top of the stack, on top of the calling function.
+The order in which the stack processes each function call follows the LIFO principle (Last In, First Out).
+![output](https://github.com/Javascript-Interview-Questions-Mylists/blob/main/images/javascript_call_stack.gif)
+
+</p>
+</details>
+
+---
+
+### 20. Primitive vs Non-Primitive
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Primitive data types
+----------------------------------------------------------------------
+Examples of Primitive data types are Boolean, char, byte, int, short, long, float, and double.
+
+basic data types for whom memory is allocated in stack.
+A stack is a data structure that JavaScript uses to store static data. Static data is data where the engine knows the size at compile time. In JavaScript, this includes primitive values (strings, numbers, booleans, undefined, and null) and references, which point to objects and functions.
+Since the engine knows that the size won't change, it will allocate a fixed amount of memory for each value.
+The process of allocating memory right before execution is known as static memory allocation.
+Because the engine allocates a fixed amount of memory for these values, there is a limit to how large primitive values can be.
+The limits of these values and the entire stack vary depending on the browser.
+
+Reference (non primitive) data types
+----------------------------------------------------------------------
+1.	Function – typeof function is function
+2.	Array – typeof array is object
+3.	Object – typeof object is object
+4.	Date – typeof date is object
+
+Memory allocated for reference data types is in heap ( dynamic memory allocation).
+The heap is a different space for storing data where JavaScript stores objects and functions.
+Unlike the stack, the engine doesn't allocate a fixed amount of memory for these objects. Instead, more space will be allocated as needed.
+Allocating memory this way is also called dynamic memory allocation.
+
+</p>
+</details>
+
 ---
 
