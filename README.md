@@ -613,7 +613,7 @@ Every time a function calls another function, it's added to the top of the stack
 The order in which the stack processes each function call follows the LIFO principle (Last In, First Out).
  
 ```
-![javascript_call_stack](https://github.com/Javascript-Interview-Questions-Mylists/blob/main/images/javascript_call_stack.gif)
+![CallStack](https://github.com/piyalidas10/Javascript-Interview-Questions-Mylists/blob/main/images/javascript_call_stack.gif)
 ```
 
 </p>
