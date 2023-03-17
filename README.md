@@ -654,3 +654,23 @@ Allocating memory this way is also called dynamic memory allocation.
 
 ---
 
+### 21. What is garbage collector ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+
+In javascript, memory should be cleared up automatically using a thing called Garbage collector. Javascript i a language who ha garbage collector meaning you don't have to manage your memory manually. It gets cleared automatically & assigned automatically.
+
+Garbage collector consists of three steps : 1. Find the root node in your code and recursively go through every child. The root node of browser code is Window object. In Nodejs , window object is global variable. 2. Mark every child including the root as active or inactive. Active means this part of code is referenced in the memory. Inactive mens it's not referenced from anywhere. 3. Delete all these inactive ones which mean if the variable i not needed anymore in the memory simple delete it. 
+
+window.x = 10   it's a global variable. you probably heard many times is a realy bad practive to have global variables. 
+window.calc  = function() => {}  calc is a fuction and imagine it does something heavy inside. That's obviously gonna stay on the root becuase root is accessing it and garbage collectors think that is always active becuase it sits on the root. 
+First thing you can do use strict to prevent you from these memory leaks becuae it i going to throw errors as soon as you have global variables. Or simple not use any global variables. 
+
+ 
+</p>
+</details>
+
+---
