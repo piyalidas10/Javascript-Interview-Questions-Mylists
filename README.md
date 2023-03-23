@@ -742,7 +742,7 @@ var is function scoped and let is block scoped. Variables declared by let are on
     Output will be ReferenceError: Cannot access 'x' before initialization
     
     let variables are not initialized until their definition is evaluated. Accessing them before the initialization results in a ReferenceError. The variable is said to be in "temporal dead zone" from the start of the block until the initialization is processed.
-    ![var_let](https://github.com/piyalidas10/Javascript-Interview-Questions-Mylists/blob/main/images/temporal_dead_zone.png)
+![var_let](https://github.com/piyalidas10/Javascript-Interview-Questions-Mylists/blob/main/images/temporal_dead_zone.png)
     
 When working outside of function bodies, at a global level, let does not create a property on the global object, whereas var does. Therefore:
     // Global variables
