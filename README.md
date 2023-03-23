@@ -886,6 +886,11 @@ a JavaScript function which calls itself, runs as soon as it is defined.
     product.size  =====> 3
     product.get(1) =====> '002'
   
+    let product = new Set(['one', 'two', 'three', 'two']);
+    product =====> Set(3) {'one', 'two', 'three'}
+    let arr = [1, 2, 3, 4, 2, 5];
+    arr = [...new Set(arr)];  =====> (5) [1, 2, 3, 4, 5]
+  
 </p>
 </details>
 
