@@ -869,3 +869,24 @@ a JavaScript function which calls itself, runs as soon as it is defined.
 </details>
 
 ---
+
+### 24. What are the use of Map & Set ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+    let product = new Map();
+    product.set('pCode', '001');
+    =====> Map(1) {'pCode' => '001'}
+    product.set(1, '002');
+    =====> Map(2) {'pCode' => '001', 1 => '002'}
+    product.set(true, '003');
+    =====> Map(3) {'pCode' => '001', 1 => '002', true => '003'}
+    product.size  =====> 3
+    product.get(1) =====> '002'
+  
+</p>
+</details>
+
+---
