@@ -42,23 +42,23 @@ In the above example, there is a variable named addNew, and it is declared outsi
 
 ---
 
-### 2. Javascript is Synchronous or Asynchronous
+### 2. What is Javascript closure ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
 #### 
-  - Javascript is the synchronous single-threaded language but with the help of event-loop and promises, JavaScript is used to do asynchronous programming.
-  - The most common triggers for asynchronous Javascript operations are:
-      1. Event Loop
-      2. Callback
-      3. Promises
-      4. Async/Await
-  
-  https://www.freecodecamp.org/news/synchronous-vs-asynchronous-in-javascript/
-  https://betterprogramming.pub/is-javascript-synchronous-or-asynchronous-what-the-hell-is-a-promise-7aa9dd8f3bfb
-  
-  
+  Closure provides access to the outer scope of a function from inside the inner function, even after the outer function has closed. The main advantage of javascript closure is Data Privacy.
+  const countFunc = function counter() {
+     let c = 0;
+     return function() {
+         c = c+1;
+         return c;
+     }
+  }();
+
+  The variable countFunc is assigned to the return value of a self-invoking function.
+ 
  </p>
 </details>
 
@@ -669,6 +669,102 @@ window.x = 10   it's a global variable. you probably heard many times is a realy
 window.calc  = function() => {}  calc is a fuction and imagine it does something heavy inside. That's obviously gonna stay on the root becuase root is accessing it and garbage collectors think that is always active becuase it sits on the root. 
 First thing you can do use strict to prevent you from these memory leaks becuae it i going to throw errors as soon as you have global variables. Or simple not use any global variables. 
 
+ 
+</p>
+</details>
+
+---
+
+### 22. Difference Between Null & Undefined ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+
+Undefined means the variable has been declared, but its value has not been assigned. Null means an empty value or a blank value.
+ 
+</p>
+</details>
+
+---
+
+### 23. What will be the output of undefined==null & undefined===null ? Why ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+
+undefined==null will be true because both undefined and null represent nothingness.
+undefined===null will be false because they contain different data type because undefined and null are different in terms of data type.
+ 
+</p>
+</details>
+
+---
+
+### 23. What is Hosting ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Hoisting means it will bring all the declaration on top, not the assignment. So if you have var x is equal to 9, nine remains that only. Hoisting only happen with var and function keywords. 
+
+  console.log(x);
+  var x = 9;
+  it will print undefined becuase at runtime it will be executed like the following way =:>
+  var x;
+  console.log(x);
+  x = 9;
+ 
+</p>
+</details>
+
+---
+
+### 23. var vs let ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+![var_let](https://github.com/piyalidas10/Javascript-Interview-Questions-Mylists/blob/main/images/var_let.png)
+var is function scoped and let is block scoped. Variables declared by let are only available inside the block where they’re defined. Variables declared by var are available throughout the function in which they’re declared.
+
+    console.log(x);
+    var x=5;
+    Output will be undefined
+    
+    console.log(x);
+    let x=5;
+    Output will be ReferenceError: Cannot access 'x' before initialization
+    
+    let variables are not initialized until their definition is evaluated. Accessing them before the initialization results in a ReferenceError. The variable is said to be in "temporal dead zone" from the start of the block until the initialization is processed.
+    ![var_let](https://github.com/piyalidas10/Javascript-Interview-Questions-Mylists/blob/main/images/temporal_dead_zone.png)
+    
+When working outside of function bodies, at a global level, let does not create a property on the global object, whereas var does. Therefore:
+    // Global variables
+    var x = 1;
+    let y = 2;
+    console.log(this.x); // will print 1
+    console.log(this.y); // will print undefined
+ 
+</p>
+</details>
+
+---
+
+### 24. What i Arrow function ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+  - This object does not work with arrow function.
+  - arguments object does not work with arrow function.
+  - you cannot use new to call arrow function.
  
 </p>
 </details>
