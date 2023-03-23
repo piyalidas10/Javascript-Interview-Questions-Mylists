@@ -49,6 +49,16 @@ In the above example, there is a variable named addNew, and it is declared outsi
 
 #### 
   Closure provides access to the outer scope of a function from inside the inner function, even after the outer function has closed. The main advantage of javascript closure is Data Privacy.
+  
+  const countFunc = function counter() {
+     let c = 0;
+     c = c+1;
+    return c;
+  }();
+  If you run countFunc, eveytime it will print "1". This you can resolve by closure.
+  
+  Solution using normal function
+  ------------------------------------------
   const countFunc = function counter() {
      let c = 0;
      return function() {
@@ -56,6 +66,18 @@ In the above example, there is a variable named addNew, and it is declared outsi
          return c;
      }
   }();
+  run countFunc()
+  
+  Solution using arrow function
+  ------------------------------------------
+  const countFunc = function counter() {
+     let c = 0;
+     return ()=> {
+         c = c+1;
+         return c;
+     }
+  }();
+  run countFunc()
 
   The variable countFunc is assigned to the return value of a self-invoking function.
  
@@ -756,15 +778,79 @@ When working outside of function bodies, at a global level, let does not create 
 
 ---
 
-### 24. What i Arrow function ?
+### 24. What is Arrow function ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
 #### 
+  Arrow functions do not have their own arguments and it uses the arguments from the outer function.
+  
   - This object does not work with arrow function.
   - arguments object does not work with arrow function.
   - you cannot use new to call arrow function.
+ 
+  const obj = {
+    test() {
+        console.log(this);
+    }
+  };
+  obj.test() ==== {test: ƒ}
+
+  const obj = {
+      test:()=>{
+          console.log(this);
+      }
+  };
+  obj.test() ======== Window{0: Window, window: Window, self: Window, document: document, name: '', location: Location,…}
+
+  function show() {
+      console.log(arguments);
+  }
+  show(1,2,3); ======== Arguments(3)[1, 2, 3, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+
+  const show = ()=> {
+      console.log(arguments);
+  }
+  show(1,2,3); ======== Uncaught ReferenceError: arguments is not defined
+  
+  solution for that --------
+  const show = (...arg)=> {
+      console.log(arg);
+  }
+  show(1,2,3); ========(3)[1, 2, 3]
+  
+</p>
+</details>
+
+---
+
+### 24. What is IIFE(Immediately Invoked Function Expression) ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+a JavaScript function which calls itself, runs as soon as it is defined.
+    (function(){
+      console.log("IIFE");
+    })();
+ 
+</p>
+</details>
+
+---
+
+### 24. What is Javascript Closure ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+a JavaScript function which calls itself, runs as soon as it is defined.
+    (function(){
+      console.log("IIFE");
+    })();
  
 </p>
 </details>
