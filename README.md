@@ -841,16 +841,29 @@ a JavaScript function which calls itself, runs as soon as it is defined.
 
 ---
 
-### 24. What is Javascript Closure ?
+### 24. What is Call, Bind, Apply ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
 #### 
 a JavaScript function which calls itself, runs as soon as it is defined.
-    (function(){
-      console.log("IIFE");
-    })();
+    
+  function show(obj) {
+      console.log(this);
+  }
+  let obj = {
+    a: 5
+  }
+  show(obj) will print Window {0: Window, window: Window, self: Window, document: document, name: '', location: Location, …}
+  
+  Now I want that show function should bind to this object and not the window object, which is the global object. So purpose of this function is at the moment I want to assign the object reference tool that this object. Now call is handy for this scenerio.
+  The call method takes first argument as the object to be passed to this. Then whatever parameters you want to pass, it's absolutely fine.
+  
+  show.call(obj) will print {a: 5}
+  So in short call is used to change the reference or context are in charge value of this object.
+  
+  
  
 </p>
 </details>
