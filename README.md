@@ -80,6 +80,40 @@ In the above example, there is a variable named addNew, and it is declared outsi
   run countFunc()
 
   The variable countFunc is assigned to the return value of a self-invoking function.
+  
+When to Use Closure in JavaScript?
+     Closures are used every time and hence it becomes difficult to pinpoint the use cases of closures. If you have read the article till here many of the problems solved by closures should be known to you. But if I go through them again, some use cases of closures that we have already discussed are:
+
+    The for-loop dilemma
+    Emulating private variables in Javascript.
+    Creation of Higher order functions
+    But still, there are some advanced use cases of closure in JavaScript that I haven't discussed yet, let us go through them as well.
+
+    Currying: Currying is the pattern of functions that immediately evaluate and return other functions. This is made possible by the fact that Javascript functions are expressions that can return other functions. Curried functions are constructed by chaining closures by defining and immediately returning their inner functions simultaneously. It is a very powerful technique and is frequently asked. Example:
+    function sum(a) {
+      return function (b) {
+        return function (c) {
+          return a+b+c
+        }
+      }
+    }
+
+    let ans = sum(4)(5)(8)
+    console.log(ans) // 17
+    Here the variable a and b are accessible to the innermost function because of closures.
+
+    Function Composition: Function composition is the ability to create functions from other functions. It is a very powerful feature and can reduce the redundancy in our code to great extent.
+    Example:
+    function add (a,b) {
+      return a+b
+    }
+    // wrapping addBy2 over add 
+    function addBy2 (num) {
+      return add(2,num)
+    }
+    console.log(addBy2(4))
+    //Output will be 6
+
  
  </p>
 </details>
@@ -772,6 +806,19 @@ When working outside of function bodies, at a global level, let does not create 
     let y = 2;
     console.log(this.x); // will print 1
     console.log(this.y); // will print undefined
+    
+    {
+      let name1 = "Aryan" // name1 in block scope
+      console.log(name1) // Aryan
+    }
+
+    {
+      var newName = "Kaush" // newName not in block scope as var is used
+      console.log(newName) // Kaush
+    }
+
+    console.log(name1) // ReferenceError
+    console.log(newName) // Kaush    
  
 </p>
 </details>
@@ -891,6 +938,119 @@ a JavaScript function which calls itself, runs as soon as it is defined.
     let arr = [1, 2, 3, 4, 2, 5];
     arr = [...new Set(arr)];  =====> (5) [1, 2, 3, 4, 5]
   
+</p>
+</details>
+
+---
+
+### 24. Delete/Remove a property from an Object ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Using delete operator
+    let emp = {
+    name: "Kareem",
+    age: 26,
+        designation: "Software Engineer",
+    }
+    delete emp.age
+    console.log(emp)  =====>  {name: 'Kareem', designation: 'Software Engineer'}
+
+Using rest operator
+    let emp = {
+        name: "Kareem",
+        age: 26,
+        designation: "Software Engineer",
+    }
+    const {age, ...newEmp} = emp;
+    console.log(newEmp);  =====>  {name: 'Kareem', designation: 'Software Engineer'}
+  
+</p>
+</details>
+
+---
+
+### 24. Difference Between == (loose equality) and === (strict equality operator) in Javascript ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+The == operator checks if two values are equal.
+
+    let a = '10', b = 10;    
+    a == b          =====>      true
+    a === b         =====>      false
+  
+</p>
+</details>
+
+---
+
+### 24. Anonymous Functions in JavaScript ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Anonymous functions in JavaScript, are the functions that do not have any name or identity.
+    let variableName = function () {
+        //your code here
+    }
+    variableName();     //Can call the anonymous function through this
+
+Use of Anonymous functions : 
+    button.addEventListener('click', 
+        function(event) {
+        alert('Button is clicked!')
+    });
+    
+    setTimeout(function () {
+        console.log('I will run after 5 seconds!')
+    }, 5000);
+    
+    Using Anonymous Functions as Arguments of Other Functions
+    function greet(wish){
+      console.log(wish() ,"everyone!");
+    }
+    greet(function(){
+      return "Good Morning";
+    })
+    
+    Immediately Invoked Function Execution
+    (function(text) {
+      alert(text);
+    })('Hi all! Welcome to our page.');
+    
+    for (var i = 1; i <= 5; i++) {
+        (function (count) {
+            setTimeout(function() {
+                console.log(`Counted till ${count} after ${count} seconds`);
+            }, 1000 * i);
+        })(i);
+    }
+    Output:
+    "Counted till 1 after 1 second"
+    "Counted till 2 after 2 seconds"
+    "Counted till 3 after 3 seconds"
+    "Counted till 4 after 4 seconds"
+    "Counted till 5 after 5 seconds"
+  
+</p>
+</details>
+
+---
+
+### 24. Difference between Document Object & Window Object ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+the entire browser window is actually window object and the inner part where the content is displayed, all the content can be accessed using the document object. This also means that window is the main container or patterned or global object and document is child of window object operations related to entire browser.
+![window](https://github.com/piyalidas10/Javascript-Interview-Questions-Mylists/blob/main/images/window.png)
 </p>
 </details>
 
