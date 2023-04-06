@@ -760,7 +760,7 @@ undefined===null will be false because they contain different data type because 
 
 ---
 
-### 23. What is Hosting ?
+### 24. What is Hosting ?
 
 <details><summary><b>Answer</b></summary>
 <p>
@@ -780,7 +780,7 @@ Hoisting means it will bring all the declaration on top, not the assignment. So 
 
 ---
 
-### 23. var vs let ?
+### 25. var vs let ?
 
 <details><summary><b>Answer</b></summary>
 <p>
@@ -825,7 +825,7 @@ When working outside of function bodies, at a global level, let does not create 
 
 ---
 
-### 24. What is Arrow function ?
+### 26. What is Arrow function ?
 
 <details><summary><b>Answer</b></summary>
 <p>
@@ -872,7 +872,7 @@ When working outside of function bodies, at a global level, let does not create 
 
 ---
 
-### 24. What is IIFE(Immediately Invoked Function Expression) ?
+### 27. What is IIFE(Immediately Invoked Function Expression) ?
 
 <details><summary><b>Answer</b></summary>
 <p>
@@ -888,7 +888,7 @@ a JavaScript function which calls itself, runs as soon as it is defined.
 
 ---
 
-### 24. What is Call, Bind, Apply ?
+### 28. What is Call, Bind, Apply ?
 
 <details><summary><b>Answer</b></summary>
 <p>
@@ -917,7 +917,7 @@ a JavaScript function which calls itself, runs as soon as it is defined.
 
 ---
 
-### 24. What are the use of Map & Set ?
+### 29. What are the use of Map & Set ?
 
 <details><summary><b>Answer</b></summary>
 <p>
@@ -943,7 +943,7 @@ a JavaScript function which calls itself, runs as soon as it is defined.
 
 ---
 
-### 24. Delete/Remove a property from an Object ?
+### 30. Delete/Remove a property from an Object ?
 
 <details><summary><b>Answer</b></summary>
 <p>
@@ -972,7 +972,7 @@ Using rest operator
 
 ---
 
-### 24. Difference Between == (loose equality) and === (strict equality operator) in Javascript ?
+### 31. Difference Between == (loose equality) and === (strict equality operator) in Javascript ?
 
 <details><summary><b>Answer</b></summary>
 <p>
@@ -989,7 +989,7 @@ The == operator checks if two values are equal.
 
 ---
 
-### 24. Anonymous Functions in JavaScript ?
+### 32. Anonymous Functions in JavaScript ?
 
 <details><summary><b>Answer</b></summary>
 <p>
@@ -1043,7 +1043,7 @@ Use of Anonymous functions :
 
 ---
 
-### 24. Difference between Document Object & Window Object ?
+### 33. Difference between Document Object & Window Object ?
 
 <details><summary><b>Answer</b></summary>
 <p>
@@ -1051,6 +1051,51 @@ Use of Anonymous functions :
 #### 
 the entire browser window is actually window object and the inner part where the content is displayed, all the content can be accessed using the document object. This also means that window is the main container or patterned or global object and document is child of window object operations related to entire browser.
 ![window](https://github.com/piyalidas10/Javascript-Interview-Questions-Mylists/blob/main/images/window.png)
+</p>
+</details>
+
+---
+
+### 34. Rest Operator: Delete property from an Object using Rest operator ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+      let user = {
+          name: 'Calvin',
+          age: 200,
+          country: 'Spain',
+          food: 'Pizza'
+      }
+      const {age, ...restOfUser} = user;
+      console.log(restOfUser)  // { name: 'Calvin', country: 'Spain', food: 'Pizza' }
+      console.log(age)       // 200
+</p>
+</details>
+
+---
+
+### 35. What is Object destructuring?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Object destructuring allows us to create variables from object property names, and the variable will contain the value of the property name - for example:
+
+    const data = { a: 1, b: 2, c: 3 };
+    const { a, b, c } = data;
+    console.log(a, b, c); // 1, 2, 3
+    By using const { a, b, c } = data we are declaring 3 new variables (a, b and c).
+    If a, b and c exist as property names on data, then variables will be created containing the values of the object properties. If the property names do not exist, you’ll get undefined.
+    
+    Let’s take our earlier example and use the ...rest syntax to see what happens:
+    const data = { a: 1, b: 2, c: 3 };
+    const { a, ...rest } = data;
+    console.log(a); // 1
+    console.log(rest); // { b: 2, c: 3 }
+    
 </p>
 </details>
 
