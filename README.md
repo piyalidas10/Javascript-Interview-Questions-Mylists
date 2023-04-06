@@ -1,4 +1,4 @@
-# Javascript-Interview-Questions-Mylists
+# Javascript-Interview-Questions
 Javascript Interview Questions
 
 ### 1. Pure function vs Impure functions
