@@ -1100,3 +1100,65 @@ Object destructuring allows us to create variables from object property names, a
 </details>
 
 ---
+
+### 36. Spread Operator : Practical use
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+    const odd = [1,3,5];
+    const combined = [2,...odd, 4,6];
+    console.log(combined);   // [ 2, 1, 3, 5, 4, 6 ]
+    
+    1. Push an array inside another array
+      let rivers = ['Nile', 'Ganges', 'Yangte'];
+      let moreRivers = ['Danube', 'Amazon'];
+      rivers.push(...moreRivers);  // ['Nile', 'Ganges', 'Yangte', 'Danube', 'Amazon']
+  
+    2. Concatenate two or more arrays
+      let numbers = [1, 2];
+      let moreNumbers = [3, 4];
+      let allNumbers = [...numbers, ...moreNumbers];
+      console.log(allNumbers); // [1, 2, 3, 4]
+  
+    3. Copying an array
+      let scores = [80, 70, 90];
+      let copiedScores = [...scores];
+      console.log(copiedScores); // [80, 70, 90]
+    
+</p>
+</details>
+
+---
+
+### 37. Splice() method to delete existing elements, insert new elements, and replace elements in an array
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+The splice() method is used to add or remove elements of an existing array 
+```
+--------- Add element-----------
+  let colors = ['red', 'green', 'blue'];
+  colors.splice(2, 0, 'purple');
+  console.log(colors); ---------- (4) ["red", "green", "purple", "blue"]
+  colors.splice(1, 0, 'yellow', 'pink');
+  console.log(colors); ---------- (6) ["red", "yellow", "pink", "green", "purple", "blue"]
+
+--------- Remove element-----------
+  let arr = [4, 3, 5, 9];
+  arr.splice(2, 1);
+  console.log(arr); ---------- (3) [4, 3, 9]
+
+--------- Replacing elements-----------
+  let languages = ['C', 'C++', 'Java', 'JavaScript'];
+  languages.splice(1, 1, 'Python');
+  console.log(languages);  ---------- (4) ["C", "Python", "Java", "JavaScript"]
+  
+```	    
+</p>
+</details>
+
+---
