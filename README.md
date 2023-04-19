@@ -1162,3 +1162,58 @@ The splice() method is used to add or remove elements of an existing array
 </details>
 
 ---
+
+### 38. Template Literals
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Template literals are literals delimited with backtick ( ` ) characters, allowing for multi-line strings, string interpolation with embedded expressions, and special constructs called tagged templates.
+
+```
+`string text`
+
+`string text line 1
+ string text line 2`
+
+`string text ${expression} string text`
+
+tagFunction`string text ${expression} string text`
+
+tag`string text line 1 \n string text line 2`;
+```	    
+</p>
+</details>
+
+---
+
+### 39. ES6 template literals vs. concatenated strings
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Template literals provide us with an alternative to string concatenation .They also allow us to insert variables in to a string. Template literals were introduced in ECMAScript 2015/ ES6 as a new feature. It provides an easy way to create multi-line strings and perform string interpolation.
+<br><br><br>
+Why would I use this new template literal method? I would recommend switching to the new format for a few reasons.
+<br><br>
+  - One of which is that it requires fewer characters. So the extra space that you would need to use the plus before adds extra length to your code, causing it to look more bloated
+  - It no longer needs to escape single or double quotes. Yes, that’s right. You no longer need to put back slashes in order to close quotation marks.
+  - it’s much easier to read. With the dollar sign curly bracket syntax you can more clearly see what parts of your strings are using a variable.At a glance, I can quickly see that this is a variable.
+  - with my code editor, it would have improved syntax highlighting
+<br><br><br>
+
+Let’s us rewrite our example from concatenated string:
+```
+Console.log("Hello,welcome to" +website.name+"!\"message goes here\" ") ;
+```
+<br><br>
+To template literal:
+```
+Console.log(`Hello,welcome to ${website.name} !"message goes here"` ) ;
+```
+</p>
+</details>
+
+---
