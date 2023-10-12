@@ -1217,3 +1217,34 @@ Console.log(`Hello,welcome to ${website.name} !"message goes here"` ) ;
 </details>
 
 ---
+
+### 40. Write polyfill of Array.flat with customized nesting
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+
+
+---
+
+### 41. There are two sorted arrays. Merge them in place of the first array
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+
+
+---
+
+### 42. Write a js function that can be invoked like below -
+calc().add(10).subtract(5).multiply(20).divide(2).getResult() . In this case, the output should be 50.
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+
+
+---
