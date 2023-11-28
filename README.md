@@ -1224,8 +1224,27 @@ Console.log(`Hello,welcome to ${website.name} !"message goes here"` ) ;
 <p>
 
 #### 
+// flattern the array
+function flatten(ary) {
+	let result = [];
+	for(var i = 0; i < ary.length; i++) {
+		if(Array.isArray(ary[i])) {
+			result = result.concat(flatten(ary[i]));
+		} else {
+			result.push(ary[i]);
+		}
+	}
+	return result;
+}
 
 
+const arr = [
+	[1, 2, 3],
+	[4, 5, [8], 3, 9], [0]];
+	
+console.log(flatten(arr)); //  [1, 2, 3, 4, 5, 8, 3, 9, 0]
+</p>
+</details>
 ---
 
 ### 41. There are two sorted arrays. Merge them in place of the first array
@@ -1234,8 +1253,17 @@ Console.log(`Hello,welcome to ${website.name} !"message goes here"` ) ;
 <p>
 
 #### 
+const arr1 = [1, 2, 3, 4];
+const arr2 = [8, 9, 10];
 
+const result1 = arr1.concat(arr2);
+console.log(result1);
 
+const res = [...arr1, ...arr2];
+console.log(res);
+
+</p>
+</details>
 ---
 
 ### 42. Write a js function that can be invoked like below -
@@ -1246,5 +1274,6 @@ calc().add(10).subtract(5).multiply(20).divide(2).getResult() . In this case, th
 
 #### 
 
-
+</p>
+</details>
 ---
