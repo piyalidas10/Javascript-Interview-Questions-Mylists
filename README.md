@@ -49,12 +49,14 @@ In the above example, there is a variable named addNew, and it is declared outsi
 
 #### 
   Closure provides access to the outer scope of a function from inside the inner function, even after the outer function has closed. The main advantage of javascript closure is Data Privacy.
-  
+
+  ```
   const countFunc = function counter() {
      let c = 0;
      c = c+1;
     return c;
   }();
+```
   If you run countFunc, eveytime it will print "1". This you can resolve by closure.
   
   Solution using normal function
@@ -70,6 +72,7 @@ In the above example, there is a variable named addNew, and it is declared outsi
   
   Solution using arrow function
   ------------------------------------------
+  ```
   const countFunc = function counter() {
      let c = 0;
      return ()=> {
@@ -78,42 +81,54 @@ In the above example, there is a variable named addNew, and it is declared outsi
      }
   }();
   run countFunc()
+  ```
 
   The variable countFunc is assigned to the return value of a self-invoking function.
   
-When to Use Closure in JavaScript?
-     Closures are used every time and hence it becomes difficult to pinpoint the use cases of closures. If you have read the article till here many of the problems solved by closures should be known to you. But if I go through them again, some use cases of closures that we have already discussed are:
-
-    The for-loop dilemma
-    Emulating private variables in Javascript.
-    Creation of Higher order functions
-    But still, there are some advanced use cases of closure in JavaScript that I haven't discussed yet, let us go through them as well.
-
-    Currying: Currying is the pattern of functions that immediately evaluate and return other functions. This is made possible by the fact that Javascript functions are expressions that can return other functions. Curried functions are constructed by chaining closures by defining and immediately returning their inner functions simultaneously. It is a very powerful technique and is frequently asked. Example:
-    function sum(a) {
-      return function (b) {
-        return function (c) {
-          return a+b+c
-        }
+When to Use Closure in JavaScript (Practical use)?
+  Suppose, you want to count the number of times user clicked a button on a webpage. For this, you are triggering a function on onclick event of button to update the count of the variable
+ ```
+<button onclick="updateClickCount()">click me</button>
+ ```
+Now there could be normal approaches like:
+  You could use a global variable, and a function to increase the counter:
+   ```
+   var counter = 0;
+   function updateClickCount() {
+       ++counter;
+       // Do something with counter
+   }
+   ```
+  But, the pitfall is that any script on the page can change the counter, without calling updateClickCount().
+  ou might be thinking of declaring the variable inside the function:
+  ```
+   function updateClickCount() {
+       var counter = 0;
+       ++counter;
+       // Do something with counter
+   }
+  ```
+  But, hey! Every time updateClickCount() function is called, the counter is set to 1 again.
+  you need to find a way to execute counter = 0 only once not everytime. SO have to use closure.
+  ```
+  <script>
+  var updateClickCount = (function(){
+      var counter = 0;
+  
+      return function(){
+          ++counter;
+          document.getElementById("spnCount").innerHTML = counter;
       }
-    }
-
-    let ans = sum(4)(5)(8)
-    console.log(ans) // 17
-    Here the variable a and b are accessible to the innermost function because of closures.
-
-    Function Composition: Function composition is the ability to create functions from other functions. It is a very powerful feature and can reduce the redundancy in our code to great extent.
-    Example:
-    function add (a,b) {
-      return a+b
-    }
-    // wrapping addBy2 over add 
-    function addBy2 (num) {
-      return add(2,num)
-    }
-    console.log(addBy2(4))
-    //Output will be 6
-
+  })();
+  </script>
+  
+  <html>
+  <button onclick="updateClickCount()">click me</button>
+  <div> you've clicked
+      <span id="spnCount"> 0 </span> times!
+  </div>
+  </html>
+  ```
  
  </p>
 </details>
