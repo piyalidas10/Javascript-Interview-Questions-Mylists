@@ -326,6 +326,18 @@ DOM Events describes 3 phases of event propagation: Capturing phase – the even
   
 Both can be prevented by using the stopPropagation() method.
 
+```
+<form onclick="alert('form')">FORM
+  <div onclick="alert('div')">DIV
+    <p onclick="alert('p')">P</p>
+  </div>
+</form>
+```
+So if we click on <p>, then we’ll see 3 alerts: p → div → form.
+The process is called “bubbling”, because events “bubble” from the inner element up through parents like a bubble in the water.
+
+event.stopPropagation() stops the move upwards
+
 </p>
 </details>
 
