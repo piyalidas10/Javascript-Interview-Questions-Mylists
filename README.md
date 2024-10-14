@@ -46,8 +46,9 @@ In the above example, there is a variable named addNew, and it is declared outsi
 
 <details><summary><b>Answer</b></summary>
 <p>
-https://medium.com/@piyalidas.it/closure-in-javascript-2496fdedeb7d
-#### 
+
+  #### 
+  https://medium.com/@piyalidas.it/closure-in-javascript-2496fdedeb7d
   Closure provides access to the outer scope of a function from inside the inner function, even after the outer function has closed. The main advantage of javascript closure is Data Privacy.
 
   ```
