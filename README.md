@@ -1278,6 +1278,7 @@ Console.log(`Hello,welcome to ${website.name} !"message goes here"` ) ;
 
 </p>
 </details>
+
 ---
 
 ### 41. There are two sorted arrays. Merge them in place of the first array
@@ -1289,6 +1290,7 @@ Console.log(`Hello,welcome to ${website.name} !"message goes here"` ) ;
 
 </p>
 </details>
+
 ---
 
 ### 42. Write a js function that can be invoked like below -
@@ -1301,6 +1303,7 @@ calc().add(10).subtract(5).multiply(20).divide(2).getResult() . In this case, th
 
 </p>
 </details>
+
 ---
 
 ### 43. prototype chain -
@@ -1336,9 +1339,10 @@ person.greet()
 ```
 </p>
 </details>
+
 ---
 
-### 42. What is the first class function in JavaScript ?
+### 44. What is the first class function in JavaScript ?
 
 <details><summary><b>Answer</b></summary>
 <p>
@@ -1383,6 +1387,8 @@ const Geek = (a, b) => {
 
 console.log(Geek("Akshit", "Saxena"));
 ```
+
 </p>
 </details>
+
 ---
