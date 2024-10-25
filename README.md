@@ -794,7 +794,7 @@ undefined===null will be false because they contain different data type because 
 <p>
 
 #### 
-Hoisting means it will bring all the declaration on top, not the assignment. So if you have var x is equal to 9, nine remains that only. Hoisting only happen with var and function keywords. 
+In JavaScript, hoisting refers to the built-in behavior of the language through which declarations of functions, variables, and classes are moved to the top of their scope – all before code execution. Hoisting only happen with var and function keywords. 
 
   console.log(x);
   var x = 9;
