@@ -922,7 +922,10 @@ a JavaScript function which calls itself, runs as soon as it is defined.
 <p>
 
 #### 
-a JavaScript function which calls itself, runs as soon as it is defined.
+bind() - creates a new function with predefined this value and returns it.
+call() and apply() execute functions immediately with the specified this value. , but call() accepts arguments individually while apply() accepts an array of arguments.
+
+<b>Practical Scenario ::=</b>
     
   function show(obj) {
       console.log(this);
@@ -932,12 +935,31 @@ a JavaScript function which calls itself, runs as soon as it is defined.
   }
   show(obj) will print Window {0: Window, window: Window, self: Window, document: document, name: '', location: Location, …}
   
-  Now I want that show function should bind to this object and not the window object, which is the global object. So purpose of this function is at the moment I want to assign the object reference tool that this object. Now call is handy for this scenerio.
+  Now I want that show function should bind to this object and not the window object, which is the global object. So purpose of this function is at the moment I want to assign the object reference tool that this object. Now call is handy for this scenario.
   The call method takes first argument as the object to be passed to this. Then whatever parameters you want to pass, it's absolutely fine.
   
   show.call(obj) will print {a: 5}
   So in short call is used to change the reference or context are in charge value of this object.
+
+```
+  const person = {
+    firstName: 'John',
+    lastName: 'Doe',
+    getFullName: function() {
+      return `${this.firstName} ${this.lastName}`;
+    }
+  };
+
+  const logName = function() {
+    console.log(`Logged name: ${this.getFullName()}`);
+  }
   
+  // bind logName to person object
+  const logPersonName = logName.bind(person); 
+  
+  logPersonName(); // will output "Logged name: John Doe"
+```
+  Now call is handy for this scenario. When we want to bind the object but will call later.
   
  
 </p>
