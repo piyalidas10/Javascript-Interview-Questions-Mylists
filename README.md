@@ -1276,3 +1276,36 @@ calc().add(10).subtract(5).multiply(20).divide(2).getResult() . In this case, th
 
 
 ---
+
+### 43. prototype chain -
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+The prototype chain is a mechanism that allows objects to inherit properties and methods from other objects. Every object can have exactly one prototype object. That prototype object can also have a prototype object, and so on, creating a chain of inheritied properties and methods. The end of this chain is called the null prototype.
+Every object in JavaScript can be linked to a prototype object which is the mechanism through which inheritance is provided.
+You can see the prototype an object is pointing to using the __proto__ property.
+
+```
+// Define a human constructor
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+// Add a method for greeting
+Person.prototype.greet = function() {
+    console.log(`Hi, my name is ${this.name} and I'm ${this.age} years old.`);
+};
+
+// Create a human instance
+const person = new Person('John', 30);
+
+// Access the person's name attribute and output "John"
+console.log(person.name);
+
+// Access the greet method of person and output "Hi, my name is John and I'm 30"
+person.greet()
+```
+---
