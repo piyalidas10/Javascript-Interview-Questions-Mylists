@@ -1435,3 +1435,64 @@ higherOrderFunc(3)(53);
 
 ---
 
+### 46. memoization in javascript
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Memoization is a technique for speeding up applications by caching the results of expensive function calls and returning them when the same inputs are used again.
+
+<b>Importance of Memoization:</b> When a function is given in input, it performs the necessary computation and saves the result in a cache before returning the value. If the same input is received again in the future, it will not be necessary to repeat the process. It would simply return the cached answer from the memory. This will result in a large reduction in a code’s execution time.
+
+<b>Memoization in Javascript:</b> In JavaScript, the concept of memorization is based mostly on two ideas. They are as follows:
+  -  Closures
+  -  Higher-Order Functions
+
+```
+// Memoizer
+const memoize = () => {
+ 
+    // Create cache for results
+    // Empty objects
+    const results = {};
+ 
+    // Return function which takes
+    // any number of arguments
+    return (...args) => {
+        // Create key for cache
+        const argsKey = JSON.stringify(args);
+ 
+        // Only execute func if no cached val
+        // If results object does not have 
+        // anything to argsKey position
+        if (!results[argsKey]) {
+            results[argsKey] = func(...args)
+        }
+        return results[argsKey];
+    };
+};
+ 
+// Wrapping memoization function
+const multiply = memoize((num1, num2) => {
+    let total = 0;
+    for (let i = 0; i < num1; i++) {
+        for (let j = 0; j < num1; j++) {
+ 
+            // Calculating square
+            total += 1 *;
+        }
+    }
+ 
+    // Multiplying square with num2
+    return total * num2;
+});
+ 
+console.log(multiply(500, 5000));
+```
+https://www.geeksforgeeks.org/how-to-write-a-simple-code-of-memoization-function-in-javascript/?ref=asr2
+
+</p>
+</details>
+
+---
