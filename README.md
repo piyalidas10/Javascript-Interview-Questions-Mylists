@@ -926,13 +926,14 @@ bind() - creates a new function with predefined this value and returns it.
 call() and apply() execute functions immediately with the specified this value. , but call() accepts arguments individually while apply() accepts an array of arguments.
 
 <b>Practical Scenario ::=</b>
-    
+```
   function show(obj) {
       console.log(this);
   }
   let obj = {
     a: 5
   }
+```
   show(obj) will print Window {0: Window, window: Window, self: Window, document: document, name: '', location: Location, …}
   
   Now I want that show function should bind to this object and not the window object, which is the global object. So purpose of this function is at the moment I want to assign the object reference tool that this object. Now call is handy for this scenario.
