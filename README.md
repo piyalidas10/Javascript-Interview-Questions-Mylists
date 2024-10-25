@@ -1350,7 +1350,7 @@ person.greet()
 #### 
 A programming language is said to have First-class functions if functions in that language are treated like other variables. So the functions can be assigned to any other variable or passed as an argument or can be returned by another function. This means that functions are simply a value and are just another type of object.
 
-<b>Usage of First-Class Function</>
+<b>Usage of First-Class Function</b>
   -  It can be stored as a value in a variable.
   -  It can be returned by another function.
   -  It can be passed into another function as an Argument.
@@ -1392,3 +1392,46 @@ console.log(Geek("Akshit", "Saxena"));
 </details>
 
 ---
+
+### 45. What is a First Order Function in JavaScript ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+A First Order Function is just a normal regular function that does not take any function as one of its parameters and also it does not return another function as its return value inside its body. It is a simple function that accepts the parameters of different data types either primitive or non-primitive and it may or may not return a value as a result of the calculations performed on the passed parameters. A First Order Function can be declared using any of the methods available in JavaScript.
+
+```
+function firstOrderFunc(num1, num2){
+    console.log(num1*num2);
+}
+firstOrderFunc(4, 35)
+```
+
+</p>
+</details>
+
+---
+
+### 45. What is Higher Order Function in JavaScript ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+A higher-order function is a function that can accept a function as one of its parameters and it can also return a function as its return value or it can do both return as well as accept a function. A higher-order function can also take as well as return other types of values but it either has to take a function as a parameter or return a function as its return value with them. It can be declared using any syntax available in JavaScript to declare functions.
+
+```
+function higherOrderFunc(a){
+    return function(b){
+        console.log(a*b)
+    }
+}
+higherOrderFunc(3)(53);
+```
+
+</p>
+</details>
+
+---
+
