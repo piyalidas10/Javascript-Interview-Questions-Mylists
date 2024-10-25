@@ -1332,3 +1332,51 @@ console.log(person.name);
 person.greet()
 ```
 ---
+
+### 42. What is the first class function in JavaScript ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+A programming language is said to have First-class functions if functions in that language are treated like other variables. So the functions can be assigned to any other variable or passed as an argument or can be returned by another function. This means that functions are simply a value and are just another type of object.
+
+<b>Usage of First-Class Function</>
+  -  It can be stored as a value in a variable.
+  -  It can be returned by another function.
+  -  It can be passed into another function as an Argument.
+  -  It can also stored in an array, queue, or stack.
+  -  It can have its own methods and property.
+
+```
+  const Arithmetics = {
+    add: (a, b) => {
+        return `${a} + ${b} = ${a + b}`;
+    },
+    subtract: (a, b) => {
+        return `${a} - ${b} = ${a - b}`
+    },
+    multiply: (a, b) => {
+        return `${a} * ${b} = ${a * b}`
+    },
+    division: (a, b) => {
+        if (b != 0) return `${a} / ${b} = ${a / b}`;
+        return `Cannot Divide by Zero!!!`;
+    }
+
+}
+
+console.log(Arithmetics.add(100, 100));
+console.log(Arithmetics.subtract(100, 7))
+console.log(Arithmetics.multiply(5, 5))
+console.log(Arithmetics.division(100, 5));
+
+
+const Geek = (a, b) => {
+    return (a + " " + b);
+}
+
+console.log(Geek("Akshit", "Saxena"));
+```
+
+---
