@@ -1496,3 +1496,25 @@ https://www.geeksforgeeks.org/how-to-write-a-simple-code-of-memoization-function
 </details>
 
 ---
+
+### 47. Dynamic object create ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+function createObj(obj, field, value) {
+    if (Object.keys(obj).includes(field)) {
+        Object.assign(obj, {[field]: value});
+    } else {
+        obj[field] = value;
+    }
+    return obj;
+}
+
+createObj({}, 'one', 'value1')
+ 
+</p>
+</details>
+
+---
