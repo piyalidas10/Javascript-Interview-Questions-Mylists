@@ -1503,6 +1503,7 @@ https://www.geeksforgeeks.org/how-to-write-a-simple-code-of-memoization-function
 <p>
 
 #### 
+```
 function createObj(obj, field, value) {
     if (Object.keys(obj).includes(field)) {
         Object.assign(obj, {[field]: value});
@@ -1513,6 +1514,7 @@ function createObj(obj, field, value) {
 }
 
 createObj({}, 'one', 'value1')
+```
  
 </p>
 </details>
