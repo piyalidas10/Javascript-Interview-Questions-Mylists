@@ -1146,6 +1146,24 @@ Object destructuring allows us to create variables from object property names, a
     const { a, ...rest } = data;
     console.log(a); // 1
     console.log(rest); // { b: 2, c: 3 }
+
+    let arr = [1, 2, 3, 4];
+    let [a,,c,d] = arr;
+    console.log(a,c,d); // 1 3 4
+
+    let a = 4;
+    let b = 9;
+    [a,b] = [b,a];
+    console.log(a,b); // 9, 4
+
+    let arr =[1,2,3,4];
+    let [a,...b] = arr;
+    console.log(a); // 1 
+    console.log(b); // (3) [2, 3, 4]
+
+    let arr = [1];
+    let [a,b=0] = arr;
+    console.log(a,b); // 1 0    
     
 </p>
 </details>
@@ -1516,6 +1534,53 @@ function createObj(obj, field, value) {
 createObj({}, 'one', 'value1')
 ```
  
+</p>
+</details>
+
+---
+
+### 48. Reduce operator examples
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+```
+const arr =[[1,2], [3,4], [5,6]];
+const finalArr = arr.reduce((accumulator, current)=> accumulator.concat(current));
+console.log(finalArr); // (6) [1, 2, 3, 4, 5, 6]
+
+Sum of numbers
+---------------------------------------------------------------
+const numbers = [2, 4, 6, 8];
+const result = numbers.reduce((accumulator, current)=> accumulator + current);
+console.log(result); // 20
+
+Average of numbers
+---------------------------------------------------------------
+const numbers = [2, 4, 6, 8];
+const result = numbers.reduce((accumulator, current, index, arr)=> {
+	accumulator+=current;
+    if(index === arr.length-1)  {
+    	return accumulator/arr.length;
+    }
+    return accumulator;
+});
+console.log(result); // 5
+
+Average of numbers with initial value 100
+---------------------------------------------------------------
+const numbers = [2, 4, 6, 8];
+const result = numbers.reduce((accumulator, current, index, arr)=> {
+	accumulator+=current;
+    if(index === arr.length-1)  {
+    	return accumulator/arr.length;
+    }
+    return accumulator;
+}, 100);
+console.log(result); // 30
+
+ ```
 </p>
 </details>
 
