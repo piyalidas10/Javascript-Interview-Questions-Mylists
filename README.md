@@ -911,10 +911,11 @@ When working outside of function bodies, at a global level, let does not create 
 
 #### 
 a JavaScript function which calls itself, runs as soon as it is defined.
+```
     (function(){
       console.log("IIFE");
     })();
- 
+```
 </p>
 </details>
 
@@ -1585,6 +1586,96 @@ const result = numbers.reduce((accumulator, current, index, arr)=> {
 console.log(result); // 30
 
  ```
+</p>
+</details>
+
+---
+
+### 49. Arrow vs Normal functions ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+<strong>Access arguments</strong>
+---------------------------------------------------------------------------------------------------------------------------------------------------
+In regular functions, you can access all passed arguments using the arguments object, which is an array-like object containing each argument passed to the function.
+```
+function showArgs() {
+	console.log(arguments);
+}
+showArgs(1, 2, 3);  // [Arguments] { '0': 1, '1': 2, '2': 3 }
+```
+Arrow functions do not have their own arguments object. To access arguments in arrow functions, use rest parameters (…args) to collect all arguments into an array.
+```
+const showArgs = (...args) => {
+    console.log(args);
+};
+showArgs(1, 2, 3);  // [ 1, 2, 3 ]
+```
+
+<strong>Duplicate named parameters</strong>
+---------------------------------------------------------------------------------------------------------------------------------------------------
+In regular functions, duplicate named parameters are allowed but not recommended. The last occurrence of the parameter overwrites previous ones, and only its value is used.
+```
+function example(a, b, a) {
+    console.log(a, b);
+}
+example(1, 2, 3); // 3 2
+```
+
+Arrow functions do not allow duplicate named parameters, even in non-strict mode, and will throw a syntax error if duplicates are present. Always use unique parameter names in arrow functions.
+```
+const example = (a, b, a) => {
+    console.log(a);
+}; 
+// SyntaxError
+```
+
+<strong>Hosting</strong>
+---------------------------------------------------------------------------------------------------------------------------------------------------
+In regular functions, function declarations are hoisted to the top of their scope, allowing them to be called before they’re defined in the code.
+```
+greet(); // Output: Hello Geeks!
+
+function greet() {
+    console.log('Hello Geeks!');
+}
+```
+
+Arrow functions are not hoisted like regular function declarations. They are treated as variables, so they cannot be called before being defined due to the temporal dead zone.
+```
+greet(); // ReferenceError: Cannot access 'greet' before initialization
+
+const greet = () => {
+    console.log('Hello!');
+};
+```
+
+<strong>this keyword</strong>
+---------------------------------------------------------------------------------------------------------------------------------------------------
+In regular functions, this refers to the object that calls the function (runtime binding). Its value can vary based on how the function is called (method, event, or global).
+```
+const obj = {
+    name: 'Geeks',
+    greet: function() {
+        console.log(this.name);
+    }
+};
+obj.greet();
+```
+
+In arrow functions, this is lexically inherited from the surrounding scope, not the function itself.
+```
+const obj = {
+    name: 'Geeks',
+    greet: () => {
+        console.log(this.name);
+    }
+};
+obj.greet(); // Output: undefined (inherited from outer scope)
+```
+  
 </p>
 </details>
 
