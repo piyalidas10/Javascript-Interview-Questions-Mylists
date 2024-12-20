@@ -1697,3 +1697,54 @@ const p = new Person(); // TypeError: Person is not a constructor
 </details>
 
 ---
+
+
+### 47. Passing by Reference vs. Passing by Value ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+
+<strong>Pass by Reference or Call by Reference</strong>
+---------------------------------------------------------------------------------------------------------------------------------------------------
+When a parameter is passed by reference, the caller and the callee use the same variable for the parameter. If the callee modifies the parameter variable, the effect is visible to the caller's variable.
+Pass by Reference will work with Non Primitive data types like arrays, objects, functions.
+Instead of making a copy, pass-by-reference does exactly what it sounds like; a value stored in memory gets referenced.
+
+```
+let a = 5;
+let b = a;
+console.log(a); // 5
+console.log(b); // 5
+
+b = a + 5;
+console.log(a); // 5
+console.log(b); // 10
+```
+both variables a & b will work independently. 
+
+<strong>Pass by Value or Call by Value</strong>
+---------------------------------------------------------------------------------------------------------------------------------------------------
+When a parameter is passed by value, the caller and callee have two independent variables with the same value. If the callee modifies the parameter variable, the effect is not visible to the caller.
+Pass by Value will work with Primitive data types like Boolean, char, byte, int, short, long, float, and double.
+pass-by-value creates a new space in memory and makes a copy of a value, whereas pass-by-reference does not.
+
+```
+let obj1 = { name: 'Piyali'};
+let obj2 = obj1;
+console.log(obj1); // { name: 'Piyali'}
+console.log(obj2); // { name: 'Piyali'}
+
+obj2 = {name: 'Test'};
+console.log(obj1); // { name: 'Test'}
+console.log(obj2); // { name: 'Test'}
+```
+Here with let obj2 = obj1, we are giving reference of obj1 to obj2. So, any changes in value of obj2 will change the original value of obj1.
+Same thing will happen for array also.
+
+<br/> Hindi Tutorial youtube link : https://www.youtube.com/watch?v=8y9c4SumvcQ
+</p>
+</details>
+
+---
