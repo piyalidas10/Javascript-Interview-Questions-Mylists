@@ -867,6 +867,7 @@ When working outside of function bodies, at a global level, let does not create 
   - arguments object does not work with arrow function.
   - you cannot use new to call arrow function.
  
+ ```
   const obj = {
     test() {
         console.log(this);
@@ -896,7 +897,8 @@ When working outside of function bodies, at a global level, let does not create 
       console.log(arg);
   }
   show(1,2,3); ========(3)[1, 2, 3]
-  
+  ```
+
 </p>
 </details>
 
