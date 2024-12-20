@@ -1675,6 +1675,23 @@ const obj = {
 };
 obj.greet(); // Output: undefined (inherited from outer scope)
 ```
+
+<strong>new keyword</strong>
+---------------------------------------------------------------------------------------------------------------------------------------------------
+Regular functions can be used as constructors with the new keyword, allowing the creation of new object instances. The new keyword sets this to the new object inside the function.
+```
+function Person(name) {
+    this.name = name;
+}
+
+const p = new Person('Geeks'); // Creates a new Person object
+console.log(p.name); // Geeks
+```
+Arrow functions cannot be used as constructors and do not support the new keyword. Attempting to use new with an arrow function will result in a TypeError.
+```
+const Person = () => {};
+const p = new Person(); // TypeError: Person is not a constructor
+```
   
 </p>
 </details>
