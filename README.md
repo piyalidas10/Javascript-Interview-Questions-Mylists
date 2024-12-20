@@ -783,7 +783,7 @@ Undefined means the variable has been declared, but its value has not been assig
 undefined==null will be true because both undefined and null represent nothingness.
 undefined===null will be false because they contain different data type because undefined and null are different in terms of data type.
 
- typeof(undefined) // 'undefined'
+ typeof(undefined) // 'undefined' <br/>
  typeof(null) // 'object'
 </p>
 </details>
