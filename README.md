@@ -745,7 +745,7 @@ Allocating memory this way is also called dynamic memory allocation.
 
 #### 
 
-In javascript, memory should be cleared up automatically using a thing called Garbage collector. Javascript i a language who ha garbage collector meaning you don't have to manage your memory manually. It gets cleared automatically & assigned automatically.
+In javascript, memory should be cleared up automatically using a thing called Garbage collector. Javascript is a language who ha garbage collector meaning you don't have to manage your memory manually. It gets cleared automatically & assigned automatically.
 
 Garbage collector consists of three steps : 1. Find the root node in your code and recursively go through every child. The root node of browser code is Window object. In Nodejs , window object is global variable. 2. Mark every child including the root as active or inactive. Active means this part of code is referenced in the memory. Inactive mens it's not referenced from anywhere. 3. Delete all these inactive ones which mean if the variable i not needed anymore in the memory simple delete it. 
 
@@ -782,7 +782,9 @@ Undefined means the variable has been declared, but its value has not been assig
 
 undefined==null will be true because both undefined and null represent nothingness.
 undefined===null will be false because they contain different data type because undefined and null are different in terms of data type.
- 
+
+ typeof(undefined) // 'undefined'
+ typeof(null) // 'object'
 </p>
 </details>
 
