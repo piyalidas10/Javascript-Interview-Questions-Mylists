@@ -1699,7 +1699,7 @@ const p = new Person(); // TypeError: Person is not a constructor
 ---
 
 
-### 47. Passing by Reference vs. Passing by Value ?
+### 50. Passing by Reference vs. Passing by Value ?
 
 <details><summary><b>Answer</b></summary>
 <p>
