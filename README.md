@@ -1748,3 +1748,136 @@ Same thing will happen for array also.
 </details>
 
 ---
+
+### 51. Remove Null and Undefined Values from an Object (Practical Coding)
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+```
+let obj = {
+  a: 'test',
+  b: null,
+  c: undefined,
+  d: 'hi'
+};
+
+Object.entries(obj).filter(([key, value]) => value != null)
+print in console -------------
+(2) [Array(2), Array(2)]
+0: (2) ['a', 'test']
+1: (2) ['d', 'hi']
+
+Object.fromEntries(Object.entries(obj).filter(([key, value]) => value != null))
+print in console -------------
+{a: 'test', d: 'hi'}
+
+```
+
+Why have written "value != null"?
+Ans. The data type of undefined & null are not same. Data type of undefined is undefined. Data type of null is object. You can check using typeof operator.
+
+console.log(undefined == null) // true
+console.log(undefined === null) // false
+ 
+</p>
+</details>
+
+---
+
+### 52. Convert an Array to an Object
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+
+<strong>Single Dimention Array into an Object</strong>
+---------------------------------------------------------------------------------------------------------------------------------------------------
+```
+Object.assign({}, ['a','b','c']);
+{0: 'a', 1: 'b', 2: 'c'}
+```
+
+<strong>Array of Key-value pairs into an Object</strong>
+---------------------------------------------------------------------------------------------------------------------------------------------------
+```
+let a = [['JS', 'JavaScript'], ['GFG', 'GeeksforGeeks']];
+let obj = Object.fromEntries(a);
+{ JS: 'JavaScript', GFG: 'GeeksforGeeks' }
+```
+
+<strong>Spread Operator</strong>
+---------------------------------------------------------------------------------------------------------------------------------------------------
+```
+const arr = ["Geeks", "for", "Geeks"];
+const obj = {...arr};
+console.log(obj); //  '0': 'Geeks', '1': 'for', '2': 'Geeks' }
+```
+
+<strong>Using forEach</strong>
+---------------------------------------------------------------------------------------------------------------------------------------------------
+```
+const arr = ["Geeks", "for", "Geeks"];
+const obj = {};
+arr.forEach((value, index) => obj[index] = value);
+console.log(obj); // { '0': 'Geeks', '1': 'for', '2': 'Geeks' }
+```
+
+<strong>Using Reduce</strong>
+---------------------------------------------------------------------------------------------------------------------------------------------------
+```
+const a = ['Hello', 'World', 'Welcome', 'To', 'JavaScript'];
+
+const obj = a.reduce((acc, current, index) => {
+    acc[index] = current;
+    return acc;
+}, {});
+
+console.log(JSON.stringify(obj)); // {"0":"Hello","1":"World","2":"Welcome","3":"To","4":"JavaScript"}
+```
+ 
+</p>
+</details>
+
+---
+
+### 47. Convert Map keys to an array
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+<strong>Using array.from() Method</strong>
+---------------------------------------------------------------------------------------------------------------------------------------------------
+```
+let myMap = new Map().set('GFG', 1).set('Geeks', 2);
+let array = Array.from(myMap.keys());
+console.log(myMap.keys()); // MapIterator {'GFG', 'Geeks'}
+console.log(array); // (2) ['GFG', 'Geeks']
+```
+
+<strong>Using Object.keys() and Object.fromEntries()</strong>
+---------------------------------------------------------------------------------------------------------------------------------------------------
+```
+const myMap = new Map([
+    ["JavaScript", 1],
+    ["Python", 2],
+    ["C++", 3]
+]);
+
+// Convert Map to Object
+let obj = Object.fromEntries(myMap); // {JavaScript: 1, Python: 2, C++: 3}
+
+// Extract keys from Object
+let keysArray = Object.keys(obj);
+
+console.log(keysArray); // ['JavaScript', 'Python', 'C++']
+```
+ 
+</p>
+</details>
+
+---
+
