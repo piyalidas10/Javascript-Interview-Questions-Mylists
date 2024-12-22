@@ -1843,7 +1843,7 @@ console.log(JSON.stringify(obj)); // {"0":"Hello","1":"World","2":"Welcome","3":
 
 ---
 
-### 47. Convert Map keys to an array
+### 53. Convert Map keys to an array
 
 <details><summary><b>Answer</b></summary>
 <p>
@@ -1881,3 +1881,95 @@ console.log(keysArray); // ['JavaScript', 'Python', 'C++']
 
 ---
 
+### 54. How to serialize a Map in JavaScript ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Serialization is the conversion of an object or a data structure to another format that is easily transferrable on the network.
+
+<strong>Using Array.from() and JSON.stringify() Method</strong>
+---------------------------------------------------------------------------------------------------------------------------------------------------
+```
+const map1 = new Map([
+    [1, 2],
+    [2, 3],
+    [4, 5]
+]);
+
+Array.from(map1); // Convert the map into an array using Array.from() method
+(3) [Array(2), Array(2), Array(2)]
+0: (2) [1, 2]
+1: (2) [2, 3]
+2: (2) [4, 5]
+
+JSON.stringify(Array.from(map1)) // Use the JSON.stringify() method on this converted array to serialize it.
+'[[1,2],[2,3],[4,5]]'
+
+```
+
+<strong>Using Object.fromEntries() and JSON.stringify() Method</strong>
+---------------------------------------------------------------------------------------------------------------------------------------------------
+```
+const map1 = new Map([
+    [1, 2],
+    [2, 3],
+    [4, 5]
+]);
+
+Object.fromEntries(map1); // Convert the map into an object using Object.fromEntries() method
+{1: 2, 2: 3, 4: 5}
+
+JSON.stringify(Object.fromEntries(map1)); // Use the JSON.stringify() method on this converted object to serialize it.
+'{"1":2,"2":3,"4":5}'
+```
+
+</p>
+</details>
+
+---
+
+### 55. Object vs JavaScript Map ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+A Map in JavaScript is a collection of key-value pairs where keys can be any data type. Unlike objects, keys in a Map maintain insertion order. It provides methods to set, get, delete, and iterate over elements efficiently, making it useful for data storage and retrieval tasks.
+
+<strong>Insertion Order</strong>
+---------------------------------------------------------------------------------------------------------------------------------------------------
+S6 Maps preserves the insertion order. A Map will keep the order of the inserted keys regardless of their type.
+```
+const myData = new Map();
+myData.set(10427, "Description 10427");
+myData.set(10504, "Description 10504");
+myData.set(10419, "Description 10419");
+console.log(myData); // Map(3) {10427 => 'Description 10427', 10504 => 'Description 10504', 10419 => 'Description 10419'}
+```
+
+const obj = {};
+Object.assign(obj, {10427: "Description 10427"}); // {10427: 'Description 10427'}
+Object.assign(obj, {10504: "Description 10504"}); // {10427: 'Description 10427', 10504: 'Description 10504'}
+Object.assign(obj, {10419: "Description 10419"}); // {10419: 'Description 10419', 10427: 'Description 10427', 10504: 'Description 10504'}
+
+<strong>Keys</strong>
+---------------------------------------------------------------------------------------------------------------------------------------------------
+A Map 's keys can be any value (including functions, objects, or any primitive). A Map holds key-value pairs where the keys can be any datatype. Map has no restriction over key names. 
+The keys of an Object must be either a String or a Symbol.
+
+<strong>Perforamce by memory heap</strong>
+---------------------------------------------------------------------------------------------------------------------------------------------------
+The V8 engine heap isn't very good at managing arrays of objects. If you have an array of 100,000 objects, loop through each object and delete one parameter in the middle then re-add it, the heap size will spike rather than stay constant.
+
+// Spike the memory heap
+arr.forEach(obj => {let temp = obj[0]; delete obj[0]; obj[0] = temp})
+The reason the heap will spike is because V8 creates intermediate arrays during the forEach loop over the array. Once the array you're looping over becomes massive (eg. 100,000 elements) the memory spike will be too large to handle and could crash the program.
+
+Iterables like Map and Set aren't handled by the engine this way, and you can use a library like iter-tools to get array-like transformation methods for them.
+ 
+</p>
+</details>
+
+---
