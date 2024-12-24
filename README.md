@@ -1973,3 +1973,95 @@ Iterables like Map and Set aren't handled by the engine this way, and you can us
 </details>
 
 ---
+
+### 56. Can we add Javascript function in JSON?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+https://www.geeksforgeeks.org/how-to-store-a-javascript-fnction-in-json/
+ 
+</p>
+</details>
+
+---
+
+### 56. Ho can add Dynamic key in Object?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+```
+let tv = 'pCode', num = 10;
+let obj = {
+    [tv]: 1001,
+    pName: 1000,
+    ['get' + num]() {
+        console.log(pName);
+    }
+}
+
+console.log(obj) ==============
+{pCode: 1001, pName: 1000, get10: ƒ}
+get10: ƒ ['get' + num]()
+pCode: 1001
+pName: 1000
+```
+ 
+</p>
+</details>
+
+---
+
+### 57. What will the output of bellow ?
+function show() {
+    console.log(this);
+}
+show();
+
+let obj = {
+    display: function() {
+        console.log(this);
+    }
+}
+obj.display();
+
+let obj = {
+    display: ()=> {
+        console.log(this);
+    }
+}
+obj.display();
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+```
+function show() {
+    console.log(this);
+}
+show(); // Window {0: global, window: Window, self: Window, document: document, name: '', location: Location, …}
+
+let obj = {
+    display: function() {
+        console.log(this);
+    }
+}
+obj.display(); // {display: ƒ}
+
+let obj = {
+    display: ()=> {
+        console.log(this);
+    }
+}
+obj.display(); // Window {0: global, window: Window, self: Window, document: document, name: '', location: Location, …}
+```
+ 
+</p>
+</details>
+
+---
+
