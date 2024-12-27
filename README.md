@@ -910,17 +910,52 @@ When working outside of function bodies, at a global level, let does not create 
 <p>
 
 #### 
-a JavaScript function which calls itself, runs as soon as it is defined. This pattern encapsulates code within its own scope, preventing variable pollution in the global scope and enabling more controlled and modular code organization. <br/><br/>
-<strong>Use Cases</strong><br/>
-<strong>Encapsulation:</strong> IIFEs are commonly used to encapsulate variables and functions, preventing them from polluting the global scope. This is particularly useful in large applications or when integrating third-party scripts.<br/>
-<strong>Avoiding Variable Collision:</strong> By creating a separate scope, IIFEs help prevent variable names from conflicting with those in other scripts or libraries, thus improving code robustness.<br/>
-<strong>Module Pattern:</strong> Before ES6 introduced modules, IIFEs were often used to create modules with private and public methods, providing a way to structure code and manage dependencies effectively.<br/>
-
+a JavaScript function which calls itself, runs as soon as it is defined. This pattern encapsulates code within its own scope, preventing variable pollution in the global scope and enabling more controlled and modular code organization. 
 ```
     (function(){
       console.log("IIFE");
     })();
 ```
+
+<strong>Use Cases</strong><br/>
+<strong>Encapsulation:</strong> IIFEs are commonly used to encapsulate variables and functions, preventing them from polluting the global scope. This is particularly useful in large applications or when integrating third-party scripts.<br/>
+<strong>Avoiding Variable Collision:</strong> By creating a separate scope, IIFEs help prevent variable names from conflicting with those in other scripts or libraries, thus improving code robustness.<br/>
+<strong>Module Pattern:</strong> Before ES6 introduced modules, IIFEs were often used to create modules with private and public methods, providing a way to structure code and manage dependencies effectively.<br/>
+
+<strong>Module Pattern Before ES6</strong>
+```
+var module = (function() {
+    var privateVariable = 'I am private';
+
+    function privateFunction() {
+        return 'Private function';
+    }
+
+    return {
+        publicVariable: 'I am public',
+        publicFunction: function() {
+            return 'Public function calls ' + privateFunction();
+        }
+    };
+})();
+
+console.log(module.publicVariable); // Outputs: I am public
+console.log(module.publicFunction()); // Outputs: Public function calls Private function
+```
+Here, privateVariable and privateFunction() are encapsulated within the IIFE’s scope, while publicVariable and publicFunction() are exposed and accessible outside.
+
+<strong>For Loop with var Before ES6</strong>
+Another common use case of IIFEs was to handle for loops with var, preventing unintended closures:
+```
+for (var i = 0; i < 5; i++) {
+    (function(index) {
+        setTimeout(function() {
+            console.log(index);
+        }, 1000);
+    })(i);
+}
+```
+
 </p>
 </details>
 
