@@ -910,7 +910,12 @@ When working outside of function bodies, at a global level, let does not create 
 <p>
 
 #### 
-a JavaScript function which calls itself, runs as soon as it is defined.
+a JavaScript function which calls itself, runs as soon as it is defined. This pattern encapsulates code within its own scope, preventing variable pollution in the global scope and enabling more controlled and modular code organization. <br/><br/>
+<strong>Use Cases</strong><br/>
+<strong>Encapsulation:</strong> IIFEs are commonly used to encapsulate variables and functions, preventing them from polluting the global scope. This is particularly useful in large applications or when integrating third-party scripts.<br/>
+<strong>Avoiding Variable Collision:</strong> By creating a separate scope, IIFEs help prevent variable names from conflicting with those in other scripts or libraries, thus improving code robustness.<br/>
+<strong>Module Pattern:</strong> Before ES6 introduced modules, IIFEs were often used to create modules with private and public methods, providing a way to structure code and manage dependencies effectively.<br/>
+
 ```
     (function(){
       console.log("IIFE");
