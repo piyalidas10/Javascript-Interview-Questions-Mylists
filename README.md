@@ -2027,7 +2027,7 @@ https://www.geeksforgeeks.org/how-to-store-a-javascript-fnction-in-json/
 
 ---
 
-### 56. Ho can add Dynamic key in Object?
+### 57. Ho can add Dynamic key in Object?
 
 <details><summary><b>Answer</b></summary>
 <p>
@@ -2055,7 +2055,7 @@ pName: 1000
 
 ---
 
-### 57. What will the output of bellow ?
+### 58. What will the output of bellow ?
 function show() {
     console.log(this);
 }
@@ -2105,7 +2105,7 @@ obj.display(); // Window {0: global, window: Window, self: Window, document: doc
 
 ---
 
-### 58. What Are Stack and Heap?
+### 59. What Are Stack and Heap?
 
 <details><summary><b>Answer</b></summary>
 <p>
@@ -2142,6 +2142,231 @@ console.log(userOne.email); // Output: ayush@google.com
 console.log(userTwo.email); // Output: ayush@google.com
 ```
  
+</p>
+</details>
+
+---
+
+### 60. What's the output of console.log(this) in JavaScript?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+```
+console.log(this);
+------------------------------------------------------------------------------------------------------
+Window {0: global, window: Window, self: Window, document: document, name: '', location: Location, …}
+```
+ 
+</p>
+</details>
+
+---
+
+### 61. Write a program using Promise and Async/Await.
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+```
+async function fetchData() {
+  const response = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+  const data = await response.json();
+  console.log(data);
+}
+
+fetchData();
+------------------------------------------------------------------------------------------------------
+{
+  userId: 1,
+  id: 1,
+  title: ....',
+  body: ....}
+
+
+async function fetchData() {
+  try {
+    let response = await fetch('https://api.example.com/data');
+    let data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+```
+
+Advantages of Async and Await
+------------------------------------------------------------------------------------------------------
+Improved Readability: Async and Await allow asynchronous code to be written in a synchronous style, making it easier to read and understand.
+Error Handling: Using try/catch blocks with async/await simplifies error handling.
+Avoids Callback Hell: Async and Await prevent nested callbacks and complex promise chains, making the code more linear and readable.
+Better Debugging: Debugging async/await code is more intuitive since it behaves similarly to synchronous code.
+ 
+</p>
+</details>
+
+---
+
+### 62. How would you efficiently handle 5000 records from an API call for a dropdown?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+ 
+</p>
+</details>
+
+### 62. How is Async/Await different from Promises?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+In JavaScript, promises and async/await are two different ways to handle asynchronous operations. But they are closely related.
+
+Promise
+------------------------------------------------------------------------------------------------------
+A promise is an object that eventually leads to an asynchronous operation’s completion or failure. A promise can be in one of three states: pending, fulfilled, or rejected. When the asynchronous operation is completed, the Promise will either be fulfilled with a value or rejected with an error.
+
+Async/Await
+------------------------------------------------------------------------------------------------------
+Async/await is a syntactic sugar on top of promises. It provides a more concise way to write asynchronous code, making it easier to read and write. With Async/Await, you can write asynchronous code that looks similar to synchronous code, and it uses promises under the hood. In async/await, the async keyword is used to declare an asynchronous function. The await keyword is used to wait for a promise to be resolved before continuing with the execution of the function. The await keyword can only be used inside an async function.
+
+Difference
+------------------------------------------------------------------------------------------------------
+The only difference is the execution context between promise and async/await.
+When a Promise is created and the asynchronous operation is started, the code after the Promise creation continues to execute synchronously. When the Promise is resolved or rejected, the attached callback function is added to the microtask queue. The microtask queue is processed after the current task has been completed but before the next task is processed from the task queue. This means that any code that follows the creation of the Promise will execute before the callback function attached to the Promise is executed.
+On the other hand, with Async/Await, the await keyword causes the JavaScript engine to pause the execution of the async function until the Promise is resolved or rejected. While the async function waits for the Promise to resolve, it does not block the call stack, and any other synchronous code can be executed. Once the Promise is resolved, the execution of the async function resumes, and the result of the Promise is returned. If rejected, it throws an error value.
+
+------------------------------------------------------------------------------------------------------
+https://medium.com/version-1/difference-between-promise-and-async-await-95e453182f55
+ 
+</p>
+</details>
+
+---
+
+### 63. Explain Node.js and the Event Loop.
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+
+
+</p>
+</details>
+
+---
+
+### 64. How does this behave in Node.js? Is it the same as in the browser?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+In Node. js all modules (script files) are executed in their own closure while browsers execute all script files directly within the global scope.
+
+In the browser, running in the global scope, this is always window in your example
+```
+var obj1;
+var obj2;
+
+function x() {
+    obj1 = this; // window
+}
+
+function y() {
+    obj2 = this; // window
+}
+
+x();
+y();
+
+console.log(obj1 === obj2);  // window === window = true
+console.log(obj1 === this);  // window === window = true
+```
+
+This is not how it works in Node. In Node.js all modules (script files) are executed in their own closure while browsers execute all script files directly within the global scope.
+
+In other words, in just about any file running in Node, this will just be an empty object, as Node wraps the code in an anonymous function that is called immediately, and you'd access the global scope within that context with GLOBAL instead.
+
+However, when calling a function without a specific context in Node.js, it will normally be defaulted to the global object - The same GLOBAL mentioned earlier, as it's execution context.
+
+So outside the functions, this is an empty object, as the code is wrapped in a function by Node, to create it's own execution context for every module (script file), while inside the functions, because they are called with no specified execution context, this is the Node GLOBAL object
+
+In Node.js you'd get
+```
+var obj1;
+var obj2;
+
+function x() {
+    obj1 = this; // GLOBAL
+}
+
+function y() {
+    obj2 = this; // GLOBAL
+}
+
+x();
+y();
+
+console.log(obj1 === obj2);  // GLOBAL === GLOBAL = true
+console.log(obj1 === this);  // GLOBAL === {} = false
+```
+</p>
+</details>
+
+---
+
+### 65. Write code for mul(2)(3)(4) = 24.
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+```
+function mul(x) { 
+      return function(y) { 
+        return function(z) { 
+          return x*y*z; 
+        }; 
+      } 
+    } 
+      
+    console.log(mul(2)(3)(5));  // 30
+    console.log(mul(2)(3)(4)); // 24
+```
+</p>
+</details>
+
+---
+
+### 66. Solution to 25 JavaScript interview questions.
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+https://medium.com/@dynamicsa420/solution-to-25-javascript-interview-questions-4162a1f76609
+
+</p>
+</details>
+
+---
+
+### 66. What is Axios ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Axios is a promise-based HTTP Client for node.js and the browser. It is isomorphic (= it can run in the browser and nodejs with the same codebase). On the server-side it uses the native node.js http module, while on the client (browser) it uses XMLHttpRequests.
+https://axios-http.com/docs/intro
+
 </p>
 </details>
 
