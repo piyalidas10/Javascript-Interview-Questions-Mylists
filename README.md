@@ -2255,7 +2255,8 @@ https://medium.com/version-1/difference-between-promise-and-async-await-95e45318
 <p>
 
 #### 
-
+In Node, the Event Loop is a mechanism that handles asynchronous operations. It allows Node to perform non-blocking I/O operations despite the fact that JavaScript is single-threaded. It continuously checks the call stack and message queue, executes tasks from stack processing asynchronous operations.
+https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick
 
 </p>
 </details>
