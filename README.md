@@ -2373,3 +2373,294 @@ https://axios-http.com/docs/intro
 
 ---
 
+### 67. What is Axios ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Prototype inheritance in javascript is the linking of prototypes of a parent object to a child object to share and utilize the properties of a parent class using a child class. Prototypes are hidden objects that are used to share the properties and methods of a parent class with child classes.
+
+The syntax used for prototype inheritance has the proto property which is used to access the prototype of the child. The syntax to perform a prototype inheritance is as follows : 
+```
+child.__proto__ = parent;
+
+// Creating a parent object as a prototype
+const parent = {
+  greet: function() {
+    console.log(`Hello from the parent`);
+  }
+};
+
+// Creating a child object
+const child = {
+  name: 'Child Object'
+};
+
+// Performing prototype inheritance
+child.__proto__ = parent;
+
+// Accessing the method from the parent prototype
+child.greet(); // Outputs: Hello from the parent 
+```
+
+```
+// Creating a prototype object
+const personPrototype = {
+  introduce: function() {
+    console.log(`Hi, my name is ${this.name} and I am ${this.age} years old.`);
+  }
+};
+
+// Creating a new object that inherits from the personPrototype
+const john = Object.create(personPrototype);
+john.name = 'John';
+john.age = 30;
+
+// Calling the introduce method on the john object
+john.introduce(); 
+// Outputs: Hi, my name is John and I am 30 years old.
+```
+
+```
+// Constructor function for creating Person objects
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+// Creating an instance of the Person object
+const person = new Person('John', 30);
+
+// Accessing the constructor property of the prototype
+console.log(person.constructor); 
+// Outputs: ƒ Person(name, age) { this.name = name; this.age = age;}
+```
+
+The prototype chain
+```
+let student = {
+  id: 1,
+};
+let tution = {
+  id: 2,
+};
+let school = {
+  id: 3,
+};
+student.__proto__ = school; //level1 inheritance
+student.__proto__.__proto__ = tution; //level2 inheritance
+console.log(student.id); //the student object's property
+console.log(student.__proto__.id); //school object's property
+```
+</p>
+</details>
+
+---
+
+### 68. did you know that javascript behaves differently in the browser and in the Nodejs ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Node.js and Web browsers are two different but interrelated technologies in web development. JavaScript is executed in both the environment, node.js, and browser but for different use cases. 
+
+Javascript files loaded in Nodejs are automatically wrapped in anonymous functions.So in Node what you are really running is:
+```
+(function(/* There are args here, but they aren't important for this answer */){
+  var x = 10;
+  var o = { x: 15 };
+  function f(){
+    console.log(this.x);
+  }
+  f();
+  f.call(o);
+})();
+```
+
+The environment of both Node.js and Browser are very different due to their different purpose Some key differences are:
+
+The browser executes JavaScript within the Host Environment, on the client side. Browsers provide a Document Object Model(DOM) which represents the structure of web pages.
+Node.js provides a runtime environment that allows JavaScript to run on a server, outside the browser. Also, it does not have a DOM like web browsers.
+
+</p>
+</details>
+
+---
+
+### 69. What is the difference between `==` and `===`?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+The “===” operator compares both content and type, whereas “==” compares only content. The == operator will compare for equality after doing any necessary type conversions. The === operator will not do type conversion, so if two values are not the same type === will simply return false .
+ 
+</p>
+</details>
+
+---
+
+### 70. How do you handle errors in JavaScript?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Error handling in JavaScript plays an important role to make the application stable. Structures such as try-catch blocks, throw statement and finally block are used to deal with unexpected situations and ensure that the application runs correctly.
+
+```
+try {
+    console.log("try block: The code is running...");
+} catch (error) {
+    console.log("Error Caught: " + error);
+} finally {
+    console.log("finally block: Executed in all cases.");
+}
+```
+ 
+</p>
+</details>
+
+---
+
+### 71. What is globalThis ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+globalThis aims to consolidate the increasingly fragmented ways of accessing the global object by defining a standard global property. The globalThis proposal is currently at stage 4, which means it’s ready for inclusion in the ES2020 standard. All popular browsers, including Chrome 71+, Firefox 65+, and Safari 12.1+, already support the feature. You can also use it in Node.js 12+.
+
+// browser environment
+console.log(globalThis);    // => Window {...}
+
+// node.js environment
+console.log(globalThis);    // => Object [global] {...}
+
+// web worker environment
+console.log(globalThis);    // => DedicatedWorkerGlobalScope {...}
+By using globalThis, your code will work in window and non-window contexts without having to write additional checks or tests. In most environments, globalThis directly refers to the global object of that environment. In browsers, however, a proxy is used internally to take into account iframe and cross-window security. In practice, it doesn’t change the way you write your code, though.
+
+Generally, when you’re not sure in what environment your code will be used, or when you want to make your code executable in different environments, the globalThis property comes in very handy. You’ll have to use a polyfill to implement the feature on older browsers that do not support it, however.
+
+On the other hand, if you’re certain what environment your code is going to be used in, then use one of the existing ways of referencing the environment’s global object and save yourself from the need to include a polyfill for globalThis.
+
+https://blog.logrocket.com/what-is-globalthis-why-use-it/
+ 
+</p>
+</details>
+
+---
+
+### 72. What is debouncing and throttling in JavaScript?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Execution Frequency: Debouncing postpones the execution until after a period of inactivity, while throttling limits the execution to a fixed number of times over an interval.
+Use Cases: Debouncing is ideal for tasks that don’t need to execute repeatedly in quick succession, such as API calls based on user input. Throttling is suited for controlling the execution rate of functions called in response to events like scrolling or resizing.
+
+Debouncing and throttling are powerful techniques for optimizing JavaScript applications, preventing unnecessary code executions, and improving user experience.
+
+Debouncing Usecase :
+Consider a search input field that fetches suggestions from a server as the user types. Without debouncing, every keystroke would send a request, potentially leading to hundreds of requests per minute. Debouncing allows us to delay the function call until the user has stopped typing for a predefined time.
+```
+function debounce(func, delay) {
+  let debounceTimer;
+  return function() {
+    const context = this;
+    const args = arguments;
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => func.apply(context, args), delay);
+  };
+}
+// Usage
+const fetchSuggestions = debounce(() => {
+  // Fetch suggestions from the server
+}, 250);
+```
+
+Throttling Usecase :
+An example use case is attaching a listener to the scroll event of a webpage. Since the scroll event can fire dozens of times per second, throttling can be used to limit the number of times your callback function executes, improving performance.
+```
+function throttle(func, limit) {
+  let inThrottle;
+  return function() {
+    const args = arguments;
+    const context = this;
+    if (!inThrottle) {
+      func.apply(context, args);
+      inThrottle = true;
+      setTimeout(() => (inThrottle = false), limit);
+    }
+  };
+}
+// Usage
+window.addEventListener('scroll', throttle(() => {
+  // Handle the scroll event
+}, 1000));
+```
+ 
+</p>
+</details>
+
+---
+
+### 73. How would you implement a deep clone of an object without using libraries?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Using Spread Operator to Deep Clone
+```
+let student1 = {
+    name: "Manish",
+    company: "Gfg"
+}
+
+let student2 = { ...student1 };
+
+student1.name = "Rakesh"
+
+console.log("student 1 name is", student1.name); // student 1 name is Rakesh
+console.log("student 2 name is ", student2.name); // student 2 name is  Manish
+```
+
+Using Object.assign() Method
+```
+let student1 = {
+    name: "Manish",
+    company: "Gfg"
+}
+let student2 = Object.assign({}, student1);
+
+student1.name = "Rakesh"
+
+console.log("student 1 name is", student1.name); // student 1 name is Rakesh
+console.log("student 2 name is ", student2.name); // student 2 name is  Manish
+```
+
+Using Json.parse() and Json.stringify() Methods
+```
+let student1 = {
+    name: "Manish",
+    company: "Gfg"
+
+}
+let student2 = JSON.parse(JSON.stringify(student1))
+
+student1.name = "Rakesh"
+
+console.log("student 1 name is", student1.name); // student 1 name is Rakesh
+console.log("student 2 name is ", student2.name); // student 2 name is  Manish
+```
+ 
+</p>
+</details>
+
+---
+
