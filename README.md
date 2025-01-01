@@ -2664,3 +2664,89 @@ console.log("student 2 name is ", student2.name); // student 2 name is  Manish
 
 ---
 
+### 74. Event Delegation in JavaScript ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Event Delegation is basically a pattern to handle events efficiently. Instead of adding an event listener to each and every similar element, we can add an event listener to a parent element and call an event on a particular target using the .target property of the event object.
+
+Let’s see an example with and without event delegation
+```
+const customUI = document.createElement('ul');
+
+for (var i = 1; i <= 10; i++) {
+    const newElement = document.createElement('li');
+    newElement.textContent = "This is line " + i;
+    newElement.addEventListener('click', () => {
+        console.log('Responding')
+    })
+    customUI.appendChild(newElement);
+}
+```
+The above code will associate the function with every <li> element that is shown in the below image. We are creating an <ul> element, attaching too many <li> elements, and attaching an event listener with a responding function to each paragraph as we create it.
+
+
+Without Event Delegation
+
+Implementing the same functionalities with an alternate approach. In this approach, we will associate the same function with all event listeners. We are creating too many responding functions (that all actually do the exact same thing). We could extract this function and just reference the function instead of creating too many functions:
+```
+const customUI = document.createElement('ul');
+
+function responding() {
+    console.log('Responding')
+}
+
+for (var i = 1; i <= 10; i++) {
+    const newElement = document.createElement('li');
+    newElement.textContent = "This is line " + i;
+    newElement.addEventListener('click', responding)
+    customUI.appendChild(newElement);
+}
+```
+The functionality of the above code is shown below –
+
+
+Without Event Delegation
+
+In the above approach, we still have too many event listeners pointing to the same function. Now implementing the same functionalities using a single function and single event.
+```
+const customUI = document.createElement('ul');
+
+function responding() {
+    console.log('Responding')
+}
+
+for (var i = 1; i <= 10; i++) {
+    const newElement = document.createElement('li');
+    newElement.textContent = "This is line " + i;
+    customUI.appendChild(newElement);
+}
+customUI.addEventListener('click', responding)
+```
+
+Now there is a single event listener and a single responding function. In the above-shown method, we have improved the performance, but we have lost access to individual <li> elements so to resolve this issue, we will use a technique called event delegation. 
+ 
+</p>
+</details>
+
+https://www.geeksforgeeks.org/event-delegation-in-javascript/
+---
+
+### 75. What are the microtask and macrotask within an event loop in JavaScript ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+```
+
+```
+ 
+</p>
+</details>
+
+---
+
+
