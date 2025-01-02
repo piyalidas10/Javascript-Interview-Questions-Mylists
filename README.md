@@ -490,21 +490,18 @@ The syntax used for prototype inheritance has the __proto__ property which is us
 child.__proto__ = parent;
 
 ```
-let company = {
-  name: "A",
-  pay: function () {
-    console.log("Paying");
-  },
-}; //company object
-let worker = {
-  id: 1,
-  work: function () {
-    console.log("Working");
-  },
-}; //worker object
-worker.__proto__ = company; //worker object inherits company object
-console.log(worker);
-worker.pay(); // calling method from company object using worker object.
+let animal = {
+    animalEats: true,
+};
+
+let rabbit = {
+    rabbitJumps: true,
+};
+
+// Sets rabbit.[[Prototype]] = animal
+rabbit.__proto__ = animal;
+console.log(rabbit.animalEats); // true
+console.log(rabbit.rabbitJumps); // true
 ```
 
 </p>
@@ -2749,4 +2746,574 @@ https://www.geeksforgeeks.org/event-delegation-in-javascript/
 
 ---
 
+### 76. Implement a chain calculator
 
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+```
+const calculator = {
+  total: 0,
+  add: function(val){
+    this.total += val;
+    return this;
+  },
+  subtract: function(val){
+    this.total -= val;
+    return this;
+  },
+  divide: function(val){
+    this.total /= val;
+    return this;
+  },
+  multiply: function(val){
+    this.total *= val;
+    return this;
+  }
+};
+
+calculator.add(10).subtract(2).divide(2).multiply(5);
+console.log(calculator.total); // 20
+```
+ 
+</p>
+</details>
+
+---
+
+### 77. Execute promises in sequence ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+In JavaScript, executing multiple promises sequentially refers to running asynchronous tasks in a specific order, ensuring each task is completed before the next begins. This is essential when tasks depend on the results of previous ones, ensuring correct flow and preventing unexpected behavior.
+```
+let promise1 = new Promise((resolve, reject) => {
+    // Resolves immediately with "Hello! "
+    resolve("Hello! ");
+});
+
+let promise2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        // Resolves after 1 second with "GeeksforGeeks"
+        resolve("GeeksforGeeks");
+    }, 1000);
+});
+
+// Chain the promises to execute sequentially
+promise1.then((result1) => {
+    // Logs result from promise1
+    console.log(result1);
+    // Returns promise2 to chain
+    return promise2;
+}).then((result2) => {
+    // Logs result from promise2
+    console.log(result2);
+});
+```
+
+The for…of loop with async-await in JavaScript allows you to execute promises sequentially. It iterates over an array of promises, awaiting each promise’s resolution before moving to the next, ensuring proper sequential execution of asynchronous tasks.
+```
+// Promise 1 that resolves immediately
+let promise1 = new Promise((resolve, reject) => {
+    resolve("Hello! ");
+});
+
+// Promise 2 that resolves after a 1-second delay
+let promise2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve("GeeksforGeeks");
+    }, 1000);
+});
+
+let promiseExecution = async () => {
+    // Iterates over an array of promises and awaits each one sequentially
+    for (let promise of [promise1, promise2]) {
+        try {
+            // Waits for each promise to resolve
+            const message = await promise;
+            console.log(message); 
+             // Logs the resolved value
+        } catch (error) {
+        // Catches and logs any errors
+            console.log(error.message);  
+        }
+    }
+};
+promiseExecution();
+```
+ 
+</p>
+</details>
+
+---
+
+### 78. Implement pipe and compose functions ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+The compose() function is used to combine multiple functions into a single function. It takes a series of functions as arguments and returns a new function that, when executed, runs the original functions from right to left. This means the output of the rightmost function is passed as the input to the next function, and so on.
+```
+const compose = (...fns) => (input) => fns.reduceRight((chain, func) => func(chain), input);
+const sum = (...args) => args.flat(1).reduce((x, y) => x + y);
+const square = (val) => val*val; 
+compose(square, sum)([3, 5]); // 64
+```
+Uses of Compose()
+------------------------
+When the sequence of transformations starts with the final result in mind.
+Common in middleware composition (e.g., Redux).
+Useful in functional programming to build complex operations from simple functions.
+
+The pipe() function is similar to compose(), but it combines functions from left to right. This means the output of the leftmost function is passed as the input to the next function, and so on. It’s essentially the same as compose(), but the order of function execution is reversed.
+```
+const pipe = (...fns) => (input) => fns.reduce((chain, func) => func(chain), input);
+const sum = (...args) => args.flat(1).reduce((x, y) => x + y);
+const square = (val) => val*val; 
+pipe(sum, square)([3, 5]); // 64
+```
+Uses of pipe()
+------------------------
+When the sequence of transformations starts from the initial input and flows to the final result.
+Common in data processing pipelines.
+Preferred in scenarios where readability and straightforward function chaining are important.
+
+To make it short, composition and piping are almost the same, the only difference being the execution order; If the functions are executed from left to right, it's a pipe, on the other hand, if the functions are executed from right to left it's called compose.
+ 
+</p>
+</details>
+
+---
+
+### 79. Create custom array polyfills
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+A polyfill is code that implements a feature on web browsers that do not support the feature.
+
+Polyfill of forEach() method.
+----------------------------------------------------------------------
+Array.prototype.myForEach = function(callback){
+    for(let i=0; i<this.length; i++){
+      callback(this[i],i,this)
+    }
+}
+
+Polyfill of map() method.
+----------------------------------------------------------------------
+Array.prototype.myMap = function(callback){
+    const arr = [];
+    for(let i=0; i<this.length; i++){
+       arr.push(callback(this[i],i,this));
+     }
+     return arr;
+}
+
+Polyfill of filter() method.
+----------------------------------------------------------------------
+Array.prototype.myFilter = function(callback){
+    const arr = [];
+    for(let i=0; i<this.length; i++){
+       if(callback(this[i],i,this)){
+            arr.push(this[i]);
+       }
+    }
+    return arr;
+}
+
+Polyfill of find() method.
+----------------------------------------------------------------------
+Array.prototype.myFind = function(callback){
+    for(let i=0; i<this.length; i++){
+      const res = callback(this[i],i,this);
+        if(res){
+          return this[i];
+        }
+     }
+     return undefined;
+}
+
+Polyfill of reduce() method
+----------------------------------------------------------------------
+Array.prototype.myReduce=function(){
+   const callback = arguments[0];
+   let currentVal = arguments[1];
+   for(let i=0; i<this.length; i++){
+     let result = callback(currentVal, this[i], i ,this); 
+        currentVal = result;
+   }
+   return currentVal;
+}
+var logicAlbums = [ ‘Bobby Tarantino’, ‘The Incredible True Story’, ‘Supermarket’, ‘Under Pressure’, ]
+var withReduce = logicAlbums.myReduc(function(a, b) { return a + ‘ , ‘ + b}, ‘Young Sinatra’)
+
+Polyfill of every() method
+----------------------------------------------------------------------
+Array.prototype.myEvery = function(callback){
+   for(let i=0; i<this.length; i++){
+     if(!callback(this[i],i,this)){
+       return false;
+     }
+   }
+   return true;
+}
+
+Polyfill of some() method
+----------------------------------------------------------------------
+Array.prototype.mySome = function(callback){
+   for(let i=0; i<this.length; i++){
+     if(callback(this[i],i,this)){
+       return true;
+     }
+   }
+   return false;
+}
+ 
+</p>
+</details>
+
+---
+
+### 80. Flatten a nested array
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+```
+const arr1 = [0, 1, 2, [3, 4]];
+
+console.log(arr1.flat());
+// expected output: Array [0, 1, 2, 3, 4]
+
+const arr2 = [0, 1, [2, [3, [4, 5]]]];
+
+console.log(arr2.flat());
+// expected output: Array [0, 1, 2, Array [3, Array [4, 5]]]
+
+console.log(arr2.flat(2));
+// expected output: Array [0, 1, 2, 3, Array [4, 5]]
+
+console.log(arr2.flat(Infinity));
+// expected output: Array [0, 1, 2, 3, 4, 5]
+```
+ 
+</p>
+</details>
+
+---
+
+### 81. Build an event emitter
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+```
+
+```
+ 
+</p>
+</details>
+
+---
+
+### 82. Create a debouncing function with leading and trailing calls
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Debouncing is a technique that is used in programming to reduce the function invocation.
+
+It runs with the assumption that rather than invoking the functions on every action, allows the user to complete their thought process and invoke the function only after a certain buffer between two actions.
+
+For example, if the user is typing something in the search box, rather than making a network request on every word that the user types, we should allow the user to finish typing and only when he stops for X amount of time, the function to make a network request should be invoked.
+
+It is one of the classic frontend interview questions, but because the classic debounce has been common, nowadays its variation is asked during interviews like debounce with immediate flag.
+
+This is another variation of debounce in which we have to use the trailing and leading options.
+
+If trailing is enabled, the debounce will invoke after the delay just like classic implementation. If leading is enabled, it will invoke at the beginning. If both are enabled then it will invoke twice at the beginning and after the delay.
+```
+const debounce = (fn, delay, option = { leading: true, trailing: true}) => {
+  let timeout;
+  let isLeadingInvoked = false;
+  
+  return function (...args) {
+    const context = this;
+    
+    //base condition
+    if(timeout){
+      clearTimeout(timeout);
+    }
+    
+    // handle leading
+    if(option.leading && !timeout){
+      fn.apply(context, args);
+      isLeadingInvoked = true;
+    }else{
+      isLeadingInvoked = false;
+    }
+    
+    // handle trailing
+    timeout = setTimeout(() => {
+      if(option.trailing && !isLeadingInvoked){
+        fn.apply(context, args);
+      }
+      
+      timeout = null;
+    }, delay);
+  }
+}
+```
+
+```
+const onChange = (e) => {
+  console.log(e.target.value);
+}
+const debouncedSearch = debounce(onChange, 1000);
+const input = document.getElementById("search");
+input.addEventListener('keyup', debouncedSearch);
+```
+ 
+</p>
+</details>
+
+---
+
+### 83. Implement MapLimit functionality
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+https://learnersbucket.com/examples/interview/implement-maplimit-async-function/#:~:text=Implement%20a%20mapLimit%20function%20that,can%20occur%20at%20a%20time.
+ 
+</p>
+</details>
+
+---
+
+### 84. Create a cancelable promise
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Promises once fired, cannot be cancelled. So cancelling the promises in our current context means to ignore the result of the promise.
+Example, an autocomplete text changes before results of previous state are received. If not cancelled, the result of previous request may appear after new results, overriding correct results.
+
+Whats the simple solution?
+-----------------------------------------
+Two promise, 1st that resolves —2nd that resolves 1st.
+
+The Solution
+-----------------------------------------
+```
+function cancellablePromise(executor) {
+    let isCancelled = false;
+    const promise = new Promise((resolve, reject) => {
+        new Promise(executor)
+            .then(value => !isCancelled && resolve(value))
+            .catch(error => !isCancelled && reject(error));
+    });
+    return {
+        then: promise.then.bind(promise),
+        catch: promise.then.bind(promise),
+        finally: promise.then.bind(promise),
+        cancel: () => isCancelled = true,
+    }
+}
+
+
+// Test
+const normalPromise = cancellablePromise(resolve => {
+    setTimeout(() => resolve('Normal Promise Complete'), 500);
+});
+
+const cancelledPromise = cancellablePromise(resolve => {
+    setTimeout(() => resolve('Canclled Promise Complete'), 500);
+});
+
+normalPromise.then(console.log);
+// After a sec: Promise Resolved
+
+cancelledPromise.cancel();
+cancelledPromise.then(console.log)
+// Will never resolve
+```
+https://medium.com/@daxgama/a-simple-cancellable-promise-using-two-promises-5d0af1f84e72
+Use case 
+----------------------------------------
+1. Example, an autocomplete text changes before results of previous state are received. If not cancelled, the result of previous request may appear after new results, overriding correct results.
+2. Promises once fired, cannot be cancelled. So cancelling the promises in our current context means to ignore the result of the promise. When an api call is fired inside a react component, any state update after the component is destroyed (inside the then block of the promise), will cause error.
+ 
+</p>
+</details>
+
+---
+
+### 85. Implement currying
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Currying is a functional programming technique where a function with multiple arguments is transformed into a series of functions, each taking a single argument.
+In other words, instead of a function taking all arguments at one time, it takes the first one and returns a new function, which takes the second one and returns a new function, which takes the third one, and so on, until all arguments have been fulfilled.
+
+Normal Function
+-----------------------------------
+function sum(a, b, c) {
+    return a + b + c;
+}
+sum(1,2,3); // 6
+
+Function Currying
+-----------------------------------
+```
+function sum(a) {
+    return function(b) {
+        return function(c) {
+            return a + b + c;
+        }
+    }
+}
+sum(1,2,3); // 6
+
+function sum(a) {
+    return (b) => {
+        return (c) => {
+            return a + b + c;
+        }
+    }
+}
+sum(1,2,3); // 6
+```
+Why is Currying useful in JavaScript?
+----------------------------------------------------
+Currying offers several advantages, especially when working with functional programming patterns:
+
+It helps us to create a higher-order function
+It reduces the chances of error in our function by dividing it into multiple smaller functions that can handle one responsibility.
+It is very useful in building modular and reusable code
+It helps us to avoid passing the same variable multiple times
+It makes the code more readable
+
+This example explains the currying technique with the help of closures. During the thread of execution, the sum() function will be invoked. Inside there is an anonymous function, that receives a parameter and returns some code. We are exposing our function to another function, so closure will be created. Closure always contains the function definition along with the lexical environment of the parent, both things remain connected as a bundle. Hence, it does not matter where we invoke them, the all inner functions will always hold access to the variable of their parent.
+
+</p>
+</details>
+
+---
+
+### 86. Execute tasks in parallel ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+When you have multiple time-consuming tasks/functions to execute, there are two main solutions to optimize the execution time and speed up your app:
+
+Run everything at once with Promise.all()
+----------------------------------------------------------
+If your functions are promise-based, they can easily be executed concurrently using Promise.all()
+```
+const axios = require('axios').default
+const fetchPosts = () => axios.get('/api/to/posts')
+const fetchUsers = () => axios.get('/api/to/users')
+const fetchDocs = () => axios.get('/api/to/docs')
+Promise.all([
+  fetchPosts(),
+  fetchUsers(),
+  fetchDocs(),
+]).then(([postsRes, usersRes, docsRes]) => {
+  // do something
+}).catch((err) => console.log(err))
+```
+
+Run a fixed batch concurrently
+---------------------------------------------
+If your functions require significant resources to execute, running them all at once with Promise.all() may cause your application to crash. A solution to this is to create a TaskQueue that can execute a fixed number of tasks concurrently.
+```
+class ConcurrentTaskQueue {
+  constructor(taskPromisesFunc = [], batchSize = 1) {
+    this.batchSize = batchSize > taskPromisesFunc.length ? taskPromisesFunc.length : batchSize
+    this.todoTasks = taskPromisesFunc
+    this.resolvedValues = []
+  }
+
+  run(resolve, reject) {
+    if (this.todoTasks.length > 0) {
+      const taskPromises = this.todoTasks.splice(0, this.batchSize);
+      Promise.all(taskPromises.map((p) => p()))
+        .then((resolvedValues) => {
+          this.resolvedValues = [...this.resolvedValues, ...resolvedValues]
+          this.run(resolve, reject)
+        })
+        .catch((err) => reject(err))
+    } else {
+      resolve(this.resolvedValues)
+    }
+  }
+
+  runTasks() {
+    return new Promise((resolve, reject) => {
+      this.run(resolve, reject)
+    })
+  }
+}
+
+// some arbitrary function that consumes resources
+const costlyFunction = (arg) => new Promise((resolve) => {
+  // do something costly here
+  resolve(arg);
+})
+
+const batchSize = 2;
+const taskQueue = new ConcurrentTaskQueue([
+  // wrap all functions to prevent direct execution
+  () => costlyFunction(10),
+  () => costlyFunction(20),
+  () => costlyFunction(100),
+  () => costlyFunction(50),
+], batchSize);
+taskQueue.runTasks()
+  .then(([res1, res2, res3, res4]) => {
+    console.log(res1, res2, res3, res4);
+  });
+```
+ 
+</p>
+</details>
+
+---
+
+### 87. Find the matching element in the DOM ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+The easiest way to access a single element in the DOM is by its unique ID. You can get an element by ID with the getElementById() method of the document object.
+
+JavaScript offers several methods to find and manipulate elements in the DOM. Here are some of the most common methods:
+-----------------------------------------------------------
+getElementById()
+getElementsByName()
+getElementsByClass()
+getElementsByTagName()
+querySelector()
+querySelectorAll()
+ 
+</p>
+</details>
+
+---
