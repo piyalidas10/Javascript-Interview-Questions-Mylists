@@ -517,7 +517,17 @@ console.log(rabbit.rabbitJumps); // true
 #### 
 ```
 arr = [1, 2,3,4,5,6,2,3,4];
-let arr1 = [...new Set(arr)];  ///////  [1, 2, 3, 4, 5, 6]
+finalArr = [...new Set(arr)];  ///////  [1, 2, 3, 4, 5, 6]
+
+arr = [1, 2, 3, 3, 4, 5, 6];
+const finalArr1 = arr.reduce((acc, curElm) => {
+    return acc.includes(curElm)? acc : [...acc, curElm]
+},[]);
+console.log(finalArr1); // [1, 2, 3, 4, 5, 6]
+const finalArr2 = arr.reduce((acc, curElm) => {
+    return acc.includes(curElm)? acc : acc.concat(curElm)
+},[]);
+console.log(finalArr2); // [1, 2, 3, 4, 5, 6]
 ```
 
 </p>
@@ -1347,7 +1357,12 @@ Console.log(`Hello,welcome to ${website.name} !"message goes here"` ) ;
 <p>
 
 #### 
-
+```
+arr1 = [1, 2 , 3];
+arr2 = [4, 5, 6];
+arr1 = arr1.concat(arr2);
+arr1 = [...arr1,...arr2];
+```
 </p>
 </details>
 
@@ -3350,6 +3365,245 @@ const users = [
 #### 
 ```
 const names = users.sort((user1, user2) => (user1.age < user2.age ? 1 : -1)).filer((user) => user.isActive).map((user) => user.name);
+```
+ 
+</p>
+</details>
+
+---
+
+### 89. Write a function which helps to achieve multiply(a)(b) and returns product of a and b
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+```
+const sum = (a) => {
+	return (b) => {
+      	return a + b;
+    }
+}
+
+sum(1)(2); // 3
+```
+ 
+</p>
+</details>
+
+---
+
+### 90. Create a curry function manually
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+```
+const curry = function(fn) {
+	const len = fn.length;
+    console.log(len);
+    return function f1(...args) {
+    	if (args.length >= len) {
+        	console.log('enough arguments', args);
+        	return fn(...args); // // Run the function when we have enough arguments
+        } else {
+        	console.log('not enough arguments');
+            return function f2(...moreArgs) {
+            	console.log(moreArgs);
+            	const newArr = args.concat(moreArgs);
+                return f1(...newArr);
+            }
+        }
+    }
+}
+let sum = curry((a, b, c) => (a * b * c));
+sum(2)(3, 4); // 24
+
+-----------------------------------------------------------------------
+
+const curry = (fn) => {
+  const arity = fn.length;
+  // Accept more than one argument at a time!
+  const accumulator = (previousArgs) => (...args) => {
+    const newArgs = [...previousArgs, ...args];
+    console.log('previousArgs => ', previousArgs);
+    console.log('args => ', args);
+    if (newArgs.length < arity) return accumulator(newArgs);
+    // Run the function when we have enough arguments
+    return fn(...newArgs);
+  };
+  // Start with no arguments passed.
+  return accumulator([]);
+};
+
+
+let sum = curry((a, b, c) => (a * b * c));
+sum(2)(3, 4); // 24
+```
+ 
+</p>
+</details>
+
+---
+
+### 91. Merge two arrays
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+```
+const array1 = [1, 2, 3];
+const array2 = [4, 5, 6];
+const finalArr = array1.concat(array2); // [1, 2, 3, 4, 5, 6]
+
+const array1 = [1, 2, 3];
+const array2 = [4, 5, 6];
+const finalArr = [...array1, ...array2]; // [1, 2, 3, 4, 5, 6]
+```
+ 
+</p>
+</details>
+
+---
+
+### 92. Writet he code to Check that user with such name exists in array of objects
+const users = [
+  {
+    id: 1,
+    name: "Jack",
+    isActive: true,
+  },
+  {
+    id: 2,
+    name: "John",
+    isActive: true,
+  },
+  {
+    id: 3,
+    name: "Mike",
+    isActive: false,
+  },
+];
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+```
+const isExists = (name, users) => users.some(user => user.name === name);
+isExists("John", users); // true
+isExists("Test", users); // false
+```
+ 
+</p>
+</details>
+
+---
+
+### 93. Sort the array of numbers
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+```
+const arr = [3, 5, 1];
+const result = arr.sort((a, b) => a - b); // [1, 3, 5]
+```
+ 
+</p>
+</details>
+
+---
+
+### 94. Sort array of objects by author's lastname
+const books = [
+  { name: "Harry Potter", author: "Joanne Rowling" },
+  { name: "Warcross", author: "Marie Lu" },
+  { name: "The Hunger Games", author: "Suzanne Collins" },
+];
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+```
+const finalArr = books.sort((book1, book2) => book1.author.split(" ")[1] < book2.author.split(" ")[1] ? -1 : 1);
+console.log(finalArr);
+-------------------
+[
+    {
+        "name": "The Hunger Games",
+        "author": "Suzanne Collins"
+    },
+    {
+        "name": "Warcross",
+        "author": "Marie Lu"
+    },
+    {
+        "name": "Harry Potter",
+        "author": "Joanne Rowling"
+    }
+]
+
+```
+ 
+</p>
+</details>
+
+---
+
+### 95. How to create an array containing 1...N
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+```
+Array.from(Array(10).keys())
+//=> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+Shorter version using spread operator.
+
+[...Array(10).keys()]
+//=> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+Start from 1 by passing map function to Array from(), with an object with a length property:
+
+Array.from({length: 10}, (_, i) => i + 1)
+//=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+```
+ 
+</p>
+</details>
+
+---
+
+### 96. Print a range of an array like 10...20
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+```
+const range = (start, end) => {
+    return [...Array(end - start + 1).keys()].map(elm => elm + start);
+}
+range(10, 20); //  [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+```
+ 
+</p>
+</details>
+
+---
+
+### 96. Find the number of occurences of minimum value in the list
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+```
+const arr = [1, 2, 2, 3, 4];
+const minNumOccurance = arr.filter(elm => elm === Math.min(...arr)).length; // 2
 ```
  
 </p>
