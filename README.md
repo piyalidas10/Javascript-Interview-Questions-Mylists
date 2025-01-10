@@ -3595,7 +3595,7 @@ range(10, 20); //  [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
 ---
 
-### 96. Find the number of occurences of minimum value in the list
+### 97. Find the number of occurences of minimum value in the list
 
 <details><summary><b>Answer</b></summary>
 <p>
@@ -3604,6 +3604,65 @@ range(10, 20); //  [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 ```
 const arr = [1, 2, 2, 3, 4];
 const minNumOccurance = arr.filter(elm => elm === Math.min(...arr)).length; // 2
+```
+ 
+</p>
+</details>
+
+---
+
+### 98. What will be the output of bellow codes
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+```
+const print = {
+    name: 'test',
+    display: function() {
+        console.log(this);
+    }
+}
+print.display(); // {name: 'test', display: ƒ}
+-------------------------------------------------------------------------------------------------------
+function display() {
+    console.log(this);
+}
+display(); // Window {window: Window, self: Window, document: document, name: '', location: Location, …}
+-------------------------------------------------------------------------------------------------------
+class Item {
+  name ='Test';
+  display() {
+  	console.log('this =>', this);
+  }
+}
+const item = new Item();
+item.display(); // this => Item {name: 'Test'}
+-------------------------------------------------------------------------------------------------------
+class Item {
+  name ='Test';
+  display() {
+    function someFunc() {
+  	console.log('this =>', this);
+    }
+    someFunc();
+  }
+}
+const item = new Item();
+item.display(); // this => undefined
+-------------------------------------------------------------------------------------------------------
+class Item {
+  name ='Test';
+  display() {
+  	[1, 2, 3].map((item) => {
+  		console.log('this =>', this);
+    })
+  }
+}
+const item = new Item();
+item.display(); // this => Item {name: 'Test'}
+-------------------------------------------------------------------------------------------------------
 ```
  
 </p>
