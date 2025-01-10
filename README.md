@@ -49,6 +49,8 @@ In the above example, there is a variable named addNew, and it is declared outsi
 
   #### 
   https://medium.com/@piyalidas.it/closure-in-javascript-2496fdedeb7d
+  https://dev.to/imranabdulmalik/mastering-closures-in-javascript-a-comprehensive-guide-4ja8#:~:text=The%20Factory%20Function%20Pattern%20uses,without%20explicitly%20class%2Dbased%20syntax.
+  
   Closure provides access to the outer scope of a function from inside the inner function, even after the outer function has closed. The main advantage of javascript closure is Data Privacy.
 
   ```
@@ -3665,6 +3667,265 @@ item.display(); // this => Item {name: 'Test'}
 -------------------------------------------------------------------------------------------------------
 ```
  
+</p>
+</details>
+
+---
+
+### 99. What is Factory Functions ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+a factory function is simply a function that creates objects and returns them.  In JavaScript, any function can return an object. When it does so without the new keyword, it’s a factory function. Factory functions have always been attractive in JavaScript because they offer the ability to easily produce object instances without diving into the complexities of classes and the new keyword.
+The Factory Function Pattern uses closures to encapsulate and return object instances with methods and properties, allowing for the creation of similar objects without explicitly class-based syntax.
+```
+function friendFactory(friendName) {
+   return {
+       friendName: friendName,
+       talk() {
+           console.log(`Hello I am ${friendName}.`)
+       }
+   }
+};
+
+let friendOne = friendFactory('Billy');
+let friendTwo = friendFactory('Mary');
+
+friendOne.talk()
+friendTwo.talk()
+
+//Output
+Hello I am Billy
+Hello I am Mary
+```
+https://heyjoshlee.medium.com/factory-functions-in-javascript-the-how-and-why-d8988bda654a
+ 
+</p>
+</details>
+
+---
+
+### 100. Practical examples of Closure
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+1. Data Privacy - Closures enable the creation of private variables and functions within a function’s scope. Developers can create modules and libraries with hidden implementation details by encapsulating data within closures. This prevents external code from accessing or modifying internal state directly and promotes information hiding thus enhancing data protection.
+```
+function createCounter() {
+    let count = 0; // This variable is private to the createCounter function
+
+    return {
+        increment: function() {
+            count++;
+        },
+        decrement: function() {
+            count--;
+        },
+        getCount: function() {
+            return count;
+        }
+    };
+}
+
+const counter = createCounter();
+
+console.log(counter.getCount()); // Output: 0
+counter.increment();
+counter.increment();
+console.log(counter.getCount()); // Output: 2
+counter.decrement();
+console.log(counter.getCount()); // Output: 1
+```
+-------------------------------------------------------------------------------------------------------
+2. Factory functions
+```
+const ArrayAnalyzer = (function() {
+  function average(array) {
+    const sum = array.reduce((acc, num) => acc + num, 0);
+    return sum / array.length;
+  }
+
+  function maximum(array) {
+    return Math.max(...array);
+  }
+
+  return {
+    average: average,
+    maximum: maximum
+  };
+}());
+ArrayAnalyzer.average([1, 2, 3, 4]); // 2.5
+ArrayAnalyzer.maximum([1, 2, 3, 4]); // 4
+```
+-------------------------------------------------------------------------------------------------------
+3. Memoization functions
+```
+// Define memoize Function
+function memoize(fn) {
+    const cache = {}; // Private cache object
+    return function(...args) {
+        const key = JSON.stringify(args); // Create a key from arguments
+        if (cache[key]) {
+            return cache[key]; // Return cached result
+        }
+        const result = fn(...args);
+        cache[key] = result; // Store result in cache
+        return result;
+    };
+}
+
+// Example usage:
+const fibonacci = memoize(function(n) {
+    if (n <= 1) return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+});
+
+console.log(fibonacci(10)); // 55
+```
+-------------------------------------------------------------------------------------------------------
+4. Event Handling - Closures are commonly used in event handling to encapsulate data and behavior associated with an event listener. Closures are powerful tools for managing event handling in JavaScript. They allow you to attach functions to events while maintaining access to the surrounding scope, which is particularly useful for data encapsulation and avoiding global variables.
+```
+<button id="myButton">Click</button>
+
+<script>
+function handleCounter() {
+    let count = 0;
+    const button = document.getElementById('myButton');
+    
+    button.addEventListener('click', function() {
+        count++;
+       alert('Button clicked ' + count + ' times');
+    });
+}
+handleCounter();
+</script>
+```
+In this example, the event handler function (defined inside addEventListener) has access to the count variable from its outer lexical scope (handleCounter function). Each time the button is clicked the count variable is incremented and logged to the console even after the handleCounter function has finished executing.
+
+-------------------------------------------------------------------------------------------------------
+5. Currying - Currying is a technique where a function with multiple arguments is transformed into a sequence of functions, each taking a single argument. Closures are often used to implement currying in JavaScript.
+```
+function curry(fn) {
+    console.log('fn => ', fn);
+    	return function curried(...args) {
+        	console.log('args => ', args);
+        	if (args.length >= fn.length) {
+            	console.log("IF");
+            	return fn(...args);
+            } else {
+            	console.log("ELSE");
+            	return function(...moreArgs) {
+                	console.log('moreArgs => ', moreArgs);
+                	return curried(...args, ...moreArgs);
+                }
+            }
+        }
+    }
+    const add = curry((a, b, c) => a + b + c);
+    console.log(add(1)(2)(3));
+
+The output :
+fn =>  (a, b, c) => a + b + c
+args =>  [1]
+moreArgs =>  [2]
+args =>  (2) [1, 2]
+moreArgs =>  [3]
+args =>  (3) [1, 2, 3]
+6
+```
+
+</p>
+</details>
+
+---
+
+### 101. Performance optiimization : how you will achieve ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+1. Avoid Unnecessary Variable declaration: Ensure that do not unnecessarily delcare variables that are not used or needed.
+2. Utilise Weak References : Consider using WeakMap or WeakSet to store references to objects, as these data structures do not prevent their objects from being garbage collected.
+3. Memoization is an optimization technique that can significantly speed up function execution by caching their results.
+4. Null, Undefined, Empty Checks
+5. Shorthand code wiriting
+ 
+</p>
+</details>
+
+---
+
+### 102. What is Memoization ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Memoization is the process of storing the results of function execution so that the next time the function is called with the same arguments, the stored result can be returned immediately. Memoization prevents redundant calculations and improves performance, especially in cases where a function is called repeatedly with the same arguments.
+When dealing with functions that involve complex and resource-intensive calculations (e.g., recursive functions for calculating Fibonacci numbers or factorials), optimization can be essential.
+In practice, memoization can be beneficial when developing complex applications involving heavy calculations, such as in data analysis, machine learning, etc.
+
+<strong>Implementing a Memoized Function using normal object</strong>
+------------------------------------------------------------------------------------------------
+To implement memoization, we’ll create a memoize function wrapper that caches the results of a target function:
+```
+function square(num) {
+    console.log('Calculating square of', num);
+    return num * num;
+}
+function memoize(fn) {
+    const cache = {}; // Object to store cached results
+
+    return function(...args) {
+        const key = JSON.stringify(args); // Create a key based on arguments
+
+        if (cache[key]) {
+            return cache[key]; // Return the cached result if available
+        }
+
+        const result = fn(...args); // Call the original function
+        cache[key] = result; // Store the result in cache
+        return result;
+    };
+}
+
+const memoizedSquare = memoize(square);
+
+console.log(memoizedSquare(4)); // Calculating square of 4 -> 16
+console.log(memoizedSquare(4)); // 16 (no recalculation)
+```
+Now, the memoizedSquare function caches results for each unique set of arguments and retrieves them from the cache on subsequent calls.
+
+<strong>Implementing a Memoized Function using Map</strong>
+------------------------------------------------------------------------------------------------
+```
+function fibonacci(n) {
+    if (n <= 1) return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+function memoize(fn) {
+    const cache = new Map();
+
+    return function(...args) {
+        const key = JSON.stringify(args);
+        if (cache.has(key)) {
+            return cache.get(key);
+        }
+        const result = fn(...args);
+        cache.set(key, result);
+        return result;
+    };
+}
+const memoizedFibbo = memoize(fibonacci);
+memoizedFibbo(9); // 34
+```
+https://dev.to/hmpljs/memoization-in-javascript-optimizing-computations-and-improving-performance-5129
+
 </p>
 </details>
 
