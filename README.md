@@ -3930,3 +3930,264 @@ https://dev.to/hmpljs/memoization-in-javascript-optimizing-computations-and-impr
 </details>
 
 ---
+
+### 103. What is a callback function in JavaScript ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+ A callback function is a function passed as an argument to another function, which is invoked within the latter function, usually for asynchronous tasks or to customize behavior.
+ 
+Callback allows us to make some asynchronous task & wait for the result. actually here we're just providing the function from outside and it will be called later and not immediately. This is the main purpose of the callback.
+
+And secondly, it's important to remember that inside our asynchronous function of we don't know what this callback. This is why we can build shareable things. This callback can do whatever in different cases.
+
+For example, on the one page, we want to fetch data and maybe render this data, and on another page, we want to fetch this data and calculate the total number of posts or something like this, which actually means callback is a generic function.
+
+This is why we can easily share our asynchronous function without specific implementation of our callback.
+```
+const asyncFn = (callback) => {
+  console.log('callback => ', callback);
+  setTimeout(() => {
+    callback('msg');
+  }, 1000);
+};
+
+export function start(element) {
+  asyncFn((message) => {
+    element.innerHTML = `callback ${message}`;
+  });
+}
+```
+ 
+</p>
+</details>
+
+---
+
+### 104. How do callbacks work in JavaScript ?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+A callback is a function passed as an argument to another function, and a callback function can run after another function has finished. JavaScript functions execute in the sequence they get called, not in the defined sequence.
+ 
+</p>
+</details>
+
+---
+
+### 105. Write callback function to execute async functions in parallel?
+Implement a function in JavaScript that takes a list of async functions as input and a callback function and executes the async tasks in parallel that is all at once and invokes the callback after every task is executed.
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+const asyncFn1 = (callback) => {
+  setTimeout(() => {
+    callback(1);
+  }, 1000);
+};
+
+const asyncFn2 = (callback) => {
+  setTimeout(() => {
+    callback(2);
+  }, 2000);
+};
+
+const asyncFn3 = (callback) => {
+  setTimeout(() => {
+    callback(3);
+  }, 3000);
+};
+
+const asyncParallel = (asyncFuncs, callback) => {
+  const arr = [];
+  asyncFuncs.forEach((asyncFn, index) => {
+    asyncFn((value) => {
+      arr.push(value);
+      console.log(index + ': arr ', arr);
+      if (asyncFuncs.length === index + 1) {
+        callback(arr.join(','));
+      }
+    });
+  });
+};
+
+export function start(element) {
+  asyncParallel([asyncFn1, asyncFn2, asyncFn3], (result) => {
+    element.innerHTML = `callback ${result}`;
+  });
+} 
+</p>
+</details>
+
+---
+
+### 106. What are some common use cases for callbacks?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Common use cases for callbacks include handling asynchronous operations (like reading files or making HTTP requests), handling events (like click or key press events), and for higher-order functions (like Array's map, filter, reduce).
+
+When you need to take action after an asynchronous process has finished, callbacks can be helpful. As an illustration, you could utilize a callback function to:
+
+1. Update the UI after a network request has completed.
+2. Process data after a file has been read.
+3. Make another API call after the results of the first API call have been received.
+
+Fetching data from a server
+-----------------------------------------------------------------------------------------------------
+In this case, we use a callback function to handle the data once it has been received.
+```
+function fetchData(url, callback) {
+  fetch(url)
+    .then(response => response.json())
+    .then(data => callback(data))
+    .catch(error => console.log(error));
+}
+
+fetchData('https://jsonplaceholder.typicode.com/todos/1', function(data) {
+  console.log(data);
+});
+```
+In this example, we define a function fetchData that takes a URL and a callback function as arguments. The function uses the fetch function to make a network request to the specified URL. Once the data is received, it is converted to JSON and the callback function is called with the data as an argument.
+
+Finally, we call the fetchData function and pass in a callback function that logs the data to the console. When the data is received from the server, the callback function is called with the data, and the data is logged to the console.
+
+addEventListener()
+----------------------------------------------------------------------------
+This function takes two arguments: an event name and a callback function. The callback function is executed when the event occurs.
+
+In this example, querySelector('button') selects the first “<button>” element in the document. The subsequent addEventListener function adds an event listener for the "click" event on this button.
+
+When the button is clicked, the provided callback function will be executed, logging "Button clicked!" to the console along with the event object.
+```
+<ul class="list">
+    <li class="item">One</li>
+    <li class="item">Two</li>
+    <li class="item">Three</li>
+    <li class="item">Four</li>
+</ul>
+const list = document.querySelector('.list');
+list.addEventListener('click', (e) => {
+    if (e.target && e.target.classList.contains('item')) {
+      console.log(`${e.target.innerText} is clicked`);
+    }
+});
+```
+
+Promise.then()
+--------------------------------------------------------------
+This method takes a callback function as an argument and executes the callback function when the promise is resolved.
+
+In this example, we create a Promise (myPromise) that simulates an asynchronous operation using setTimeout.  Inside the Promise, after a one-second delay, we resolve the Promise with the message 'The promise was resolved!'. We then chain a then() method onto myPromise. The first argument of then() is a function that will be executed if the Promise is resolved.
+```
+const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      // Other things to do before completion of the promise
+      console.log("Did something");
+      // The fulfillment value of the promise
+      resolve("https://example.com/");
+    }, 1000);
+});
+promise.then((result) => {
+    console.log(result);
+})
+```
+
+</p>
+</details>
+
+---
+
+### 107. What is callback hell, and how can it be avoided?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Callback hell refers to deeply nested, difficult-to-read callback functions. It can be avoided by modularizing code, using Promises, or async/await syntax for better code readability and maintainability.
+Callback hell, often referred to as “Pyramid of Doom,” occurs in Node.js when multiple nested callbacks lead to code that is hard to read, maintain, and debug. This situation arises when each asynchronous operation depends on the completion of the previous one, resulting in deeply nested callback functions. Fortunately, modern JavaScript and Node.js provide several techniques to mitigate this problem and write cleaner, more maintainable code.
+
+```
+// The callback function for function
+// is executed after two seconds with
+// the result of addition
+const add = function (a, b, callback) {
+  setTimeout(() => {
+    callback(a + b);
+  }, 2000);
+};
+
+// Using nested callbacks to calculate
+// the sum of first four natural numbers.
+add(1, 2, (sum1) => {
+  add(3, sum1, (sum2) => {
+    add(4, sum2, (sum3) => {
+      console.log(`Sum of first 4 natural 
+      numbers using callback is ${sum3}`);
+    });
+  });
+});
+
+// This function returns a promise
+// that will later be consumed to get
+// the result of addition
+const addPromise = function (a, b) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(a + b);
+    }, 2000);
+  });
+};
+
+// Consuming promises with the chaining of then()
+// method and calculating the result
+addPromise(1, 2)
+  .then((sum1) => {
+    return addPromise(3, sum1);
+  })
+  .then((sum2) => {
+    return addPromise(4, sum2);
+  })
+  .then((sum3) => {
+    console.log(
+      `Sum of first 4 natural numbers using 
+       promise and then() is ${sum3}`
+    );
+  });
+
+// Calculation the result of addition by
+// consuming the promise using async/await
+(async () => {
+  const sum1 = await addPromise(1, 2);
+  const sum2 = await addPromise(3, sum1);
+  const sum3 = await addPromise(4, sum2);
+
+  console.log(
+    `Sum of first 4 natural numbers using 
+     promise and async/await is ${sum3}`
+  );
+})();
+```
+
+setTimeout()
+-----------------------------------------------------
+setTimeout() takes a callback function as an argument and executes the callback function after a specified amount of time.
+It takes two arguments: the first is the callback function to be executed, and the second is the time delay in milliseconds before the callback is invoked.
+In the given example, if you have a setTimeout() set to 1000 milliseconds (or 1 second), it means that the provided callback function will be executed after 1 second.
+```
+setTimeout(() => {
+  console.log('logged after 1 sec');
+}, 1000);
+```
+
+</p>
+</details>
+
+---
