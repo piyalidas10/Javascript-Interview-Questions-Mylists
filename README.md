@@ -4298,3 +4298,58 @@ console.log(deepCompare([[1][2]], [[1][2]])); // true
 </details>
 
 ---
+
+### 110. Write async functions in parallel using Callback
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Callback allows us to make some asynchronous task & wait for the result. actually here we're just providing the function from outside and it will be called later and not immediately. This is the main purpose of the callback.
+
+And secondly, it's important to remember that inside our asynchronous function of we don't know what this callback. This is why we can build shareable things. This callback can do whatever in different cases.
+
+For example, on the one page, we want to fetch data and maybe render this data, and on another page, we want to fetch this data and calculate the total number of posts or something like this, which actually means callback is a generic function.
+
+This is why we can easily share our asynchronous function without specific implementation of our callback.
+```
+const asyncFn1 = (callback) => {
+  setTimeout(() => {
+    callback(1);
+  }, 1000);
+};
+
+const asyncFn2 = (callback) => {
+  setTimeout(() => {
+    callback(2);
+  }, 2000);
+};
+
+const asyncFn3 = (callback) => {
+  setTimeout(() => {
+    callback(3);
+  }, 3000);
+};
+
+const asyncParallel = (asyncFuncs, callback) => {
+  const arr = [];
+  asyncFuncs.forEach((asyncFn, index) => {
+    asyncFn((value) => {
+      arr.push(value);
+      console.log(index + ': arr ', arr);
+      if (asyncFuncs.length === index + 1) {
+        callback(arr.join(','));
+      }
+    });
+  });
+};
+
+asyncParallel([asyncFn1, asyncFn2, asyncFn3], (result) => {
+    element.innerHTML = `callback ${result}`;
+  });
+```
+ 
+</p>
+</details>
+
+---
