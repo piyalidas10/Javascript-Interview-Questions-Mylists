@@ -4191,3 +4191,110 @@ setTimeout(() => {
 </details>
 
 ---
+
+### 108. Write a function to convert a string to title case
+1. titleCase(“I’m a little tea pot”) should return a string.
+2. titleCase(“I’m a little tea pot”) should return “I’m A Little Tea Pot”.
+3. titleCase(“sHoRt AnD sToUt”) should return “Short And Stout”.
+4. titleCase(“HERE IS MY HANDLE HERE IS MY SPOUT”) should return “Here Is My Handle Here Is My Spout”.
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+```
+const titleCase = (str) => {
+  if (typeof str !== 'string') {
+    return false;
+  }
+  return str
+    .toLowerCase()
+    .split(' ')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
+
+titleCase('I’m a little tea pot')
+```
+ 
+</p>
+</details>
+
+---
+
+### 109. Write Shallow vs Deep comparison function for Mutable Data Types
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+As we know, comparison of Mutable data (arrays, objects, and date) is not possible with equality operator. We have to compare arrays and objects by values and not like reference to the object and the memory.
+
+Shallow comparison function
+-------------------------------------------------------
+```
+const shallowCompare = (source, target) => {
+  if (typeof source !== typeof target) {
+    return false;
+  }
+
+  if (typeof source === 'array') {
+    if (source.length !== target.length) {
+      return false;
+    }
+    return source.every((el, index) => el === target[index]);
+  }
+
+  if (typeof source === 'object') {
+    if (Object.keys(source).length !== Object.keys(target).length) {
+      return false;
+    }
+    return Object.keys(source).every((key) => source[key] === target[key]);
+  }
+
+  if (typeof source === 'date') {
+    return source.getTime() === target.getTime();
+  }
+  return source === target;
+};
+
+console.log(shallowCompare([1], [1])); // true
+console.log(shallowCompare({ a: 1 }, { a: 1 })); // true
+```
+
+Deep comparison function
+-------------------------------------------------------
+```
+const deepCompare = (source, target) => {
+  if (typeof source !== typeof target) {
+    return false;
+  }
+
+  if (typeof source === 'array') {
+    if (source.length !== target.length) {
+      return false;
+    }
+    return source.every((el, index) => deepCompare(el, target[index]));
+  }
+
+  if (typeof source === 'object') {
+    if (Object.keys(source).length !== Object.keys(target).length) {
+      return false;
+    }
+    return Object.keys(source).every((key) =>
+      deepCompare(source[key], target[key])
+    );
+  }
+
+  if (typeof source === 'date') {
+    return source.getTime() === target.getTime();
+  }
+  return source === target;
+};
+
+console.log(deepCompare([[1][2]], [[1][2]])); // true
+```
+ 
+</p>
+</details>
+
+---
