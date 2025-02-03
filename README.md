@@ -4353,3 +4353,123 @@ asyncParallel([asyncFn1, asyncFn2, asyncFn3], (result) => {
 </details>
 
 ---
+
+### 110. Is Fetch API better than Axios?
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+Ref Link : https://medium.com/@johnnyJK/axios-vs-fetch-api-selecting-the-right-tool-for-http-requests-ecb14e39e285#:~:text=Axios%20will%20automatically%20transforms%20the,be%20stored%20in%20any%20variable.
+
+AXIOS
+--------------------------------------------------------------------------------------------------
+Axios is a third-party HTTP client library for making network requests. It is promise-based and provides a clean and consistent API for handling requests and responses.
+Axios simplifies HTTP requests with a chainable API which allows for straightforward configuration of request parameters, such as headers, data, and request method.
+
+Here’s how to use Axios to send a [POST] request with custom headers to a URL. Axios automatically converts the data to JSON, so you don’t have to.
+```
+const axios = require('axios');
+
+const url = 'https://jsonplaceholder.typicode.com/posts';
+const data = {
+  title: 'Hello World',
+  body: 'This is a test post.',
+  userId: 1,
+};
+
+axios
+  .post(url, data, {
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json;charset=UTF-8',
+    },
+  })
+  .then(({ data }) => {
+    console.log("POST request successful. Response:", data);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+```
+
+FETCH
+--------------------------------------------------------------------------------------------------
+Fetch, like Axios, is a promise-based HTTP client. It is a built-in API; hence we don’t have to install or import anything. It’s available in all modern browsers
+```
+const url = "https://jsonplaceholder.typicode.com/todos";
+
+const options = {
+  method: "POST",
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json;charset=UTF-8",
+  },
+  body: JSON.stringify({
+    title: "Hello World",
+    body: "This is a test post.",
+    userId: 1,
+  }),
+};
+
+fetch(url, options)
+  .then((response) => response.json())
+  .then((data) => {
+    console.log("POST request successful. Response:", data);
+  });
+```
+
+Fetch uses the body property for sending data in a POST request, whereas Axios utilizes the data property. Axios will automatically transforms the server’s response data, while with Fetch, you need to call the response.json method to parse the data into a JavaScript object. Furthermore, Axios delivers the data response within the data object, whereas Fetch allows the final data to be stored in any variable.
+
+Handling Response and Errors
+--------------------------------------------------------------------------------------------------
+Fetch offers precise control over the loading process but introduces complexity by requiring the handling of two promises. Additionally, when dealing with responses, Fetch requires parsing JSON data using the .json() method. The final data retrieved can then be stored in any variable.
+
+For HTTP response errors, Fetch does not automatically throw an error. Instead, it considers the response as successful even if the server returns an error status code (e.g., 404 Not found).
+
+To handle HTTP errors explicitly in Fetch, developers have to use conditional statements within the .then() block to check the response.ok property. If response.ok is false, it indicates that the server responded with an error status code, and developers can handle the error accordingly.
+
+Here is a [GET] request using fetch:
+```
+fetch('https://jsonplaceholder.typicode.com/todos')
+  .then(response => {
+    if (!response.ok) {
+      throw Error(`HTTP error: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Data received:', data);
+  })
+  .catch(error => {
+    console.error('Error message:', error.message);
+  });
+```
+
+Axios, on the other hand, simplifies response handling by directly providing access to the data property. It automatically rejects responses outside of the 200–299 range (successful responses). By utilizing a .catch() block, information about the error can be obtained, including whether a response was received and, if so, its status code. This contrasts with fetch, where unsuccessful responses are still resolved.
+
+Here is a [GET] request using Axios:
+```
+const axios = require("axios");
+
+axios
+  .get("https://jsonplaceholder.typicode.com/todos")
+  .then((response) => {
+    console.log("Data received:", response.data);
+  })
+  .catch((error) => {
+    if (error.response) {
+      console.error(`HTTP error: ${error.response.status}`);
+    } else if (error.request) {
+      console.error("Request error: No response received");
+    } else {
+      console.error("Error:", error.message);
+    }
+  });
+```
+By automatically throwing errors for unsuccessful responses, Axios simplifies error handling and allows developers to focus on implementing appropriate error-handling logic without having to manually check each response for success or failure.
+
+</p>
+</details>
+
+---
