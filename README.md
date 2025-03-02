@@ -4473,3 +4473,28 @@ By automatically throwing errors for unsuccessful responses, Axios simplifies er
 </details>
 
 ---
+
+### 111. Dynamic object create ?
+function sum(num1, num2) {
+    num1 = 3, num2 = 7;
+    return arguments[0] + arguments[1];
+}
+console.log(sum(2,2)); // 10
+How you will restrict the changes of num1 & num2 inside function to get sum 4 ?
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### 
+```
+function sum(num1, num2) {
+    "use strict";
+    num1 = 3, num2 = 7;
+    return arguments[0] + arguments[1];
+}
+console.log(sum(2,2)); // 4
+```
+ 
+</p>
+</details>
+
+---
