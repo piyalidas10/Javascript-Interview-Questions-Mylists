@@ -1,12 +1,12 @@
 # Javascript-Interview-Questions
 Javascript Interview Questions
 
-#### 1. Pure function vs Impure functions
+##### 1. Pure function vs Impure functions
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-##### 
+###### 
 
 - Pure functions do not have side effects. Impure functions can cause side effects.
 - Pure functions return the same output if we use the same input parameters. However, impure functions give different outcomes when we pass the same arguments multiple times.
@@ -42,12 +42,12 @@ In the above example, there is a variable named addNew, and it is declared outsi
 
 ---
 
-### 2. What is Javascript closure ?
+#### 2. What is Javascript closure ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-  #### 
+  ##### 
   https://medium.com/@piyalidas.it/closure-in-javascript-2496fdedeb7d
   https://dev.to/imranabdulmalik/mastering-closures-in-javascript-a-comprehensive-guide-4ja8#:~:text=The%20Factory%20Function%20Pattern%20uses,without%20explicitly%20class%2Dbased%20syntax.
   
@@ -138,12 +138,12 @@ Now there could be normal approaches like:
 
 ---
 
-### 3. Javascript Event Loop
+#### 3. Javascript Event Loop
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
   https://www.jsv9000.app/
   
   ![JavaScript Visualizer 9000](https://github.com/piyalidas10/Javascript-Interview-Questions-Mylists/blob/main/images/jsv9000.gif)
@@ -231,12 +231,12 @@ Got it? Let's quickly take a look at what's happening when we're running this co
 
 ---
 
-### 4. Slice vs Splice
+#### 4. Slice vs Splice
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 
 - 1. Slice is used to get a new array from the original array whereas the splice is used to add/remove items in the original array. The changes are not reflected in the original array in the case of slice and in the splice, the changes are reflected in the original array.
 ```
@@ -267,12 +267,12 @@ console.log(arr); ---------- (3) [4, 3, 9]
 
 ---
 
-### 5. Spread vs Rest
+#### 5. Spread vs Rest
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 
 The spread operator helps us expand an iterable such as an array where multiple arguments are needed, it also helps to expand the object expressions.
     var array1 = [10, 20, 30, 40, 50];
@@ -309,12 +309,12 @@ The rest parameter syntax allows a function to accept an indefinite number of ar
 
 ---
 
-### 5. Event Propagation ( Event Bubbling and capturing )
+#### 5. Event Propagation ( Event Bubbling and capturing )
 
 <details><summary><b>Answer</b></summary>
 <p>
   
-#### 
+##### 
   ![bubbling-and-capturing](https://javascript.info/article/bubbling-and-capturing/eventflow.svg)
   <br>
 - 1. Capturing phase – the event goes down to the element.
@@ -347,12 +347,12 @@ event.stopPropagation() stops the move upwards
 ---
 
 
-### 6. Top 10 Features of ES6 
+#### 6. Top 10 Features of ES6 
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 
 https://www.boardinfinity.com/blog/top-10-features-of-es6/
 <br>
@@ -374,12 +374,12 @@ https://www.boardinfinity.com/blog/top-10-features-of-es6/
 
 ---
 
-### 7. What is Recursion?
+#### 7. What is Recursion?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Recursion is a technique for iterating over an operation by having a function call itself repeatedly until it arrives at a result.
 ```
 function factorial(num) { 
@@ -397,12 +397,12 @@ console.log(factorial(6))
 
 ---
 
-### 8. What is Temporal Dead Zone?
+#### 8. What is Temporal Dead Zone?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Temporal Dead Zone is the period of time during which the let and const declarations cannot be accessed.
 Temporal Dead Zone starts when the code execution enters the block which contains the let or const declaration and continues until the declaration has executed.
 Variables declared using let and the constants declared using const are hoisted but are in a TDZ. 
@@ -422,12 +422,12 @@ It will print ----------- VM228:1 Uncaught ReferenceError: a is not defined
 
 ---
 
-### 9. map() vs forEach()
+#### 9. map() vs forEach()
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 The map() method is used to transform the elements of an array, whereas the forEach() method is used to loop through the elements of an array. The map() method can be used with other array methods, such as the filter() method, whereas the forEach() method cannot be used with other array methods.
 
 </p>
@@ -435,12 +435,12 @@ The map() method is used to transform the elements of an array, whereas the forE
 
 ---
 
-### 10. What is prototype in javascript
+#### 10. What is prototype in javascript
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Prototypes are the mechanism by which JavaScript objects inherit features from one another. The prototype is an object that is associated with every functions and objects by default in JavaScript. 
 When a programmer needs to add new properties like variables and methods at a later point of time, and these properties need sharing across all the instances, then the prototype will be very handy.
 
@@ -449,12 +449,12 @@ When a programmer needs to add new properties like variables and methods at a la
 
 ---
 
-### 11. When to use Prototype in JavaScript?
+#### 11. When to use Prototype in JavaScript?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 As we all know, Javascript is a dynamic language where we can add new variables and methods to the object at any point in time, as shown below.
 ```
 function Employee() {
@@ -480,12 +480,12 @@ The answer to this question is the use of a prototype. A prototype is an invisib
 
 ---
 
-### 12. prototype inheritance in javascript
+#### 12. prototype inheritance in javascript
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Prototype inheritance in javascript is the linking of prototypes of a parent object to a child object to share and utilize the properties of a parent class using a child class.
 The syntax used for prototype inheritance has the __proto__ property which is used to access the prototype of the child. The syntax to perform a prototype inheritance is as follows :
 
@@ -511,12 +511,12 @@ console.log(rabbit.rabbitJumps); // true
 
 ---
 
-### 13. Remove duplicate values from Array
+#### 13. Remove duplicate values from Array
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 arr = [1, 2,3,4,5,6,2,3,4];
 finalArr = [...new Set(arr)];  ///////  [1, 2, 3, 4, 5, 6]
@@ -537,12 +537,12 @@ console.log(finalArr2); // [1, 2, 3, 4, 5, 6]
 
 ---
 
-### 14. Removing duplicate objects (based on multiple keys) from array
+#### 14. Removing duplicate objects (based on multiple keys) from array
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 const listOfTags = [
     {id: 1, label: "Hello", color: "red", sorting: 0},
@@ -564,12 +564,12 @@ console.log(unique);
 
 ---
 
-### 15. Why JavaScript is a single-thread language ? 
+#### 15. Why JavaScript is a single-thread language ? 
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 The JavaScript within a chrome browser is implemented by a V8 engine.
 
 Memory Heap
@@ -595,12 +595,12 @@ Now, coming back to the previous question of how to use async calls within JS. W
 
 ---
 
-### 16. How can i make array immutable in javascript
+#### 16. How can i make array immutable in javascript
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 In JavaScript, things that are immutable don’t change in value when you use them, and things that are mutable do.
 Object. freeze() to arrays to make them immutable. 
 
@@ -633,12 +633,12 @@ You can use the spread operator to create immutable copies of arrays and objects
 
 ---
 
-### 17. How can i make object immutable in javascript
+#### 17. How can i make object immutable in javascript
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 You can create an immutable copy of an object using Object.assign(). Pass in an empty object ({}) as the first argument and the object you want to copy as the second.
 
 It’s considered a best practice to do so before manipulating an object.
@@ -658,12 +658,12 @@ You can use the spread operator to create immutable copies of arrays and objects
 
 ---
 
-### 18. How can reduce Memory Leaks in Javascript ?
+#### 18. How can reduce Memory Leaks in Javascript ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 most of the memory leaks can be traced back to not removing all references to objects that you don't need anymore. This can happen when you forget to remove intervals or timers, or you make excessive use of global variables.
 Storing data in global variables is probably the most common type of memory leak. In the browser, for instance, if you use var instead of const or let—or leave out the keyword altogether—the engine will attach the variable to the window object.
 The same will happen to functions that are defined with the function keyword.
@@ -691,12 +691,12 @@ On the frontend, you can profile the memory usage in the Chrome DevTools under t
 </details>
 
 ---
-### 19. Why JavaScript is single threaded?
+#### 19. Why JavaScript is single threaded?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 
 ![CallStack](https://github.com/piyalidas10/Javascript-Interview-Questions-Mylists/blob/main/images/javascript_call_stack.gif)
 
@@ -713,12 +713,12 @@ The order in which the stack processes each function call follows the LIFO princ
 
 ---
 
-### 20. Primitive vs Non-Primitive
+#### 20. Primitive vs Non-Primitive
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Primitive data types
 ----------------------------------------------------------------------
 Examples of Primitive data types are Boolean, char, byte, int, short, long, float, and double.
@@ -747,12 +747,12 @@ Allocating memory this way is also called dynamic memory allocation.
 
 ---
 
-### 21. What is garbage collector ?
+#### 21. What is garbage collector ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 
 In javascript, memory should be cleared up automatically using a thing called Garbage collector. Javascript is a language who ha garbage collector meaning you don't have to manage your memory manually. It gets cleared automatically & assigned automatically.
 
@@ -768,12 +768,12 @@ First thing you can do use strict to prevent you from these memory leaks becuae 
 
 ---
 
-### 22. Difference Between Null & Undefined ?
+#### 22. Difference Between Null & Undefined ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 
 Undefined means the variable has been declared, but its value has not been assigned. Null means an empty value or a blank value.
  
@@ -782,12 +782,12 @@ Undefined means the variable has been declared, but its value has not been assig
 
 ---
 
-### 23. What will be the output of undefined==null & undefined===null ? Why ?
+#### 23. What will be the output of undefined==null & undefined===null ? Why ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 
 undefined==null will be true because both undefined and null represent nothingness.
 undefined===null will be false because they contain different data type because undefined and null are different in terms of data type.
@@ -799,12 +799,12 @@ undefined===null will be false because they contain different data type because 
 
 ---
 
-### 24. What is Hosting ?
+#### 24. What is Hosting ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 In JavaScript, hoisting refers to the built-in behavior of the language through which declarations of functions, variables, and classes are moved to the top of their scope – all before code execution. Hoisting only happen with var and function keywords. 
 
   console.log(x);
@@ -819,12 +819,12 @@ In JavaScript, hoisting refers to the built-in behavior of the language through 
 
 ---
 
-### 25. var vs let ?
+#### 25. var vs let ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ![var_let](https://github.com/piyalidas10/Javascript-Interview-Questions-Mylists/blob/main/images/var_let.png)
 var is function scoped and let is block scoped. Variables declared by let are only available inside the block where they’re defined. Variables declared by var are available throughout the function in which they’re declared.
 
@@ -864,12 +864,12 @@ When working outside of function bodies, at a global level, let does not create 
 
 ---
 
-### 26. What is Arrow function ?
+#### 26. What is Arrow function ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
   Arrow functions do not have their own arguments and it uses the arguments from the outer function.
   
   - This object does not work with arrow function.
@@ -913,12 +913,12 @@ When working outside of function bodies, at a global level, let does not create 
 
 ---
 
-### 27. What is IIFE(Immediately Invoked Function Expression) ?
+#### 27. What is IIFE(Immediately Invoked Function Expression) ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 a JavaScript function which calls itself, runs as soon as it is defined. This pattern encapsulates code within its own scope, preventing variable pollution in the global scope and enabling more controlled and modular code organization. 
 ```
     (function(){
@@ -970,12 +970,12 @@ for (var i = 0; i < 5; i++) {
 
 ---
 
-### 28. What is Call, Bind, Apply ?
+#### 28. What is Call, Bind, Apply ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 bind() - creates a new function with predefined this value and returns it.
 call() and apply() execute functions immediately with the specified this value. , but call() accepts arguments individually while apply() accepts an array of arguments.
 
@@ -1022,12 +1022,12 @@ call() and apply() execute functions immediately with the specified this value. 
 
 ---
 
-### 29. What are the use of Map & Set ?
+#### 29. What are the use of Map & Set ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
     let product = new Map();
     product.set('pCode', '001');
     =====> Map(1) {'pCode' => '001'}
@@ -1048,12 +1048,12 @@ call() and apply() execute functions immediately with the specified this value. 
 
 ---
 
-### 30. Delete/Remove a property from an Object ?
+#### 30. Delete/Remove a property from an Object ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Using delete operator
     let emp = {
     name: "Kareem",
@@ -1077,12 +1077,12 @@ Using rest operator
 
 ---
 
-### 31. Difference Between == (loose equality) and === (strict equality operator) in Javascript ?
+#### 31. Difference Between == (loose equality) and === (strict equality operator) in Javascript ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 The == operator checks if two values are equal.
 
     let a = '10', b = 10;    
@@ -1094,12 +1094,12 @@ The == operator checks if two values are equal.
 
 ---
 
-### 32. Anonymous Functions in JavaScript ?
+#### 32. Anonymous Functions in JavaScript ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Anonymous functions in JavaScript, are the functions that do not have any name or identity.
     let variableName = function () {
         //your code here
@@ -1148,12 +1148,12 @@ Use of Anonymous functions :
 
 ---
 
-### 33. Difference between Document Object & Window Object ?
+#### 33. Difference between Document Object & Window Object ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 the entire browser window is actually window object and the inner part where the content is displayed, all the content can be accessed using the document object. This also means that window is the main container or patterned or global object and document is child of window object operations related to entire browser.
 ![window](https://github.com/piyalidas10/Javascript-Interview-Questions-Mylists/blob/main/images/window.png)
 </p>
@@ -1161,12 +1161,12 @@ the entire browser window is actually window object and the inner part where the
 
 ---
 
-### 34. Rest Operator: Delete property from an Object using Rest operator ?
+#### 34. Rest Operator: Delete property from an Object using Rest operator ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
       let user = {
           name: 'Calvin',
           age: 200,
@@ -1181,12 +1181,12 @@ the entire browser window is actually window object and the inner part where the
 
 ---
 
-### 35. What is Object destructuring?
+#### 35. What is Object destructuring?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Object destructuring allows us to create variables from object property names, and the variable will contain the value of the property name - for example:
 
     const data = { a: 1, b: 2, c: 3 };
@@ -1224,12 +1224,12 @@ Object destructuring allows us to create variables from object property names, a
 
 ---
 
-### 36. Spread Operator : Practical use
+#### 36. Spread Operator : Practical use
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
     const odd = [1,3,5];
     const combined = [2,...odd, 4,6];
     console.log(combined);   // [ 2, 1, 3, 5, 4, 6 ]
@@ -1255,12 +1255,12 @@ Object destructuring allows us to create variables from object property names, a
 
 ---
 
-### 37. Splice() method to delete existing elements, insert new elements, and replace elements in an array
+#### 37. Splice() method to delete existing elements, insert new elements, and replace elements in an array
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 The splice() method is used to add or remove elements of an existing array 
 ```
 --------- Add element-----------
@@ -1286,12 +1286,12 @@ The splice() method is used to add or remove elements of an existing array
 
 ---
 
-### 38. Template Literals
+#### 38. Template Literals
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Template literals are literals delimited with backtick ( ` ) characters, allowing for multi-line strings, string interpolation with embedded expressions, and special constructs called tagged templates.
 
 ```
@@ -1311,12 +1311,12 @@ tag`string text line 1 \n string text line 2`;
 
 ---
 
-### 39. ES6 template literals vs. concatenated strings
+#### 39. ES6 template literals vs. concatenated strings
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Template literals provide us with an alternative to string concatenation .They also allow us to insert variables in to a string. Template literals were introduced in ECMAScript 2015/ ES6 as a new feature. It provides an easy way to create multi-line strings and perform string interpolation.
 <br><br><br>
 Why would I use this new template literal method? I would recommend switching to the new format for a few reasons.
@@ -1341,24 +1341,24 @@ Console.log(`Hello,welcome to ${website.name} !"message goes here"` ) ;
 
 ---
 
-### 40. Write polyfill of Array.flat with customized nesting
+#### 40. Write polyfill of Array.flat with customized nesting
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 
 </p>
 </details>
 
 ---
 
-### 41. There are two sorted arrays. Merge them in place of the first array
+#### 41. There are two sorted arrays. Merge them in place of the first array
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 arr1 = [1, 2 , 3];
 arr2 = [4, 5, 6];
@@ -1370,25 +1370,25 @@ arr1 = [...arr1,...arr2];
 
 ---
 
-### 42. Write a js function that can be invoked like below -
+#### 42. Write a js function that can be invoked like below -
 calc().add(10).subtract(5).multiply(20).divide(2).getResult() . In this case, the output should be 50.
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 
 </p>
 </details>
 
 ---
 
-### 43. prototype chain -
+#### 43. prototype chain -
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 The prototype chain is a mechanism that allows objects to inherit properties and methods from other objects. Every object can have exactly one prototype object. That prototype object can also have a prototype object, and so on, creating a chain of inheritied properties and methods. The end of this chain is called the null prototype.
 Every object in JavaScript can be linked to a prototype object which is the mechanism through which inheritance is provided.
 You can see the prototype an object is pointing to using the __proto__ property.
@@ -1419,12 +1419,12 @@ person.greet()
 
 ---
 
-### 44. What is the first class function in JavaScript ?
+#### 44. What is the first class function in JavaScript ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 A programming language is said to have First-class functions if functions in that language are treated like other variables. So the functions can be assigned to any other variable or passed as an argument or can be returned by another function. This means that functions are simply a value and are just another type of object.
 
 <b>Usage of First-Class Function</b>
@@ -1470,12 +1470,12 @@ console.log(Geek("Akshit", "Saxena"));
 
 ---
 
-### 45. What is a First Order Function in JavaScript ?
+#### 45. What is a First Order Function in JavaScript ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 A First Order Function is just a normal regular function that does not take any function as one of its parameters and also it does not return another function as its return value inside its body. It is a simple function that accepts the parameters of different data types either primitive or non-primitive and it may or may not return a value as a result of the calculations performed on the passed parameters. A First Order Function can be declared using any of the methods available in JavaScript.
 
 ```
@@ -1490,12 +1490,12 @@ firstOrderFunc(4, 35)
 
 ---
 
-### 45. What is Higher Order Function in JavaScript ?
+#### 45. What is Higher Order Function in JavaScript ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 A higher-order function is a function that can accept a function as one of its parameters and it can also return a function as its return value or it can do both return as well as accept a function. A higher-order function can also take as well as return other types of values but it either has to take a function as a parameter or return a function as its return value with them. It can be declared using any syntax available in JavaScript to declare functions.
 
 ```
@@ -1512,12 +1512,12 @@ higherOrderFunc(3)(53);
 
 ---
 
-### 46. memoization in javascript
+#### 46. memoization in javascript
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Memoization is a technique for speeding up applications by caching the results of expensive function calls and returning them when the same inputs are used again.
 
 <b>Importance of Memoization:</b> When a function is given in input, it performs the necessary computation and saves the result in a cache before returning the value. If the same input is received again in the future, it will not be necessary to repeat the process. It would simply return the cached answer from the memory. This will result in a large reduction in a code’s execution time.
@@ -1574,12 +1574,12 @@ https://www.geeksforgeeks.org/how-to-write-a-simple-code-of-memoization-function
 
 ---
 
-### 47. Dynamic object create ?
+#### 47. Dynamic object create ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 function createObj(obj, field, value) {
     if (Object.keys(obj).includes(field)) {
@@ -1598,12 +1598,12 @@ createObj({}, 'one', 'value1')
 
 ---
 
-### 48. Reduce operator examples
+#### 48. Reduce operator examples
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 const arr =[[1,2], [3,4], [5,6]];
 const finalArr = arr.reduce((accumulator, current)=> accumulator.concat(current));
@@ -1645,12 +1645,12 @@ console.log(result); // 30
 
 ---
 
-### 49. Arrow vs Normal functions ?
+#### 49. Arrow vs Normal functions ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 <strong>Access arguments</strong>
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 In regular functions, you can access all passed arguments using the arguments object, which is an array-like object containing each argument passed to the function.
@@ -1753,12 +1753,12 @@ const p = new Person(); // TypeError: Person is not a constructor
 ---
 
 
-### 50. Passing by Reference vs. Passing by Value ?
+#### 50. Passing by Reference vs. Passing by Value ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 
 <strong>Pass by Reference or Call by Reference</strong>
 ---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1803,12 +1803,12 @@ Same thing will happen for array also.
 
 ---
 
-### 51. Remove Null and Undefined Values from an Object (Practical Coding)
+#### 51. Remove Null and Undefined Values from an Object (Practical Coding)
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 let obj = {
   a: 'test',
@@ -1840,12 +1840,12 @@ console.log(undefined === null) // false
 
 ---
 
-### 52. Convert an Array to an Object
+#### 52. Convert an Array to an Object
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 
 <strong>Single Dimention Array into an Object</strong>
 ---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1897,12 +1897,12 @@ console.log(JSON.stringify(obj)); // {"0":"Hello","1":"World","2":"Welcome","3":
 
 ---
 
-### 53. Convert Map keys to an array
+#### 53. Convert Map keys to an array
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 <strong>Using array.from() Method</strong>
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 ```
@@ -1935,12 +1935,12 @@ console.log(keysArray); // ['JavaScript', 'Python', 'C++']
 
 ---
 
-### 54. How to serialize a Map in JavaScript ?
+#### 54. How to serialize a Map in JavaScript ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Serialization is the conversion of an object or a data structure to another format that is easily transferrable on the network.
 
 <strong>Using Array.from() and JSON.stringify() Method</strong>
@@ -1984,12 +1984,12 @@ JSON.stringify(Object.fromEntries(map1)); // Use the JSON.stringify() method on 
 
 ---
 
-### 55. Object vs JavaScript Map ?
+#### 55. Object vs JavaScript Map ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 A Map in JavaScript is a collection of key-value pairs where keys can be any data type. Unlike objects, keys in a Map maintain insertion order. It provides methods to set, get, delete, and iterate over elements efficiently, making it useful for data storage and retrieval tasks.
 
 <strong>Insertion Order</strong>
@@ -2028,12 +2028,12 @@ Iterables like Map and Set aren't handled by the engine this way, and you can us
 
 ---
 
-### 56. Can we add Javascript function in JSON?
+#### 56. Can we add Javascript function in JSON?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 https://www.geeksforgeeks.org/how-to-store-a-javascript-fnction-in-json/
  
 </p>
@@ -2041,12 +2041,12 @@ https://www.geeksforgeeks.org/how-to-store-a-javascript-fnction-in-json/
 
 ---
 
-### 57. Ho can add Dynamic key in Object?
+#### 57. Ho can add Dynamic key in Object?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 let tv = 'pCode', num = 10;
 let obj = {
@@ -2069,7 +2069,7 @@ pName: 1000
 
 ---
 
-### 58. What will the output of bellow ?
+#### 58. What will the output of bellow ?
 function show() {
     console.log(this);
 }
@@ -2092,7 +2092,7 @@ obj.display();
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 function show() {
     console.log(this);
@@ -2119,12 +2119,12 @@ obj.display(); // Window {0: global, window: Window, self: Window, document: doc
 
 ---
 
-### 59. What Are Stack and Heap?
+#### 59. What Are Stack and Heap?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Stack: The Stack is used for static memory allocation, primarily for storing primitive types and function calls. It's a simple, last-in, first-out (LIFO) structure, making it very fast to access.
 
 Heap: The Heap is used for dynamic memory allocation, where objects and arrays (non-primitive types) are stored. Unlike the Stack, the Heap is more complex and slower to access, as it allows for flexible memory allocation.
@@ -2161,12 +2161,12 @@ console.log(userTwo.email); // Output: ayush@google.com
 
 ---
 
-### 60. What's the output of console.log(this) in JavaScript?
+#### 60. What's the output of console.log(this) in JavaScript?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 console.log(this);
 ------------------------------------------------------------------------------------------------------
@@ -2178,12 +2178,12 @@ Window {0: global, window: Window, self: Window, document: document, name: '', l
 
 ---
 
-### 61. Write a program using Promise and Async/Await.
+#### 61. Write a program using Promise and Async/Await.
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 async function fetchData() {
   const response = await fetch("https://jsonplaceholder.typicode.com/posts/1");
@@ -2223,22 +2223,22 @@ Better Debugging: Debugging async/await code is more intuitive since it behaves 
 
 ---
 
-### 62. How would you efficiently handle 5000 records from an API call for a dropdown?
+#### 62. How would you efficiently handle 5000 records from an API call for a dropdown?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
  
 </p>
 </details>
 
-### 62. How is Async/Await different from Promises?
+#### 62. How is Async/Await different from Promises?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 In JavaScript, promises and async/await are two different ways to handle asynchronous operations. But they are closely related.
 
 Promise
@@ -2263,12 +2263,12 @@ https://medium.com/version-1/difference-between-promise-and-async-await-95e45318
 
 ---
 
-### 63. Explain Node.js and the Event Loop.
+#### 63. Explain Node.js and the Event Loop.
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 In Node, the Event Loop is a mechanism that handles asynchronous operations. It allows Node to perform non-blocking I/O operations despite the fact that JavaScript is single-threaded. It continuously checks the call stack and message queue, executes tasks from stack processing asynchronous operations.
 https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick
 
@@ -2277,12 +2277,12 @@ https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick
 
 ---
 
-### 64. How does this behave in Node.js? Is it the same as in the browser?
+#### 64. How does this behave in Node.js? Is it the same as in the browser?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 In Node. js all modules (script files) are executed in their own closure while browsers execute all script files directly within the global scope.
 
 In the browser, running in the global scope, this is always window in your example
@@ -2337,12 +2337,12 @@ console.log(obj1 === this);  // GLOBAL === {} = false
 
 ---
 
-### 65. Write code for mul(2)(3)(4) = 24.
+#### 65. Write code for mul(2)(3)(4) = 24.
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 function mul(x) { 
       return function(y) { 
@@ -2360,12 +2360,12 @@ function mul(x) {
 
 ---
 
-### 66. Solution to 25 JavaScript interview questions.
+#### 66. Solution to 25 JavaScript interview questions.
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 https://medium.com/@dynamicsa420/solution-to-25-javascript-interview-questions-4162a1f76609
 
 </p>
@@ -2373,12 +2373,12 @@ https://medium.com/@dynamicsa420/solution-to-25-javascript-interview-questions-4
 
 ---
 
-### 66. What is Axios ?
+#### 66. What is Axios ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Axios is a promise-based HTTP Client for node.js and the browser. It is isomorphic (= it can run in the browser and nodejs with the same codebase). On the server-side it uses the native node.js http module, while on the client (browser) it uses XMLHttpRequests.
 https://axios-http.com/docs/intro
 
@@ -2387,12 +2387,12 @@ https://axios-http.com/docs/intro
 
 ---
 
-### 67. What is Axios ?
+#### 67. What is Axios ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Prototype inheritance in javascript is the linking of prototypes of a parent object to a child object to share and utilize the properties of a parent class using a child class. Prototypes are hidden objects that are used to share the properties and methods of a parent class with child classes.
 
 The syntax used for prototype inheritance has the proto property which is used to access the prototype of the child. The syntax to perform a prototype inheritance is as follows : 
@@ -2472,12 +2472,12 @@ console.log(student.__proto__.id); //school object's property
 
 ---
 
-### 68. did you know that javascript behaves differently in the browser and in the Nodejs ?
+#### 68. did you know that javascript behaves differently in the browser and in the Nodejs ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Node.js and Web browsers are two different but interrelated technologies in web development. JavaScript is executed in both the environment, node.js, and browser but for different use cases. 
 
 Javascript files loaded in Nodejs are automatically wrapped in anonymous functions.So in Node what you are really running is:
@@ -2503,12 +2503,12 @@ Node.js provides a runtime environment that allows JavaScript to run on a server
 
 ---
 
-### 69. What is the difference between `==` and `===`?
+#### 69. What is the difference between `==` and `===`?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 The “===” operator compares both content and type, whereas “==” compares only content. The == operator will compare for equality after doing any necessary type conversions. The === operator will not do type conversion, so if two values are not the same type === will simply return false .
  
 </p>
@@ -2516,12 +2516,12 @@ The “===” operator compares both content and type, whereas “==” compares
 
 ---
 
-### 70. How do you handle errors in JavaScript?
+#### 70. How do you handle errors in JavaScript?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Error handling in JavaScript plays an important role to make the application stable. Structures such as try-catch blocks, throw statement and finally block are used to deal with unexpected situations and ensure that the application runs correctly.
 
 ```
@@ -2539,12 +2539,12 @@ try {
 
 ---
 
-### 71. What is globalThis ?
+#### 71. What is globalThis ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 globalThis aims to consolidate the increasingly fragmented ways of accessing the global object by defining a standard global property. The globalThis proposal is currently at stage 4, which means it’s ready for inclusion in the ES2020 standard. All popular browsers, including Chrome 71+, Firefox 65+, and Safari 12.1+, already support the feature. You can also use it in Node.js 12+.
 
 // browser environment
@@ -2568,12 +2568,12 @@ https://blog.logrocket.com/what-is-globalthis-why-use-it/
 
 ---
 
-### 72. What is debouncing and throttling in JavaScript?
+#### 72. What is debouncing and throttling in JavaScript?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Execution Frequency: Debouncing postpones the execution until after a period of inactivity, while throttling limits the execution to a fixed number of times over an interval.
 Use Cases: Debouncing is ideal for tasks that don’t need to execute repeatedly in quick succession, such as API calls based on user input. Throttling is suited for controlling the execution rate of functions called in response to events like scrolling or resizing.
 
@@ -2623,12 +2623,12 @@ window.addEventListener('scroll', throttle(() => {
 
 ---
 
-### 73. How would you implement a deep clone of an object without using libraries?
+#### 73. How would you implement a deep clone of an object without using libraries?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Using Spread Operator to Deep Clone
 ```
 let student1 = {
@@ -2678,12 +2678,12 @@ console.log("student 2 name is ", student2.name); // student 2 name is  Manish
 
 ---
 
-### 74. Event Delegation in JavaScript ?
+#### 74. Event Delegation in JavaScript ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Event Delegation is basically a pattern to handle events efficiently. Instead of adding an event listener to each and every similar element, we can add an event listener to a parent element and call an event on a particular target using the .target property of the event object.
 
 Let’s see an example with and without event delegation
@@ -2748,12 +2748,12 @@ Now there is a single event listener and a single responding function. In the ab
 https://www.geeksforgeeks.org/event-delegation-in-javascript/
 ---
 
-### 75. What are the microtask and macrotask within an event loop in JavaScript ?
+#### 75. What are the microtask and macrotask within an event loop in JavaScript ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 
 ```
@@ -2763,12 +2763,12 @@ https://www.geeksforgeeks.org/event-delegation-in-javascript/
 
 ---
 
-### 76. Implement a chain calculator
+#### 76. Implement a chain calculator
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 const calculator = {
   total: 0,
@@ -2799,12 +2799,12 @@ console.log(calculator.total); // 20
 
 ---
 
-### 77. Execute promises in sequence ?
+#### 77. Execute promises in sequence ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 In JavaScript, executing multiple promises sequentially refers to running asynchronous tasks in a specific order, ensuring each task is completed before the next begins. This is essential when tasks depend on the results of previous ones, ensuring correct flow and preventing unexpected behavior.
 ```
 let promise1 = new Promise((resolve, reject) => {
@@ -2867,12 +2867,12 @@ promiseExecution();
 
 ---
 
-### 78. Implement pipe and compose functions ?
+#### 78. Implement pipe and compose functions ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 The compose() function is used to combine multiple functions into a single function. It takes a series of functions as arguments and returns a new function that, when executed, runs the original functions from right to left. This means the output of the rightmost function is passed as the input to the next function, and so on.
 ```
 const compose = (...fns) => (input) => fns.reduceRight((chain, func) => func(chain), input);
@@ -2906,12 +2906,12 @@ To make it short, composition and piping are almost the same, the only differenc
 
 ---
 
-### 79. Create custom array polyfills
+#### 79. Create custom array polyfills
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 A polyfill is code that implements a feature on web browsers that do not support the feature.
 
 Polyfill of forEach() method.
@@ -2997,12 +2997,12 @@ Array.prototype.mySome = function(callback){
 
 ---
 
-### 80. Flatten a nested array
+#### 80. Flatten a nested array
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 const arr1 = [0, 1, 2, [3, 4]];
 
@@ -3026,12 +3026,12 @@ console.log(arr2.flat(Infinity));
 
 ---
 
-### 81. Build an event emitter
+#### 81. Build an event emitter
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 
 ```
@@ -3041,12 +3041,12 @@ console.log(arr2.flat(Infinity));
 
 ---
 
-### 82. Create a debouncing function with leading and trailing calls
+#### 82. Create a debouncing function with leading and trailing calls
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Debouncing is a technique that is used in programming to reduce the function invocation.
 
 It runs with the assumption that rather than invoking the functions on every action, allows the user to complete their thought process and invoke the function only after a certain buffer between two actions.
@@ -3105,12 +3105,12 @@ input.addEventListener('keyup', debouncedSearch);
 
 ---
 
-### 83. Implement MapLimit functionality
+#### 83. Implement MapLimit functionality
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 https://learnersbucket.com/examples/interview/implement-maplimit-async-function/#:~:text=Implement%20a%20mapLimit%20function%20that,can%20occur%20at%20a%20time.
  
 </p>
@@ -3118,12 +3118,12 @@ https://learnersbucket.com/examples/interview/implement-maplimit-async-function/
 
 ---
 
-### 84. Create a cancelable promise
+#### 84. Create a cancelable promise
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Promises once fired, cannot be cancelled. So cancelling the promises in our current context means to ignore the result of the promise.
 Example, an autocomplete text changes before results of previous state are received. If not cancelled, the result of previous request may appear after new results, overriding correct results.
 
@@ -3177,12 +3177,12 @@ Use case
 
 ---
 
-### 85. Implement currying
+#### 85. Implement currying
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Currying is a functional programming technique where a function with multiple arguments is transformed into a series of functions, each taking a single argument.
 In other words, instead of a function taking all arguments at one time, it takes the first one and returns a new function, which takes the second one and returns a new function, which takes the third one, and so on, until all arguments have been fulfilled.
 
@@ -3231,12 +3231,12 @@ This example explains the currying technique with the help of closures. During t
 
 ---
 
-### 86. Execute tasks in parallel ?
+#### 86. Execute tasks in parallel ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 When you have multiple time-consuming tasks/functions to execute, there are two main solutions to optimize the execution time and speed up your app:
 
 Run everything at once with Promise.all()
@@ -3313,12 +3313,12 @@ taskQueue.runTasks()
 
 ---
 
-### 87. Find the matching element in the DOM ?
+#### 87. Find the matching element in the DOM ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 The easiest way to access a single element in the DOM is by its unique ID. You can get an element by ID with the getElementById() method of the document object.
 
 JavaScript offers several methods to find and manipulate elements in the DOM. Here are some of the most common methods:
@@ -3335,7 +3335,7 @@ querySelectorAll()
 
 ---
 
-### 88. What will the output ?
+#### 88. What will the output ?
 1. Write code to get array of names from given array of users
 2. Get back only active users
 3. Sort users by age descending
@@ -3364,7 +3364,7 @@ const users = [
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 const names = users.sort((user1, user2) => (user1.age < user2.age ? 1 : -1)).filer((user) => user.isActive).map((user) => user.name);
 ```
@@ -3374,12 +3374,12 @@ const names = users.sort((user1, user2) => (user1.age < user2.age ? 1 : -1)).fil
 
 ---
 
-### 89. Write a function which helps to achieve multiply(a)(b) and returns product of a and b
+#### 89. Write a function which helps to achieve multiply(a)(b) and returns product of a and b
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 const sum = (a) => {
 	return (b) => {
@@ -3395,12 +3395,12 @@ sum(1)(2); // 3
 
 ---
 
-### 90. Create a curry function manually
+#### 90. Create a curry function manually
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 const curry = function(fn) {
 	const len = fn.length;
@@ -3449,12 +3449,12 @@ sum(2)(3, 4); // 24
 
 ---
 
-### 91. Merge two arrays
+#### 91. Merge two arrays
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 const array1 = [1, 2, 3];
 const array2 = [4, 5, 6];
@@ -3470,7 +3470,7 @@ const finalArr = [...array1, ...array2]; // [1, 2, 3, 4, 5, 6]
 
 ---
 
-### 92. Writet he code to Check that user with such name exists in array of objects
+#### 92. Writet he code to Check that user with such name exists in array of objects
 const users = [
   {
     id: 1,
@@ -3491,7 +3491,7 @@ const users = [
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 const isExists = (name, users) => users.some(user => user.name === name);
 isExists("John", users); // true
@@ -3503,12 +3503,12 @@ isExists("Test", users); // false
 
 ---
 
-### 93. Sort the array of numbers
+#### 93. Sort the array of numbers
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 const arr = [3, 5, 1];
 const result = arr.sort((a, b) => a - b); // [1, 3, 5]
@@ -3519,7 +3519,7 @@ const result = arr.sort((a, b) => a - b); // [1, 3, 5]
 
 ---
 
-### 94. Sort array of objects by author's lastname
+#### 94. Sort array of objects by author's lastname
 const books = [
   { name: "Harry Potter", author: "Joanne Rowling" },
   { name: "Warcross", author: "Marie Lu" },
@@ -3528,7 +3528,7 @@ const books = [
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 const finalArr = books.sort((book1, book2) => book1.author.split(" ")[1] < book2.author.split(" ")[1] ? -1 : 1);
 console.log(finalArr);
@@ -3555,12 +3555,12 @@ console.log(finalArr);
 
 ---
 
-### 95. How to create an array containing 1...N
+#### 95. How to create an array containing 1...N
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 Array.from(Array(10).keys())
 //=> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -3579,12 +3579,12 @@ Array.from({length: 10}, (_, i) => i + 1)
 
 ---
 
-### 96. Print a range of an array like 10...20
+#### 96. Print a range of an array like 10...20
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 const range = (start, end) => {
     return [...Array(end - start + 1).keys()].map(elm => elm + start);
@@ -3597,12 +3597,12 @@ range(10, 20); //  [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
 ---
 
-### 97. Find the number of occurences of minimum value in the list
+#### 97. Find the number of occurences of minimum value in the list
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 const arr = [1, 2, 2, 3, 4];
 const minNumOccurance = arr.filter(elm => elm === Math.min(...arr)).length; // 2
@@ -3613,12 +3613,12 @@ const minNumOccurance = arr.filter(elm => elm === Math.min(...arr)).length; // 2
 
 ---
 
-### 98. What will be the output of bellow codes
+#### 98. What will be the output of bellow codes
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 const print = {
     name: 'test',
@@ -3672,12 +3672,12 @@ item.display(); // this => Item {name: 'Test'}
 
 ---
 
-### 99. What is Factory Functions ?
+#### 99. What is Factory Functions ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 a factory function is simply a function that creates objects and returns them.  In JavaScript, any function can return an object. When it does so without the new keyword, it’s a factory function. Factory functions have always been attractive in JavaScript because they offer the ability to easily produce object instances without diving into the complexities of classes and the new keyword.
 The Factory Function Pattern uses closures to encapsulate and return object instances with methods and properties, allowing for the creation of similar objects without explicitly class-based syntax.
 ```
@@ -3707,12 +3707,12 @@ https://heyjoshlee.medium.com/factory-functions-in-javascript-the-how-and-why-d8
 
 ---
 
-### 100. Practical examples of Closure
+#### 100. Practical examples of Closure
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 1. Data Privacy - Closures enable the creation of private variables and functions within a function’s scope. Developers can create modules and libraries with hidden implementation details by encapsulating data within closures. This prevents external code from accessing or modifying internal state directly and promotes information hiding thus enhancing data protection.
 ```
 function createCounter() {
@@ -3843,12 +3843,12 @@ args =>  (3) [1, 2, 3]
 
 ---
 
-### 101. Performance optiimization : how you will achieve ?
+#### 101. Performance optiimization : how you will achieve ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 1. Avoid Unnecessary Variable declaration: Ensure that do not unnecessarily delcare variables that are not used or needed.
 2. Utilise Weak References : Consider using WeakMap or WeakSet to store references to objects, as these data structures do not prevent their objects from being garbage collected.
 3. Memoization is an optimization technique that can significantly speed up function execution by caching their results.
@@ -3860,12 +3860,12 @@ args =>  (3) [1, 2, 3]
 
 ---
 
-### 102. What is Memoization ?
+#### 102. What is Memoization ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Memoization is the process of storing the results of function execution so that the next time the function is called with the same arguments, the stored result can be returned immediately. Memoization prevents redundant calculations and improves performance, especially in cases where a function is called repeatedly with the same arguments.
 When dealing with functions that involve complex and resource-intensive calculations (e.g., recursive functions for calculating Fibonacci numbers or factorials), optimization can be essential.
 In practice, memoization can be beneficial when developing complex applications involving heavy calculations, such as in data analysis, machine learning, etc.
@@ -3931,12 +3931,12 @@ https://dev.to/hmpljs/memoization-in-javascript-optimizing-computations-and-impr
 
 ---
 
-### 103. What is a callback function in JavaScript ?
+#### 103. What is a callback function in JavaScript ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
  A callback function is a function passed as an argument to another function, which is invoked within the latter function, usually for asynchronous tasks or to customize behavior.
  
 Callback allows us to make some asynchronous task & wait for the result. actually here we're just providing the function from outside and it will be called later and not immediately. This is the main purpose of the callback.
@@ -3966,12 +3966,12 @@ export function start(element) {
 
 ---
 
-### 104. How do callbacks work in JavaScript ?
+#### 104. How do callbacks work in JavaScript ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 A callback is a function passed as an argument to another function, and a callback function can run after another function has finished. JavaScript functions execute in the sequence they get called, not in the defined sequence.
  
 </p>
@@ -3979,12 +3979,12 @@ A callback is a function passed as an argument to another function, and a callba
 
 ---
 
-### 105. Write callback function to execute async functions in parallel?
+#### 105. Write callback function to execute async functions in parallel?
 Implement a function in JavaScript that takes a list of async functions as input and a callback function and executes the async tasks in parallel that is all at once and invokes the callback after every task is executed.
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 const asyncFn1 = (callback) => {
   setTimeout(() => {
     callback(1);
@@ -4026,12 +4026,12 @@ export function start(element) {
 
 ---
 
-### 106. What are some common use cases for callbacks?
+#### 106. What are some common use cases for callbacks?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Common use cases for callbacks include handling asynchronous operations (like reading files or making HTTP requests), handling events (like click or key press events), and for higher-order functions (like Array's map, filter, reduce).
 
 When you need to take action after an asynchronous process has finished, callbacks can be helpful. As an illustration, you could utilize a callback function to:
@@ -4105,12 +4105,12 @@ promise.then((result) => {
 
 ---
 
-### 107. What is callback hell, and how can it be avoided?
+#### 107. What is callback hell, and how can it be avoided?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Callback hell refers to deeply nested, difficult-to-read callback functions. It can be avoided by modularizing code, using Promises, or async/await syntax for better code readability and maintainability.
 Callback hell, often referred to as “Pyramid of Doom,” occurs in Node.js when multiple nested callbacks lead to code that is hard to read, maintain, and debug. This situation arises when each asynchronous operation depends on the completion of the previous one, resulting in deeply nested callback functions. Fortunately, modern JavaScript and Node.js provide several techniques to mitigate this problem and write cleaner, more maintainable code.
 
@@ -4192,7 +4192,7 @@ setTimeout(() => {
 
 ---
 
-### 108. Write a function to convert a string to title case
+#### 108. Write a function to convert a string to title case
 1. titleCase(“I’m a little tea pot”) should return a string.
 2. titleCase(“I’m a little tea pot”) should return “I’m A Little Tea Pot”.
 3. titleCase(“sHoRt AnD sToUt”) should return “Short And Stout”.
@@ -4200,7 +4200,7 @@ setTimeout(() => {
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 const titleCase = (str) => {
   if (typeof str !== 'string') {
@@ -4221,12 +4221,12 @@ titleCase('I’m a little tea pot')
 
 ---
 
-### 109. Write Shallow vs Deep comparison function for Mutable Data Types
+#### 109. Write Shallow vs Deep comparison function for Mutable Data Types
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 As we know, comparison of Mutable data (arrays, objects, and date) is not possible with equality operator. We have to compare arrays and objects by values and not like reference to the object and the memory.
 
 Shallow comparison function
@@ -4299,12 +4299,12 @@ console.log(deepCompare([[1][2]], [[1][2]])); // true
 
 ---
 
-### 110. Write async functions in parallel using Callback
+#### 110. Write async functions in parallel using Callback
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Callback allows us to make some asynchronous task & wait for the result. actually here we're just providing the function from outside and it will be called later and not immediately. This is the main purpose of the callback.
 
 And secondly, it's important to remember that inside our asynchronous function of we don't know what this callback. This is why we can build shareable things. This callback can do whatever in different cases.
@@ -4354,12 +4354,12 @@ asyncParallel([asyncFn1, asyncFn2, asyncFn3], (result) => {
 
 ---
 
-### 110. Is Fetch API better than Axios?
+#### 110. Is Fetch API better than Axios?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 Ref Link : https://medium.com/@johnnyJK/axios-vs-fetch-api-selecting-the-right-tool-for-http-requests-ecb14e39e285#:~:text=Axios%20will%20automatically%20transforms%20the,be%20stored%20in%20any%20variable.
 
 AXIOS
@@ -4474,7 +4474,7 @@ By automatically throwing errors for unsuccessful responses, Axios simplifies er
 
 ---
 
-### 111. Dynamic object create ?
+#### 111. Dynamic object create ?
 function sum(num1, num2) {  
     num1 = 3, num2 = 7;  
     return arguments[0] + arguments[1];  
@@ -4484,7 +4484,7 @@ How you will restrict the changes of num1 & num2 inside function to get sum 4 ?
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 ```
 function sum(num1, num2) {
     "use strict";
