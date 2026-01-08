@@ -1,12 +1,12 @@
 # Javascript-Interview-Questions
 Javascript Interview Questions
 
-### 1. Pure function vs Impure functions
+#### 1. Pure function vs Impure functions
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### 
+##### 
 
 - Pure functions do not have side effects. Impure functions can cause side effects.
 - Pure functions return the same output if we use the same input parameters. However, impure functions give different outcomes when we pass the same arguments multiple times.
