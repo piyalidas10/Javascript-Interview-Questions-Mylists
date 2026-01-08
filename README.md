@@ -4299,6 +4299,90 @@ console.log(deepCompare([[1][2]], [[1][2]])); // true
 
 ---
 
+#### 110. Set vs Map vs Object
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+| Feature         | Set         | Map       | Object                |
+| --------------- | ----------- | --------- | --------------------- |
+| Stores          | Values only | Key–Value | Key–Value             |
+| Duplicate keys  | ❌           | ❌         | ❌                     |
+| Key types       | N/A         | Any       | String / Symbol       |
+| Iteration order | Yes         | Yes       | Partial               |
+| Performance     | Fast        | Fast      | Slower for large data |
+
+Set: A Set is a collection of unique values (no duplicates).
+✅ Key Features : 1. Stores unique values only 2. Can store any type (primitive or object) 3. Maintains insertion order 4. Fast lookups (O(1))
+```
+const set = new Set();
+set.add(1);
+set.add(2);
+set.add(2); // ignored
+set.add('hello');
+
+console.log(set); // Set(3) {1, 2, 'hello'}
+set.has(2); // true
+set.has(5); // false
+set.delete(1);
+set.size; // 2
+for (const value of set) {
+  console.log(value);
+}
+
+const arr = [1, 2, 2, 3, 3];
+const unique = [...new Set(arr)];
+console.log(unique); // [1, 2, 3]
+```
+
+Map: A Map stores key–value pairs.
+✅ Key Features : 1. Keys can be any type (object, function, primitive) 2. Maintains insertion order 3. Better than plain objects for frequent add/remove operations
+```
+const map = new Map();
+map.set('name', 'Piyali');
+map.set('age', 30);
+
+const objKey = { id: 1 };
+map.set(objKey, 'Object Key Value');
+map.get('name'); // 'Piyali'
+map.get(objKey); // 'Object Key Value'
+map.has('age'); // true
+map.delete('age');
+map.size;
+for (const [key, value] of map) {
+  console.log(key, value);
+}
+```
+**🔹 Common Real-World Use Cases**
+```
+✅ Remove duplicates (Set)
+const users = ['A', 'B', 'A'];
+const uniqueUsers = new Set(users);
+
+✅ Cache / Lookup table (Map)
+const cache = new Map();
+
+function fetchData(id) {
+  if (cache.has(id)) return cache.get(id);
+
+  const data = `Data for ${id}`;
+  cache.set(id, data);
+  return data;
+}
+```
+**🔹 Interview Tips 🚀**
+```
+Use Set when uniqueness matters
+Use Map when keys are not strings
+Prefer Map over Object for dynamic data
+Set.has() is faster than Array.includes()
+```
+ 
+</p>
+</details>
+
+---
+
 #### 110. Write async functions in parallel using Callback
 
 <details><summary><b>Answer</b></summary>
