@@ -4438,7 +4438,7 @@ asyncParallel([asyncFn1, asyncFn2, asyncFn3], (result) => {
 
 ---
 
-#### 110. Is Fetch API better than Axios?
+#### 111. Is Fetch API better than Axios?
 
 <details><summary><b>Answer</b></summary>
 <p>
@@ -4558,7 +4558,7 @@ By automatically throwing errors for unsuccessful responses, Axios simplifies er
 
 ---
 
-#### 111. Dynamic object create ?
+#### 112. Dynamic object create ?
 function sum(num1, num2) {  
     num1 = 3, num2 = 7;  
     return arguments[0] + arguments[1];  
@@ -4577,6 +4577,94 @@ function sum(num1, num2) {
 }
 console.log(sum(2,2)); // 4
 ```
+ 
+</p>
+</details>
+
+---
+
+#### 113. WeakSet vs WeakMap
+<p>
+
+##### 
+**🔹 What “Weak” Means**
+	-	Holds weak references
+	-	Garbage Collector can clean them
+	-	No memory leaks
+
+WeakMap
+-------------------------------------------------------------
+| Feature           | WeakMap        |
+| ----------------- | -------------- |
+| Key type          | Object only    |
+| Iteration         | ❌ Not iterable |
+| Garbage collected | ✅              |
+| Size              | ❌ No `.size`   |
+
+**📌 Real Angular Use Case – Private metadata**
+```
+const metadata = new WeakMap<object, any>();
+export class UserComponent {
+  constructor() {
+    metadata.set(this, { loadedAt: Date.now() });
+  }
+  ngOnDestroy() {
+    // No need to manually clean
+  }
+}
+```
+➡️ When component is destroyed → metadata auto removed.
+
+WeakSet
+-------------------------------------------------------------
+| Feature           | WeakSet      |
+| ----------------- | ------------ |
+| Stores            | Objects only |
+| Iteration         | ❌            |
+| Garbage collected | ✅            |
+```
+const activeComponents = new WeakSet<object>();
+
+class ModalComponent {
+  constructor() {
+    activeComponents.add(this);
+  }
+}
+```
+**🔹 WeakMap vs Map (Interview Gold 🥇)**
+| Feature           | Map      | WeakMap     |
+| ----------------- | -------- | ----------- |
+| Key types         | Any      | Object only |
+| Iteration         | Yes      | No          |
+| Garbage collected | No       | Yes         |
+| Memory leaks      | Possible | Prevented   |
+
+</p>
+</details>
+
+---
+
+#### 114. Why Map over Object in Angular services?
+<p>
+
+##### 
+	-	Keys can be objects
+	-	Faster for frequent add/remove
+	-	Predictable iteration
+	-	No prototype pollution
+ 
+</p>
+</details>
+
+---
+
+#### 115. Set vs Array performance?
+<p>
+
+##### 
+	-	Set.has() → O(1)
+	-	Array.includes() → O(n)
+Use Set for large collections.
  
 </p>
 </details>
