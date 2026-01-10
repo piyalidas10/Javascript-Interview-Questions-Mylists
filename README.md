@@ -4670,3 +4670,34 @@ Use Set for large collections.
 </details>
 
 ---
+
+#### 116. Event Loop & Asynchronous Task Execution in JavaScript
+<p>
+
+##### 
+JavaScript is single-threaded, but non-blocking via the event loop.  
+
+**Key components**
+	-	Call Stack – Executes synchronous code
+	-	Web APIs – Browser-managed async operations (setTimeout, fetch, DOM events)
+	-	Task (Macro-task) Queue – setTimeout, setInterval, UI events
+	-	Microtask Queue – Promises (then, catch), queueMicrotask
+	-	Event Loop – Orchestrates execution order
+**Execution order**
+	-	Run synchronous code (call stack)
+	-	Execute all microtasks
+	-	Render (browser paint)
+	-	Execute one macrotask
+	-	Repeat
+```
+console.log('A');
+setTimeout(() => console.log('B'));
+Promise.resolve().then(() => console.log('C'));
+console.log('D');
+// Output: A D C B
+```
+ 
+</p>
+</details>
+
+---
