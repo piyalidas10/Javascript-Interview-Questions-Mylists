@@ -4565,6 +4565,7 @@ function sum(num1, num2) {
 }  
 console.log(sum(2,2)); // 10  
 How you will restrict the changes of num1 & num2 inside function to get sum 4 ?  
+
 <details><summary><b>Answer</b></summary>
 <p>
 
@@ -4584,6 +4585,7 @@ console.log(sum(2,2)); // 4
 ---
 
 #### 113. WeakSet vs WeakMap
+<details><summary><b>Answer</b></summary>
 <p>
 
 ##### 
@@ -4645,6 +4647,7 @@ class ModalComponent {
 ---
 
 #### 114. Why Map over Object in Angular services?
+<details><summary><b>Answer</b></summary>
 <p>
 
 ##### 
@@ -4672,6 +4675,7 @@ Use Set for large collections.
 ---
 
 #### 116. Event Loop & Asynchronous Task Execution in JavaScript
+<details><summary><b>Answer</b></summary>
 <p>
 
 ##### 
