@@ -4724,37 +4724,35 @@ console.log('End');
 
 **𝗪𝗵𝘆 𝘁𝗵𝗶𝘀 𝗼𝗿𝗱𝗲𝗿?**  
 JavaScript doesn’t just have “async”.
- • It has priorities.
- • Execution Order
- • Call Stack runs first
- • Microtask Queue (Promises, queueMicrotask)
- • Render
- • Macrotask Queue (setTimeout, events)
+	-	It has priorities.
+	-	Execution Order
+ 	-	Call Stack runs first
+ 	-	Microtask Queue (Promises, queueMicrotask)
+	-	Render
+	-	Macrotask Queue (setTimeout, events)
 
 𝗕𝗲𝗰𝗮𝘂𝘀𝗲:
-• Promises go to the Microtask Queue
-• setTimeout goes to the Macrotask Queue
-• Microtasks always run first
+	-	Promises go to the Microtask Queue
+	-	setTimeout goes to the Macrotask Queue
+	-	Microtasks always run first
 
 𝗧𝗵𝗲 𝗲𝘃𝗲𝗻𝘁 𝗹𝗼𝗼𝗽 𝗽𝗿𝗶𝗼𝗿𝗶𝘁𝗶𝘇𝗲𝘀 𝘁𝗮𝘀𝗸𝘀 𝗱𝗶𝗳𝗳𝗲𝗿𝗲𝗻𝘁𝗹𝘆:
- 𝟭. 𝗠𝗶𝗰𝗿𝗼𝘁𝗮𝘀𝗸𝘀 (Promises, queueMicrotask) execute immediately after the current script, before ANY macrotask. They run until the queue is completely empty.
-
- 𝟮. 𝗠𝗮𝗰𝗿𝗼𝘁𝗮𝘀𝗸𝘀 (setTimeout, setInterval, I/O) wait their turn. Even setTimeout(0) goes to the back of the line.
-
- 𝟯. 𝗾𝘂𝗲𝘂𝗲𝗠𝗶𝗰𝗿𝗼𝘁𝗮𝘀𝗸 explicitly adds to the microtask queue - same priority as Promise callbacks.
+	-	𝗠𝗶𝗰𝗿𝗼𝘁𝗮𝘀𝗸𝘀 (Promises, queueMicrotask) execute immediately after the current script, before ANY macrotask. They run until the queue is completely empty.
+	-	𝗠𝗮𝗰𝗿𝗼𝘁𝗮𝘀𝗸𝘀 (setTimeout, setInterval, I/O) wait their turn. Even setTimeout(0) goes to the back of the line.
+	-	𝗾𝘂𝗲𝘂𝗲𝗠𝗶𝗰𝗿𝗼𝘁𝗮𝘀𝗸 explicitly adds to the microtask queue - same priority as Promise callbacks.
 
 Why 𝗾𝘂𝗲𝘂𝗲𝗠𝗶𝗰𝗿𝗼𝘁𝗮𝘀𝗸 exist?
- • 𝗾𝘂𝗲𝘂𝗲𝗠𝗶𝗰𝗿𝗼𝘁𝗮𝘀𝗸 schedules microtasks but doesn’t provide Promise semantics like chaining, value propagation, or error handling.
- • Promise chaining works because each .then() returns a new Promise.
+	-	𝗾𝘂𝗲𝘂𝗲𝗠𝗶𝗰𝗿𝗼𝘁𝗮𝘀𝗸 schedules microtasks but doesn’t provide Promise semantics like chaining, value propagation, or error handling.
+	-	Promise chaining works because each .then() returns a new Promise.
 
 𝗧𝗵𝗶𝘀 𝗮𝗳𝗳𝗲𝗰𝘁𝘀 𝗿𝗲𝗮𝗹 𝗮𝗽𝗽𝗹𝗶𝗰𝗮𝘁𝗶𝗼𝗻𝘀:
- • If you chain too many microtasks, you can block rendering.
- • If you need guaranteed execution order across async operations, microtasks are your friend.
+	-	If you chain too many microtasks, you can block rendering.
+	-	If you need guaranteed execution order across async operations, microtasks are your friend.
 
 𝗜𝗺𝗽𝗮𝗰𝘁 :
-• Smooth UI
-• Predictable behavior
-• Clean mental model
+	-	Smooth UI
+	-	Predictable behavior
+	-	Clean mental model
 
  
 </p>
