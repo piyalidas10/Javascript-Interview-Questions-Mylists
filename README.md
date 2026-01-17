@@ -4980,7 +4980,7 @@ Why : Server can invalidate session, Cookies expire naturally
 
 ---
 
-#### 119. Why value of document.cookie looks like a string 🤯?
+#### 120. Why value of document.cookie looks like a string 🤯?
 <details><summary><b>Answer</b></summary>
 <p>
 
@@ -5047,5 +5047,78 @@ document.cookie // forever legacy
 
 ---
 
+#### 121. Why Set-Cookie is not accessible via fetch response?
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### 
+> Set-Cookie is intentionally hidden from JavaScript to prevent session theft and fixation.
+The flow is (Cookies are processed before JavaScript gets control):
+```
+HTTP response → Browser → Cookie jar
+                     ↘ JS never sees it
+```
+
+1️⃣ What you expect vs what happens
+------------------------------------------------------
+Server response
+```
+HTTP/1.1 200 OK
+Set-Cookie: sessionId=abc123; HttpOnly; Secure
+```
+Fetch code
+```
+fetch('/login').then(res => {
+  console.log(res.headers.get('Set-Cookie')); // ❌ null
+});
+```
+Why? Because browsers explicitly block JS access to Set-Cookie.
+
+2️⃣ Core security reason (the real one)
+------------------------------------------------------
+If JS could read Set-Cookie:
+
+🔥 XSS would become catastrophic
+```
+fetch('/login')
+  .then(r => r.headers.get('Set-Cookie'))
+  .then(cookie => sendToAttacker(cookie));
+```
+That would: Defeat HttpOnly, Leak session IDs, Break server-side auth security
+> 📌 Interview line : “Blocking Set-Cookie preserves the HttpOnly guarantee.”
+
+3️⃣ Spec-level restriction (not a bug)
+------------------------------------------------------
+From the Fetch / CORS spec:  
+	-	Set-Cookie is a forbidden response header  
+	-	It is never exposed via: fetch, XMLHttpRequest, Response.headers
+Even with:
+```
+fetch(url, { credentials: 'include' })
+```
+Cookies will: ✅ Be stored ❌ Not be readable 📌 Interview line
+> “Credentials allow sending cookies, not reading them.”
+
+4️⃣ CSRF & session fixation prevention
+------------------------------------------------------
+If JS could read cookies then Attacker could: Fix a session, Read server-issued tokens, Replay authentication  
+Blocking Set-Cookie ensures: Server controls session issuance, Client can’t tamper or introspect
+> 📌 Interview line : “Auth tokens are write-only from the server’s perspective.”
+
+5️⃣ Why DevTools can still show it (again!)
+------------------------------------------------------
+Same rule as HttpOnly cookies: DevTools = privileged, JS = sandboxed  
+You can see Set-Cookie in: Network tab, Application → Cookies  
+But:
+```
+response.headers.get('Set-Cookie') // always null
+```
+> 📌 Interview line : “Visibility doesn’t imply programmability.”
+
+
+</p>
+</details>
+
+---
 
 
