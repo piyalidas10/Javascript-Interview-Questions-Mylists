@@ -5161,3 +5161,65 @@ If cookies were delayed: Login redirects would break, OAuth flows would be impos
 
 ---
 
+#### 123. How browsers decide which cookies to send?
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### 
+This is the cookie decision engine.
+
+Browser cookie checklist (in order), For every outgoing request, browser checks:  
+**1️⃣ Domain match**  
+```
+Cookie domain must match request domain
+```
+| Cookie Domain   | Request         | Sent? |
+| --------------- | --------------- | ----- |
+| example.com     | example.com     | ✅     |
+| .example.com    | api.example.com | ✅     |
+| api.example.com | example.com     | ❌     |
+
+**2️⃣ Path match**
+```
+Set-Cookie: id=1; Path=/admin
+```
+| Request path | Sent? |
+| ------------ | ----- |
+| /admin       | ✅     |
+| /admin/users | ✅     |
+| /shop        | ❌     |
+**3️⃣ Secure flag**
+```
+Secure
+```
+| Protocol | Sent? |
+| -------- | ----- |
+| HTTPS    | ✅     |
+| HTTP     | ❌     |
+**4️⃣ SameSite rules (most misunderstood)**
+| SameSite | Cross-site top-level   | Cross-site fetch  |
+| -------- | ---------------------- | ----------------- |
+| Strict   | ❌                    | ❌                |
+| Lax      | ✅ (GET nav only)     | ❌                |
+| None     | ✅                    | ✅                |
+**5️⃣ Expiry**
+Expired → ❌ not sent  
+Session cookie → sent until browser closes  
+**6️⃣ Credentials mode (fetch/XHR only)**
+| Mode        | Cookies sent?          |
+| ----------- | ---------------------- |
+| omit        | ❌                      |
+| same-origin | Same-site only         |
+| include     | Depends on rules above |
+> 📌 Key insight : “credentials: include is necessary, but never sufficient.”
+> “The browser doesn’t ask ‘should I send cookies?’ It asks ‘am I allowed to?’ — and most answers are ‘no’.”
+> 302 cookies: “Cookies are applied before redirects are followed.”
+> credentials include: “It enables cookies, it doesn’t bypass policy.”
+> Cookie sending: “Domain, path, Secure, SameSite, expiry, then credentials.”
+
+</p>
+</details>
+
+---
+
+
