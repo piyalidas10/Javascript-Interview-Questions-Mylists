@@ -5121,4 +5121,43 @@ response.headers.get('Set-Cookie') // always null
 
 ---
 
+#### 122. Why cookies are set even on 302 redirects?
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### 
+**What surprises people**
+```
+POST /login
+302 Found
+Set-Cookie: sessionId=abc; HttpOnly
+Location: /dashboard
+```
+> 👉 “Why is the cookie set if the response isn’t final?”
+> ✅ Key rule : Cookies are processed before navigation happens.
+**Browser pipeline (important)**
+```
+HTTP response received
+→ Apply Set-Cookie
+→ Update cookie jar
+→ Follow redirect
+→ Send cookies on next request
+```
+The redirect does not cancel cookie processing.
+
+**Why this is intentional**  
+Login flows depend on it.  
+Classic flow: POST /login, Server sets session cookie, Redirect to /dashboard, /dashboard receives authenticated cookie  
+If cookies were delayed: Login redirects would break, OAuth flows would be impossible
+> 📌 Interview line : “Redirects are control flow, not state barriers.”
+
+**Spec-level idea** : Set-Cookie is side-effecting, Redirects only affect navigation target, Browser applies side effects immediately  
+**Security implication Even on**: 301, 302, 307, 308  
+**Cookies**: ✅ Are stored ✅ Are scoped ❌ Are still protected by Secure/SameSite rules
+
+
+</p>
+</details>
+
+---
 
