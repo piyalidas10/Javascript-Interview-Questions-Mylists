@@ -5222,4 +5222,141 @@ Session cookie → sent until browser closes
 
 ---
 
+#### 124. Why some CORS errors show 200 OK in Network tab?
+<details><summary><b>Answer</b></summary>
+<p>
+
+#####
+```
+JS Request
+   |
+   v
+Browser sends request
+   |
+   v
+Server returns 200 OK
+   |
+   v
+Browser checks CORS headers
+   |
+   v
+❌ Blocks response from JS
+```
+What actually happened : ✅ Server worked correctly ✅ Request reached backend ✅ Backend returned 200 ❌ Browser discarded response for JS
+So: 1) Network tab → shows 200 2) Console → shows CORS error 3) Angular code → gets error
+> “CORS errors are client-side enforcement after the response.”
+**Real example**
+```
+Backend response
+HTTP/1.1 200 OK
+
+Missing header
+Access-Control-Allow-Origin
+```
+**Result** : Network → 200 but JS → ❌ blocked
+
+</p>
+</details>
+
+---
+
+#### 125. Auth / CORS / Cookie Decision Tree
+<details><summary><b>Answer</b></summary>
+<p>
+
+#####
+> “Cookies need permission to send, CORS needs permission to read.”
+```
+Request from JS
+   |
+   |-- Is it same-site?
+   |      |-- YES → Cookies allowed (Lax/Strict)
+   |      |
+   |      |-- NO →
+   |           |-- SameSite=None?
+   |           |      |-- NO → ❌ Cookie NOT sent
+   |           |      |-- YES →
+   |           |           |-- Secure?
+   |           |           |      |-- NO → ❌ Cookie dropped
+   |           |           |      |-- YES →
+   |           |           |           |-- withCredentials?
+   |           |           |           |      |-- NO → ❌ Cookie not sent
+   |           |           |           |      |-- YES →
+   |           |           |           |           |-- ACAO matches Origin?
+   |           |           |           |           |      |-- NO → ❌ JS blocked
+   |           |           |           |           |      |-- YES →
+   |           |           |           |           |           |-- ACAC=true?
+   |           |           |           |           |           |      |-- NO → ❌ JS blocked
+   |           |           |           |           |           |      |-- YES → ✅ SUCCESS
+```
+
+
+</p>
+</details>
+
+---
+
+#### 126. 🔐 OAuth login flow using HttpOnly cookies
+<details><summary><b>Answer</b></summary>
+<p>
+
+#####
+```
+[ Angular App ]
+      |
+      | 1. Redirect to Login
+      v
+[ OAuth Provider ]
+      |
+      | 2. User logs in
+      v
+[ Backend /callback ]
+      |
+      | 3. Set-Cookie (HttpOnly, Secure)
+      |    + 302 Redirect
+      v
+[ Angular App ]
+      |
+      | 4. /me (withCredentials)
+      v
+[ Backend ]
+```
+Why cookies are used here : Tokens never touch JS, XSS cannot steal auth, Browser handles session
+> “OAuth + HttpOnly cookies keeps tokens out of JavaScript.”
+Why redirect + cookie works : Cookies applied before redirect. Auth state persists automatically. SPA just checks /me
+
+</p>
+</details>
+
+---
+
+#### 127. SameSite + CORS + credentials
+<details><summary><b>Answer</b></summary>
+<p>
+
+#####
+“SameSite controls sending cookies, credentials allows attaching them, and CORS controls whether JavaScript can read the response.”
+```
+┌─────────────────────────────┐
+│  SameSite (Can I SEND?)     │
+│  Secure / Domain / Path     │
+└─────────────▲───────────────┘
+              │
+┌─────────────┴───────────────┐
+│ credentials: include        │
+│ (Am I allowed to attach?)   │
+└─────────────▲───────────────┘
+              │
+┌─────────────┴───────────────┐
+│ CORS (Can JS READ?)         │
+│ ACAO / ACAC                │
+└─────────────────────────────┘
+```
+
+</p>
+</details>
+
+---
+
+
 
