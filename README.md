@@ -5358,5 +5358,56 @@ Why redirect + cookie works : Cookies applied before redirect. Auth state persis
 
 ---
 
+#### 127. JavaScript & Main Thread Optimization (TTI / INP)
+<details><summary><b>Answer</b></summary>
+<p>
 
+#####
+Techniques : 1) Code splitting & dynamic imports 2) Tree shaking & dead-code elimination 3) Avoid long tasks (>50ms) 4) Web Workers for heavy computation 5) Event delegation 6) Zone-less Angular + Signals for minimal change detection
+
+</p>
+</details>
+
+---
+
+#### 128. Monitoring & Tooling
+<details><summary><b>Answer</b></summary>
+<p>
+
+#####
+Measurement Tools : Lighthouse, Chrome DevTools (Performance & Network tabs), Web Vitals API, PageSpeed Insights, CrUX (Chrome User Experience Report), Real User Monitoring (RUM)
+
+Production Monitoring : Track field data (INP, LCP, CLS), Compare lab vs real-user metrics, Performance budgets in CI/CD
+
+</p>
+</details>
+
+---
+
+#### 129. SEO & Performance Alignment
+<details><summary><b>Answer</b></summary>
+<p>
+
+#####
+Performance-driven SEO improvements
+Faster crawl & indexation
+Improved bounce rate & engagement
+Mobile-first performance optimization
+
+</p>
+</details>
+
+---
+
+#### 130. FCP & LCP Optimization (Rendering & Assets)
+<details><summary><b>Answer</b></summary>
+<p>
+
+#####
+Strategies : Critical CSS inlining, Lazy-loading below-the-fold images (loading="lazy"), Responsive images (srcset, sizes), Preload hero images & fonts, Font-display: swap, Reduce render-blocking scripts
+
+</p>
+</details>
+
+---
 
