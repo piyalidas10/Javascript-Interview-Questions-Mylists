@@ -14,6 +14,7 @@ Javascript Interview Questions
 - Debugging pure functions is relatively easier than debugging impure functions.
 - Pure functions cannot execute AJAX calls or standard DOM manipulation.
 - Impure functions aren’t inherently wrong. They merely can cause some confusion in more extensive systems in the form of spaghetti code.
+- **Memoization only works for Pure functions. Memoization is a performance optimization technique that caches the results of function calls based on their input parameters. Because a memoized function returns a cached result on subsequent calls, it must be a pure function to ensure that the output is always the same for a given input.**
 
 `Pure Functions`
 To get a better understanding, let’s consider the following example.
@@ -1521,6 +1522,8 @@ higherOrderFunc(3)(53);
 Memoization is a technique for speeding up applications by caching the results of expensive function calls and returning them when the same inputs are used again.
 
 <b>Importance of Memoization:</b> When a function is given in input, it performs the necessary computation and saves the result in a cache before returning the value. If the same input is received again in the future, it will not be necessary to repeat the process. It would simply return the cached answer from the memory. This will result in a large reduction in a code’s execution time.
+
+> Memorization only works for Pure functions. Memoization is a performance optimization technique that caches the results of function calls based on their input parameters. Because a memoized function returns a cached result on subsequent calls, it must be a pure function to ensure that the output is always the same for a given input.
 
 <b>Memoization in Javascript:</b> In JavaScript, the concept of memorization is based mostly on two ideas. They are as follows:
   -  Closures
