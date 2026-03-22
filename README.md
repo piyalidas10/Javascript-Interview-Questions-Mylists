@@ -145,6 +145,31 @@ Now there could be normal approaches like:
 <p>
 
 ##### 
+console.log("1");
+function log2() {
+    console.log("2");
+}
+setTimeout(() => {
+    console.log("2");
+}, 0);
+log2();
+Promise.resolve().then(() => {
+    console.log("4");
+});
+console.log("5");
+queueMicrotask(() => {
+    console.log("6");
+});
+
+**Result :**
+1
+2
+5
+4
+6
+2
+
+##### 
   https://www.jsv9000.app/
   
   ![JavaScript Visualizer 9000](https://github.com/piyalidas10/Javascript-Interview-Questions-Mylists/blob/main/images/jsv9000.gif)
