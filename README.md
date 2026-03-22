@@ -146,24 +146,24 @@ Now there could be normal approaches like:
 
 ##### 
 ```
-console.log("1");
+console.log("1"); // Stack: Log 1
 function log2() {
-    console.log("2");
+    console.log("2"); // Stack: Log 2
 }
 setTimeout(() => {
-    console.log("2");
+    console.log("2"); // Macrotask Queue
 }, 0);
 log2();
 Promise.resolve().then(() => {
-    console.log("4");
+    console.log("4"); // Microtask Queue
 });
-console.log("5");
+console.log("5"); // Stack: Log 5
 queueMicrotask(() => {
-    console.log("6");
+    console.log("6"); // Microtask Queue
 });
 ```
 
-**Result :**
+**Output (priority wise) :**
 ```
 1
 2
