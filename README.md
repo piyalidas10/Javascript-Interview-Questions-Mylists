@@ -473,6 +473,23 @@ The map() method is used to transform the elements of an array, whereas the forE
 Prototypes are the mechanism by which JavaScript objects inherit features from one another. The prototype is an object that is associated with every functions and objects by default in JavaScript. 
 When a programmer needs to add new properties like variables and methods at a later point of time, and these properties need sharing across all the instances, then the prototype will be very handy.
 
+JavaScript uses prototypal inheritance.
+```
+function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.greet = function() {
+  console.log("Hello");
+};
+
+const p = new Person("John");
+p.greet();
+```
+Prototype Chain
+```
+object → prototype → prototype → null
+```
 </p>
 </details>
 
@@ -848,12 +865,46 @@ In JavaScript, hoisting refers to the built-in behavior of the language through 
 
 ---
 
-#### 25. var vs let ?
+#### 25. JavaScript Shadowing ?
 
 <details><summary><b>Answer</b></summary>
 <p>
 
 ##### 
+
+Variable shadowing happens when a variable declared inside a scope has the same name as a variable in an outer scope.
+```
+let name = "Global";
+
+function test() {
+  let name = "Local";
+  console.log(name);
+}
+
+test();
+```
+Output:
+```
+Local
+```
+The inner variable “shadows” the outer one.
+
+**Illegal Shadowing**
+let a = 10;
+```
+{
+  var a = 20;
+}
+```
+This throws error because var is function scoped and conflicts with let.
+
+Difference between var, let, const
+| Keyword | Scope    | Hoisting  | Re-declare |
+| ------- | -------- | --------- | ---------- |
+| var     | Function | Yes       | Yes        |
+| let     | Block    | Yes (TDZ) | No         |
+| const   | Block    | Yes (TDZ) | No         |
+
 ![var_let](https://github.com/piyalidas10/Javascript-Interview-Questions-Mylists/blob/main/images/var_let.png)
 var is function scoped and let is block scoped. Variables declared by let are only available inside the block where they’re defined. Variables declared by var are available throughout the function in which they’re declared.
 
@@ -5436,6 +5487,173 @@ Mobile-first performance optimization
 
 #####
 Strategies : Critical CSS inlining, Lazy-loading below-the-fold images (loading="lazy"), Responsive images (srcset, sizes), Preload hero images & fonts, Font-display: swap, Reduce render-blocking scripts
+
+</p>
+</details>
+
+---
+
+#### 131. Flatten Deep Nested Object
+<details><summary><b>Answer</b></summary>
+<p>
+
+#####
+
+Input:
+```
+const obj = {
+  user: {
+    profile: {
+      name: "John"
+    }
+  }
+};
+```
+Output:
+```
+{
+  "user.profile.name": "John"
+}
+```
+Implementation:
+```
+function flattenObject(obj, parent = "", result = {}) {
+  for (let key in obj) {
+    const prop = parent ? `${parent}.${key}` : key;
+
+    if (
+      typeof obj[key] === "object" &&
+      obj[key] !== null &&
+      !Array.isArray(obj[key])
+    ) {
+      flattenObject(obj[key], prop, result);
+    } else {
+      result[prop] = obj[key];
+    }
+  }
+
+  return result;
+}
+```
+
+</p>
+</details>
+
+---
+
+#### 132. Promise.all vs Promise.race
+<details><summary><b>Answer</b></summary>
+<p>
+
+#####
+
+**Promise.all**
+
+Runs all promises in parallel. Returns when ALL are resolved. Fails immediately if one fails.
+```
+Promise.all([
+  fetchUser(),
+  fetchPosts()
+]).then(console.log);
+```
+Use cases:
+- Dashboard APIs
+- Parallel requests
+
+**Promise.race**
+
+Returns the first settled promise.
+```
+Promise.race([
+  fetchData(),
+  timeoutPromise()
+]);
+```
+Use cases:
+- API timeout handling
+- Fastest server response
+
+**Difference between all, allSettled, race, any**
+| Method     | Behavior             |
+| ---------- | -------------------- |
+| all        | All success required |
+| allSettled | Waits all            |
+| race       | First settled        |
+| any        | First success        |
+
+
+
+</p>
+</details>
+
+---
+
+#### 134. Polyfill for map and reduce
+<details><summary><b>Answer</b></summary>
+<p>
+
+#####
+**map Polyfill**
+```
+Array.prototype.myMap = function(callback) {
+  const result = [];
+
+  for (let i = 0; i < this.length; i++) {
+    result.push(callback(this[i], i, this));
+  }
+
+  return result;
+};
+```
+**reduce Polyfill**
+```
+Array.prototype.myReduce = function(callback, initial) {
+  let accumulator = initial;
+  let start = 0;
+
+  if (accumulator === undefined) {
+    accumulator = this[0];
+    start = 1;
+  }
+
+  for (let i = start; i < this.length; i++) {
+    accumulator = callback(accumulator, this[i], i, this);
+  }
+
+  return accumulator;
+};
+```
+
+</p>
+</details>
+
+---
+
+#### 135. CDN — How It Works
+<details><summary><b>Answer</b></summary>
+<p>
+
+#####
+CDN = Content Delivery Network
+
+It caches static assets closer to users geographically.
+
+Flow
+```
+User → Nearest Edge Server → Cached Asset
+```
+Instead of:
+```
+User → Main Server
+```
+**Benefits**
+- Faster load time
+- Reduced latency
+- Reduced origin server load
+- Better availability
+- DDoS protection
+
+Angular CDN Usage : <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </p>
 </details>
